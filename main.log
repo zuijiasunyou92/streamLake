@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.9.30)  8 FEB 2023 08:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.9.30)  8 FEB 2023 15:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1545,14 +1545,17 @@ Package: balance 1999/02/23 4.3 (PWD)
 \oldvsize=\dimen350
 )
 Excluding comment 'screenonly' Include comment 'printonly'
-Include comment 'anonsuppress' (./main.aux)
+Include comment 'anonsuppress' (./main.aux
+
+LaTeX Warning: Label `sec:dataeva' multiply defined.
+
+)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/nxlmi/m/it on input line 26.
 LaTeX Font Info:    Try loading font information for OML+nxlmi on input line 26
 .
-
-(/usr/local/texlive/2017/texmf-dist/tex/latex/newtx/omlnxlmi.fd
+ (/usr/local/texlive/2017/texmf-dist/tex/latex/newtx/omlnxlmi.fd
 File: omlnxlmi.fd 2013/11/19 Fontinst v1.933 font definitions for OML/nxlmi.
 )
 LaTeX Font Info:    ... okay on input line 26.
@@ -1782,80 +1785,113 @@ LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/sb/n' will be
 (Font)              scaled to size 9.0pt on input line 26.
 Package xypdf Info: Line width: 0.504pt on input line 26.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 17.28pt on input line 50.
+(Font)              scaled to size 17.28pt on input line 52.
 LaTeX Font Info:    Try loading font information for T1+LinuxBiolinumT-TLF on i
-nput line 50.
+nput line 52.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/libertine/T1LinuxBiolinumT-TLF.fd
 File: T1LinuxBiolinumT-TLF.fd 2017/03/20 (autoinst) Font definitions for T1/Lin
 uxBiolinumT-TLF.
 )
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 17.28pt on input line 50.
+(Font)              scaled to size 17.28pt on input line 52.
 Package microtype Info: Loading generic settings for font family
 (microtype)             `LinuxBiolinumT-TLF' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/b/n' will be
-(Font)              scaled to size 17.28pt on input line 50.
+(Font)              scaled to size 17.28pt on input line 52.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 12.0pt on input line 50.
+(Font)              scaled to size 12.0pt on input line 52.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 10.0pt on input line 50.
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 10.0pt on input line 50.
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/sb/n' will be
-(Font)              scaled to size 10.0pt on input line 50.
+(Font)              scaled to size 10.0pt on input line 52.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 9.0pt on input line 50.
+(Font)              scaled to size 9.0pt on input line 52.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 10.95pt on input line 50.
+(Font)              scaled to size 10.95pt on input line 52.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 8.0pt on input line 55.
+(Font)              scaled to size 8.0pt on input line 57.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 8.0pt on input line 55.
+(Font)              scaled to size 8.0pt on input line 57.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 7.3pt on input line 60.
+(Font)              scaled to size 7.3pt on input line 62.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 5.5pt on input line 65.
+(Font)              scaled to size 5.5pt on input line 67.
 
 
 Class acmart Warning: \vspace should only be used to provide space above/below 
-surrounding objects on input line 75.
+surrounding objects on input line 77.
 
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 8.0pt on input line 75.
+(Font)              scaled to size 8.0pt on input line 77.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 6.2pt on input line 75.
+(Font)              scaled to size 6.2pt on input line 77.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/sb/n' will be
-(Font)              scaled to size 8.0pt on input line 75.
+(Font)              scaled to size 8.0pt on input line 77.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/sb/n' will be
-(Font)              scaled to size 6.2pt on input line 75.
-(./sections/01-intro.tex) (./sections/02-pre.tex) (./sections/03-framework.tex)
-(./sections/04-datagen.tex) (./sections/05-dataeva.tex) (./sections/06-exp.tex)
-(./sections/07-related.tex) (./sections/08-conclusion.tex) (./main.bbl
+(Font)              scaled to size 6.2pt on input line 77.
+(./sections/01-intro.tex) (./sections/02-motivation.tex)
+(./sections/03-archi.tex) (./sections/04-storage.tex
+LaTeX Font Info:    Try loading font information for T1+zi4 on input line 12.
+
+(/usr/local/texlive/2017/texmf-dist/tex/latex/inconsolata/t1zi4.fd
+File: t1zi4.fd 2016/12/29 T1/zi4 (Inconsolata)
+)
+LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
+(Font)              scaled to size 9.0pt on input line 12.
+Package microtype Info: Loading generic settings for font family
+(microtype)             `zi4' (encoding: T1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+Package microtype Info: Character `textendash ' is missing
+(microtype)             in font `T1/zi4/m/n/9'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `textemdash ' is missing
+(microtype)             in font `T1/zi4/m/n/9'.
+(microtype)             Ignoring protrusion settings for this character.
+LaTeX Font Info:    Font shape `T1/zi4/bx/n' in size <9> not available
+(Font)              Font shape `T1/zi4/b/n' tried instead on input line 23.
+LaTeX Font Info:    Font shape `T1/zi4/b/n' will be
+(Font)              scaled to size 9.0pt on input line 23.
+Package microtype Info: Character `textendash ' is missing
+(microtype)             in font `T1/zi4/b/n/9'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `textemdash ' is missing
+(microtype)             in font `T1/zi4/b/n/9'.
+(microtype)             Ignoring protrusion settings for this character.
+ [1.1{/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+
+]
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
+(Font)              scaled to size 9.0pt on input line 27.
+)
+(./sections/05-dataprocessing.tex) (./sections/06-optimization.tex)
+(./sections/07-exp.tex) (./sections/08-related.tex)
+(./sections/09-conclusion.tex) (./main.bbl
 
 Package natbib Warning: Empty `thebibliography' environment on input line 40.
 
 )
-Overfull \vbox (1.29938pt too high) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-[1.1{/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
-
-]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 102.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 102.
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 6.0pt on input line 105.
+ [2.2]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 105.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 105.
 
 (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 102.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 102.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 105.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 105.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: E4264F84F0178ABCBBCC948012444519;2088.
+(rerunfilecheck)             Checksum: 4ACC71E59EB4C0E07756228EF176D83C;3847.
 
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.5pt have occurred.
+
+
+LaTeX Warning: There were multiply-defined labels.
 
  )
 (\end occurred inside a group at level 1)
@@ -1863,24 +1899,30 @@ LaTeX Font Warning: Size substitutions with differences
 ### simple group (level 1) entered at line 1061 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 41884 strings out of 492995
- 767169 string characters out of 6132704
- 916251 words of memory out of 5000000
- 44410 multiletter control sequences out of 15000+600000
- 124735 words of font info for 164 fonts, out of 8000000 for 9000
+ 42003 strings out of 492995
+ 769733 string characters out of 6132704
+ 925274 words of memory out of 5000000
+ 44405 multiletter control sequences out of 15000+600000
+ 136573 words of font info for 212 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
- 60i,11n,94p,10381b,13541s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,11n,94p,10381b,13506s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/libertine/l
-btn_nh77jq.enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/libertine/lb
-tn_76gpa5.enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/libertine/lbt
-n_25tcsq.enc}</usr/local/texlive/2017/texmf-dist/fonts/type1/public/libertine/L
-inBiolinumTB.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/liberti
-ne/LinLibertineT.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/lib
-ertine/LinLibertineTB.pfb>
-Output written on main.pdf (1 page, 231741 bytes).
+btn_7grukw.enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/inconsolata/
+i4-t1-4.enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/libertine/lbtn_
+76gpa5.enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/libertine/lbtn_n
+h77jq.enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/libertine/lbtn_25
+tcsq.enc}</usr/local/texlive/2017/texmf-dist/fonts/type1/public/inconsolata/Inc
+onsolata-zi4b.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/incons
+olata/Inconsolata-zi4r.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/publ
+ic/libertine/LinBiolinumTB.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/
+public/libertine/LinLibertineT.pfb></usr/local/texlive/2017/texmf-dist/fonts/ty
+pe1/public/libertine/LinLibertineTB.pfb></usr/local/texlive/2017/texmf-dist/fon
+ts/type1/public/libertine/LinLibertineTI.pfb></usr/local/texlive/2017/texmf-dis
+t/fonts/type1/public/newtx/txsys.pfb>
+Output written on main.pdf (2 pages, 342515 bytes).
 PDF statistics:
- 120 PDF objects out of 1000 (max. 8388607)
- 106 compressed objects within 2 object streams
- 22 named destinations out of 1000 (max. 500000)
- 31905 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 223 PDF objects out of 1000 (max. 8388607)
+ 200 compressed objects within 2 object streams
+ 52 named destinations out of 1000 (max. 500000)
+ 32977 words of extra memory for PDF output out of 35830 (max. 10000000)
 
