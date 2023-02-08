@@ -1,0 +1,125 @@
+%!TEX root = ../main.tex
+\newcommand{\eat}[1]{}
+\usepackage{latexsym}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+%\usepackage{amssymb}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{epsfig}
+\usepackage{xspace}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{pifont}
+\usepackage{bm}
+
+%\usepackage{algorithmicx}
+\usepackage{xparse}
+
+\usepackage[lined,boxed,vlined,ruled,linesnumbered]{algorithm2e}
+\usepackage{algorithmicx}
+\usepackage{paralist}
+\usepackage{enumerate}
+\usepackage{ifthen}
+\usepackage{ulem}
+\usepackage{makecell}
+
+%response command
+\newcommand{\stitle}[1]{\vspace{1.2ex}\noindent{\bf #1}}
+\newcommand{\etitle}[1]{\vspace{0.8ex}\noindent{\underline{\textit{#1}}}}
+\newcommand{\ititle}[1]{\vspace{1ex}\noindent\textbf{\textit{#1}}}
+\newcommand{\overwrite}[1]{\textcolor{blue}{#1}}
+\newcommand{\bfit}[1]{\textbf{\textit{#1}}}
+\newcommand{\re}[1]{\noindent{\textbf{\textit{#1}}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% DO NOT DELETE!!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{tikz}
+%\usetikzlibrary{trees}
+
+\usepackage{epsfig}
+\usepackage{multirow}
+\usepackage{url}
+
+\usepackage[color,matrix,arrow,all]{xy}
+%\usepackage[all,cmtip]{xy}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,snakes}
+\usetikzlibrary{calc}
+
+\newtheorem{example}{Example}
+\newtheorem{theorem}{Theorem}
+
+\newcommand{\add}[1]{\textcolor{blue}{#1}}
+\newcommand{\lgl}[1]{\textcolor{blue}{#1}}
+\NewDocumentCommand{\cc}{ mO{} }{\textcolor{red}{\textsuperscript{\textit{CC}}\textsf{\textbf{\small[#1]}}}}
+
+\newcommand{\addnew}[1]{\textcolor{red}{#1}}
+
+
+\NewDocumentCommand{\wjy}{ mO{} }{\textcolor{violet}{\textsuperscript{\textit{WJY}}\textsf{\textbf{\small[#1]}}}}
+
+\NewDocumentCommand{\nan}{ mO{} }{\textcolor{blue}{\textsuperscript{\textit{Nan}}\textsf{\textbf{\small[#1]}}}}
+
+\sloppy
+\newcommand{\rtable}[1]{\ensuremath{\mathsf{#1}}}
+\newcommand{\ratt}[1]{\ensuremath{\mathit{#1}}}
+\newcommand{\stt}[1]{\texttt{\small{#1}}}
+\newcommand{\at}[1]{\protect\ensuremath{\mathsf{#1}}\xspace}
+\newcommand{\myhrule}{\rule[.5pt]{\hsize}{.5pt}}
+\newcommand{\oneurl}[1]{\texttt{#1}}
+\newcommand{\tabstrut}{\rule{0pt}{4pt}\vspace{-0.1in}}
+\newcommand{\stab}{\vspace{1.2ex}\noindent}
+\newcommand{\sstab}{\rule{0pt}{8pt}\\[-2.2ex]}
+\newcommand{\vs}{\vspace{1ex}}
+\newcommand{\exa}[2]{{\tt\begin{tabbing}\hspace{#1}\=\+\kill #2\end{tabbing}}}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\match}{\rightleftharpoons}
+
+\newcommand{\true}{\kw{true}}
+\newcommand{\kop}{\kw{op}}
+\newcommand{\nil}{\kw{nil}}
+\newcommand{\Op}{\kw{Op}}
+
+\newcommand{\la}{\leftarrow}
+\newcommand{\bi}{\begin{itemize}}
+	\newcommand{\ei}{\end{itemize}}
+\newcommand{\mat}[2]{{\begin{tabbing}\hspace{#1}\=\+\kill #2\end{tabbing}}}
+\newcommand{\be}{\begin{enumerate}}
+	\newcommand{\ee}{\end{enumerate}}
+\newcommand{\beqn}{\begin{eqnarray*}}
+	\newcommand{\eeqn}{\end{eqnarray*}}
+
+\newcommand{\ie}{$i.e.$,\xspace}
+\newcommand{\eg}{$e.g.$,\xspace}
+\newcommand{\wrt}{w.r.t.\xspace}
+\newcommand{\aka}{a.k.a.\xspace}
+\newcommand{\kwlog}{\emph{w.l.o.g.}\xspace}
+
+\newcommand{\eop}{\hspace*{\fill}\mbox{$\Box$}\vspace{1ex}}     % End of proof
+
+\makeatletter
+\newcommand\figcaption{\def\@captype{figure}\caption}
+\newcommand\tabcaption{\def\@captype{table}\caption}
+\makeatother
+
+\newcommand{\reminder}[1]{ {\mbox{$<==$}} [[[ \bluefont{ \bf #1 } ]]] {\mbox{$==>$}}}
+
+\definecolor{shadecolor}{RGB}{220,220,220}
+\newcommand{\mybox}[1]{\vspace{1.5ex}\par\noindent\colorbox{shadecolor}
+	{\parbox{\dimexpr\columnwidth-2\fboxsep\relax}{#1}}\vspace{1ex}}
+
+
+\tikzstyle{mybox} = [draw=black, fill=black!5, thick,
+rectangle, rounded corners, inner sep=0pt, inner ysep=2pt]
+\tikzstyle{fancytitle} =[fill=black, text=white]
+
+
+
+
+
+
+
+
+
