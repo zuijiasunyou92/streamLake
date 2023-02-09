@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.9.30)  8 FEB 2023 19:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.9.30)  9 FEB 2023 09:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1922,11 +1922,11 @@ LaTeX Warning: There were multiply-defined labels.
 ### simple group (level 1) entered at line 1061 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 41944 strings out of 492995
- 768368 string characters out of 6132704
- 920447 words of memory out of 5000000
- 44363 multiletter control sequences out of 15000+600000
- 113876 words of font info for 173 fonts, out of 8000000 for 9000
+ 41952 strings out of 492995
+ 768534 string characters out of 6132704
+ 920614 words of memory out of 5000000
+ 44366 multiletter control sequences out of 15000+600000
+ 114264 words of font info for 176 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
  60i,11n,94p,10381b,13531s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/libertine/l
@@ -1942,10 +1942,10 @@ public/libertine/LinLibertineT.pfb></usr/local/texlive/2017/texmf-dist/fonts/ty
 pe1/public/libertine/LinLibertineTB.pfb></usr/local/texlive/2017/texmf-dist/fon
 ts/type1/public/libertine/LinLibertineTI.pfb></usr/local/texlive/2017/texmf-dis
 t/fonts/type1/public/newtx/txsys.pfb>
-Output written on main.pdf (2 pages, 439684 bytes).
+Output written on main.pdf (2 pages, 440650 bytes).
 PDF statistics:
- 298 PDF objects out of 1000 (max. 8388607)
- 242 compressed objects within 3 object streams
- 54 named destinations out of 1000 (max. 500000)
+ 305 PDF objects out of 1000 (max. 8388607)
+ 249 compressed objects within 3 object streams
+ 55 named destinations out of 1000 (max. 500000)
  28384 words of extra memory for PDF output out of 29859 (max. 10000000)
 
