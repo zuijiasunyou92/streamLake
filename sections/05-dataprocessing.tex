@@ -6,6 +6,23 @@ In this Section, we present the data processing services  in the data layer. Dri
 
 
 \subsection{Message Streaming}~\label{subsec:stream}
+We develop a  distributed stream storage engine that facilitates message streaming at large scale. Our engine leverages the stream object storage abstraction to ensure enterprise-level reliability and scalability.
+
+
+\noindent\textbf{Overall architecture of streaming service.} The high-level design of the system is shown in Figure~\ref{}. The stream storage system comprises of producers, consumers, stream workers, stream objects, and a stream dispatcher, which work together to provide seamless message streaming.
+
+\cc{which techniques to ensure reliability and scalability? Here, can we summarize something different (our characteristic) ?}
+
+\noindent\underline{\textit{Producers and Consumers.}} Producers are responsible for publishing messages to topics, which are named resources for categorizing streaming messages. Consumers, located downstream, subscribe to these topics to receive and process the published messages. To ensure seamless integration with existing open-source message streaming services used by our customers in production environments, the producer and consumer message APIs are designed to be compatible with the open-source de facto standard. This maximizes connectivity with the ecosystem, allowing users to easily migrate their applications to \sys with minimum costs. Figure~\ref{}  demonstrates the process of writing and reading messages using the producer and consumer APIs. In this example, a producer writes a new message ``Hello World'' as a key-value pair to a topic named ``\texttt{topic\_streamlake\_tes}''. The consumer then subscribes to this topic and processes published messages.
+
+\noindent\underline{\textit{Stream workers}} work together with stream objects discussed in Section~\ref{subsec:streamobject} to tackle stream processing and storage of messages. The number of stream workers, created as part of the message streaming service, is determined by configurations and the physical resources allocated to the stream storage. Each stream worker is capable of handling multiple streams and a single stream object client. When a topic is created, streams are added to the stream workers in a round-robin manner to ensure even distribution and workload balancing across the cluster.
+
+Each stream is mapped to a unique stream object in the storage layer, which is a purpose-built storage abstraction specifically designed to support key-value message streaming. The stream object offers efficient interfaces and implementations for writing and reading streams from the storage pools. The persistence process is detailed in Figure 3.
+
+The task of message delivery is carried out by stream object clients, which monitor the stream objects. These clients unwrap messages from clients, encapsulate them in the stream object data format, and redirect them to the corresponding stream objects via RDMA. To guarantee message delivery, the clients actively monitor the health of the stream objects to which they are connected and regularly exchange critical service data with the dispatcher service. This synchronization process includes reporting the health of the stream object connections and refreshing the stream objects connected to by the client.
+
+
+\noindent\underline{\textit{Stream dispatcher.}} 
 
 
 \subsection{Lakehouse Read and Write}~\label{subsec:lakehouse}

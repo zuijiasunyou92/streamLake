@@ -1,11 +1,11 @@
 %!TEX root = ../main.tex
 \section{STREAM AND TABLE STORAGE OBJECT} 
-\label{sec:datagen}
+~\label{sec:datagen}
 
 In this section, we introduce the stream object and table object, purpose-built storage abstractions designed for efficient storage and access of stream and table data in the storage layer.
 
 
-\subsection{Stream Object}
+\subsection{Stream Object}~\label{subsec:streamobject}
 
 The stream object is a storage abstraction in the store layer that efficiently supports key-value message streaming at scale. It stores a partition\footnote{-- one partition or partitions} of key-value pairs for continuous message streams, organized as collections\footnote{-- a collection or collections} of data slices. Each slice can contain up to 256 records as depicted in Figure~\ref{fig:write}. Incoming message records are appended  to a specific slice in a stream object based on its topic, key, and offset.
 
@@ -29,7 +29,7 @@ Since the message service is designed to support real-time streaming, it is conf
 
 
 
-\subsection{Table Object}
+\subsection{Table Object}~\label{subsec:tableobject}
 We also extend the storage object layer in StreamLake to support table-like\footnote{-- a term?} operations for more effective data storage and management, similar to lakehouses~\cite{}\footnote{* ``similar to lakehouse'' is weird}. The table storage uses an open lakehouse format\footnote{--a term? what does it mean?} with optimizations\footnote{--what? a part in Fig4?} for faster metadata access. The table abstraction is logically defined by a directory of data and metadata files, as shown an example  in Figure~\ref{fig:tableobject}.
 
 \noindent \textbf{\texttt{Data} directory.} Table objects are stored in Parquet files of the \texttt{data} directory. In this example, the table is partitioned based on the date column, so the data objects are separated into different sub-directories by date. Each sub-directory name represents its partition range\footnote{--partition key?}. The data objects in each Parquet file are organized as row-groups\footnote{--a term?} and stored in a columnar format for efficient data analysis. Footers in the Parquet files contain statistics to support data skipping within the file\footnote{--remove within the file?}.

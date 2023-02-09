@@ -28,10 +28,20 @@
 \@writefile{toc}{\contentsline {section}{\numberline {4}STREAM AND TABLE STORAGE OBJECT}{1}{section.4}}
 \newlabel{sec:datagen}{{4}{1}{STREAM AND TABLE STORAGE OBJECT}{section.4}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Stream Object}{1}{subsection.4.1}}
+\newlabel{subsec:streamobject}{{4.1}{1}{Stream Object}{subsection.4.1}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Stream Object Operations.\relax }}{1}{figure.caption.3}}
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
 \newlabel{fig:streamobject}{{1}{1}{Stream Object Operations.\relax }{figure.caption.3}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Table Object}{1}{subsection.4.2}}
+\newlabel{subsec:tableobject}{{4.2}{1}{Table Object}{subsection.4.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Write Message to \texttt  {StreamLake}\xspace  .\relax }}{2}{figure.caption.4}}
+\newlabel{fig:write}{{2}{2}{Write Message to \sys .\relax }{figure.caption.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces File Organization of \texttt  {StreamLake}\xspace  Table Objects.\relax }}{2}{figure.caption.5}}
+\newlabel{fig:tableobject}{{3}{2}{File Organization of \sys Table Objects.\relax }{figure.caption.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Streamlake Data Processing}{2}{section.5}}
+\newlabel{sec:dataeva}{{5}{2}{Streamlake Data Processing}{section.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Message Streaming}{2}{subsection.5.1}}
+\newlabel{subsec:stream}{{5.1}{2}{Message Streaming}{subsection.5.1}{}}
 \bibstyle{ACM-Reference-Format}
 \bibdata{bib/ref}
 \newlabel{tocindent-1}{0pt}
@@ -39,32 +49,24 @@
 \newlabel{tocindent1}{4.185pt}
 \newlabel{tocindent2}{10.34999pt}
 \newlabel{tocindent3}{0pt}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Write Message to \texttt  {StreamLake}.\relax }}{2}{figure.caption.4}}
-\newlabel{fig:write}{{2}{2}{Write Message to \sys .\relax }{figure.caption.4}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces File Organization of \texttt  {StreamLake}Table Objects.\relax }}{2}{figure.caption.5}}
-\newlabel{fig:tableobject}{{3}{2}{File Organization of \sys Table Objects.\relax }{figure.caption.5}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Streamlake Data Processing}{2}{section.5}}
-\newlabel{sec:dataeva}{{5}{2}{Streamlake Data Processing}{section.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Message Streaming}{2}{subsection.5.1}}
-\newlabel{subsec:stream}{{5.1}{2}{Message Streaming}{subsection.5.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Lakehouse Read and Write}{2}{subsection.5.2}}
-\newlabel{subsec:lakehouse}{{5.2}{2}{Lakehouse Read and Write}{subsection.5.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Query Operator Computation Push Down}{2}{subsection.5.3}}
-\newlabel{subsec:pushdown}{{5.3}{2}{Query Operator Computation Push Down}{subsection.5.3}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Lakebrain optimization}{2}{section.6}}
-\newlabel{sec:dataeva}{{6}{2}{Lakebrain optimization}{section.6}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Automatic Compaction}{2}{subsection.6.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Predicate-aware Fine-grained Partitioning}{2}{subsection.6.2}}
-\@writefile{toc}{\contentsline {section}{\numberline {7}Experiment}{2}{section.7}}
-\newlabel{sec:exp}{{7}{2}{Experiment}{section.7}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Settings}{2}{subsection.7.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Evaluation of Message Streaming}{2}{subsection.7.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}Evaluation of LakeBrain}{2}{subsection.7.3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.4}Evaluation of Query Pushdown}{2}{subsection.7.4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.5}China Mobile Use Case}{2}{subsection.7.5}}
-\@writefile{toc}{\contentsline {section}{\numberline {8}Related Work}{2}{section.8}}
-\newlabel{sec:related}{{8}{2}{Related Work}{section.8}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {9}Conclusion}{2}{section.9}}
-\newlabel{sec:con}{{9}{2}{Conclusion}{section.9}{}}
-\@writefile{toc}{\contentsline {section}{References}{2}{section*.7}}
-\newlabel{TotPages}{{2}{2}{}{page.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Lakehouse Read and Write}{3}{subsection.5.2}}
+\newlabel{subsec:lakehouse}{{5.2}{3}{Lakehouse Read and Write}{subsection.5.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Query Operator Computation Push Down}{3}{subsection.5.3}}
+\newlabel{subsec:pushdown}{{5.3}{3}{Query Operator Computation Push Down}{subsection.5.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Lakebrain optimization}{3}{section.6}}
+\newlabel{sec:dataeva}{{6}{3}{Lakebrain optimization}{section.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Automatic Compaction}{3}{subsection.6.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Predicate-aware Fine-grained Partitioning}{3}{subsection.6.2}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Experiment}{3}{section.7}}
+\newlabel{sec:exp}{{7}{3}{Experiment}{section.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Settings}{3}{subsection.7.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Evaluation of Message Streaming}{3}{subsection.7.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}Evaluation of LakeBrain}{3}{subsection.7.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.4}Evaluation of Query Pushdown}{3}{subsection.7.4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.5}China Mobile Use Case}{3}{subsection.7.5}}
+\@writefile{toc}{\contentsline {section}{\numberline {8}Related Work}{3}{section.8}}
+\newlabel{sec:related}{{8}{3}{Related Work}{section.8}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {9}Conclusion}{3}{section.9}}
+\newlabel{sec:con}{{9}{3}{Conclusion}{section.9}{}}
+\@writefile{toc}{\contentsline {section}{References}{3}{section*.7}}
+\newlabel{TotPages}{{3}{3}{}{page.3}{}}
