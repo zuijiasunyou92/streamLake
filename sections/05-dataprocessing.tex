@@ -111,6 +111,15 @@ To avoid generating significant number of small files, we leverage a global writ
 
 \noindent \underline{\textit{(c) Metadata persistence:}} Metadata in the NVM write cache is asynchronously flushed to the persistent storage pool when the buffer is full. A metadata management process (\texttt{MetaFresher}) transforms the commits and snapshots from key-value pairs to files and writes them to the \texttt{table/metadata} directory.
 
+\begin{figure}[htbp]
+	\includegraphics[scale=0.3]{figures/cache}
+	\centering
+	\vspace{-1em}
+	\caption{Write Cache Acceleration in Lakehouse Read/Write.}
+	\label{fig:cache}
+	\vspace{-1em}
+\end{figure}
+
 
 \noindent \textbf{\texttt{SELECT:}} The select operation first reads the catalog to retrieve the table profile for collecting the list of snapshot files needed for this query, such as the metadata version and snapshot descriptions. Then the corresponding snapshots and commit metadata are read from both the NVM cache and the persistent storage pool to generate the latest complete snapshots and commit metadata. When all the record file addresses are confirmed, data is read from the persistence pool by read tasks.
 
@@ -159,6 +168,16 @@ To facilitate the pushdown of query operators from the compute layer to the stor
  During query planning, the optimizer of  query  identifies operators that can be pushed down and sends the information to the NDP Proxy.  Then the NDP Proxy inserts these requests into a queue for traffic control and then sends them to the serverless engine for execution as shown in Figure 9.
 As soon as the query results are ready, the NDP Proxy transfers them back to the compute engine using the high-speed data exchange bus of \sys, so as to ensure efficient data transfer.
 Overall,  this process leverages the flexibility and elasticity of serverless computing, which allows for efficient use and release of server resources as required, resulting in better overall performance and resource utilization.
+
+
+\begin{figure}[htbp]
+	\includegraphics[scale=0.35]{figures/serverless}
+	\centering
+	\vspace{-1em}
+	\caption{Serverless Function Engine.}
+	\label{fig:serverless}
+	\vspace{-1em}
+\end{figure}
 
 
 
