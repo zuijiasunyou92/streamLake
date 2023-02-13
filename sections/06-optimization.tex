@@ -1,9 +1,34 @@
 %!TEX root = ../main.tex
 \section{Lakebrain optimization} 
-\label{sec:dataeva}
+\label{sec:lakebrain}
 
+Optimizing large-scale data management and query processing is critical in data warehouse and big data systems, as noted in numerous studies~\cite{}. However, optimizing the end-to-end performance and resource consumption of a complex storage-disaggregated analytics platform with multiple compute engines is a challenging task, due to the lack of information about the compute and storage cluster environments as well as queries executed by other engines. Even if all this data were available, the optimization process would still be difficult due to the large number of interdependent variables and the vast search space~\cite{}.
+
+To address this challenge, we present~\sys, a novel data lake storage optimizer that complements end-to-end data pipeline optimization. Unlike query engine optimizers, which focus on join ordering and cardinality estimation~\cite{}, \sys aims to optimize data usage during query execution, which is key to improving both query performance and storage resource utilization in a storage-disaggregated design. For instance, in a streaming application scenario, data ingestion and transactions often result in numerous small files, leading to low query performance on merge-on-read (MOR) tables. LakeBrain can use compaction to combine these small files into fewer, larger ones, improving inter-cluster storage and network usage as well as query performance.
+
+LakeBrain's design is kept simple for ease of extension and support for different applications. It consists of three components: a statistics collector, the core optimization logic, and an executor. The statistics collector gathers system configurations, environment variables, and workload history, while the core optimization logic employs heuristic rules, probabilistic models, and machine learning algorithms to suggest the best strategy candidates. The executor then deploys the chosen strategy, with its effects being collected as feedback by the statistics collector for future optimization.
+
+To demonstrate the value of a data lake storage optimizer, we have developed two LakeBrain applications: auto compaction and predicate-aware fine-grained partitioning. These use cases will be explained in detail in the following section.
 
 \subsection{Automatic Compaction}
 
+File compaction aims to find the optimal strategy for compacting files that result in improved query execution time or increased block utilization in storage. To achieve this goal, the optimization process employs two algorithms: particle swarm optimization (PSO) and reinforcement learning (RL).
+
+PSO is used to search for the global optimum, a population-based method that doesn't require assumptions about the relationship between tunable parameters and query performance. The goal is to obtain an approximately optimal solution within a limited time. RL, on the other hand, finds a more sophisticated policy based on the states of the data lake environment.
+
+The optimization process involves considering a set of discrete compaction configurations within the action space. Since the state space is continuous, a function approximation method is preferred. The stability of the training process is critical due to the high degree of variability in query performance in a distributed environment, so proximal policy optimization (PPO) is applied.
+
+A deep neural network (DNN) is used to approximate the policy and the value function, with a shared feature backbone network that covers both global and local characteristics of the states. The output from the feature network is processed by two fully connected networks to compute the policy output and the action value. The actor and critic are alternatively updated after collecting new trajectories using the latest policy during training.
+
+Once a desired result is obtained, the numerical output of the compaction strategy is translated into actionable operations by the data lake connector for a specific data lake engine, facilitating the optimization process.
+
 
 \subsection{Predicate-aware Fine-grained Partitioning}
+
+Optimizing data partitioning involves assigning records to storage blocks in the most efficient manner possible, thereby reducing the number of blocks accessed during queries. Our partitioning approach is based on the query-tree framework [43], and utilizes a sum-product network (SPN) probabilistic model [19, 26, 31] to model the distribution of the data in LakeBrain. This is done in order to ensure fast inference speed and avoid repeatedly scanning the datasets.
+
+The query-tree framework creates a tree-based partitioning strategy using pushdown predicates. Each leaf node represents a partition, and its column ranges are derived from the pushdown predicates used to split its parent nodes. By using probabilistic models to characterize the dataset, we can identify the most suitable partitioning policy. The probabilistic model-based cardinality estimation, as demonstrated in Figure 11, is used to estimate the number of records in each partition, instead of scanning the original data, thereby saving a significant amount of time. This greatly improves the speed of the partitioning optimization algorithm, making it suitable for large-scale systems.
+
+Additionally, probabilistic models allow us to represent a sequence of datasets with a series of probabilistic models that have a fixed structure but varying parameters. This is achieved by representing a sequence of datasets as a series of multi-dimensional vectors, each representing the learnable variables in the probabilistic model with a fixed length, i.e. a time series. We can then use time series prediction methods to predict future probabilistic models, and use these predictions to estimate the number of records in a partition during partitioning optimization.
+
+To implement the optimized data layout, we introduce a partitioning mechanism that saves data in fine-grained partitions based on the partitioning strategy. Additionally, we have implemented an evaluator that skips irrelevant partitions by checking the overlap between pushdown predicates and the column ranges in each partition. For numerical columns, the range can be represented as lower and upper bounds, which are well-handled by many data formats. For categorical columns, we either record its range or its complement using "IN" or "NOT IN" predicates. The effectiveness of this predicate-aware partitioning approach is evaluated in section 7.2, where the test results show exceptional performance.
