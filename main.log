@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.9.30)  13 FEB 2023 20:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.9.30)  14 FEB 2023 08:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1982,7 +1982,7 @@ Package pdftex.def Info: figures/serverless.pdf used on input line 174.
 Class acmart Warning: A possible image without description on input line 180.
 
 ) (./sections/06-optimization.tex [5.5 <./figures/serverless.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 3049) has occurred while \output is active []
 
 )
 (./sections/07-exp.tex) (./sections/08-related.tex)
@@ -2053,7 +2053,7 @@ ibertine/LinLibertineTI.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/pub
 lic/txfonts/rtxmi.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/ne
 wtx/txsys.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/newtx/zxlr
 i.pfb>
-Output written on main.pdf (7 pages, 666916 bytes).
+Output written on main.pdf (7 pages, 667012 bytes).
 PDF statistics:
  459 PDF objects out of 1000 (max. 8388607)
  356 compressed objects within 4 object streams

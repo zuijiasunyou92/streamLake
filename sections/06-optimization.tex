@@ -2,7 +2,9 @@
 \section{Lakebrain optimization} 
 \label{sec:lakebrain}
 
-Optimizing large-scale data management and query processing is critical in data warehouse and big data systems, as noted in numerous studies~\cite{}. However, optimizing the end-to-end performance and resource consumption of a complex storage-disaggregated analytics platform with multiple compute engines is a challenging task, due to the lack of information about the compute and storage cluster environments as well as queries executed by other engines. Even if all this data were available, the optimization process would still be difficult due to the large number of interdependent variables and the vast search space~\cite{}.
+Optimizing  query processing over large-scale data is significant in data warehouse and big data systems, as discussed in~\cite{}. However, for the \sys system with
+complicated storage-disaggregated architecture with  multiple compute engines, it is challenging to optimize the end-to-end performance and resource usage. The reasons are two-fold. First, it is hard to capture the entire environment about the compute and storage cluster as well as the queries executed by other engines simultaneously. Second, even though all the environment data is available, it is still hard to optimize because of the large search space due to the large number of tunable and interdependent variables~\cite{}.
+
 
 To address this challenge, we present~\sys, a novel data lake storage optimizer that complements end-to-end data pipeline optimization. Unlike query engine optimizers, which focus on join ordering and cardinality estimation~\cite{}, \sys aims to optimize data usage during query execution, which is key to improving both query performance and storage resource utilization in a storage-disaggregated design. For instance, in a streaming application scenario, data ingestion and transactions often result in numerous small files, leading to low query performance on merge-on-read (MOR) tables. LakeBrain can use compaction to combine these small files into fewer, larger ones, improving inter-cluster storage and network usage as well as query performance.
 
