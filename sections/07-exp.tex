@@ -88,10 +88,57 @@ The message stream processing speed in \sys is competitive to \kafka. \sys and \
 
 \subsection{Evaluation of Message Streaming}
 
+To quantitively measure the message streaming service as an independent stream storage, we conduct an experiment to evaluate its throughput, latency, elasticity and volume. We select \texttt{OpenMessaging}~\cite{} as our benchmark framework as it is widely used to compare messaging platforms. A cluster with three nodes is used in this experiment for  ease of reproduction.
+ To help better understand the impact of tiered storage, two sets of hardware configurations are tested. In the first set of hardware (\texttt{Set-1}), each node has 10 CPU cores, 128 GB RAM and 800 GB NVMe SSD, 3 PB SAS HDD and all the nodes are connected with 10 GB \cc{ethernet}. In the second set of hardware (\texttt{Set-2}), all the configurations are the same except that each node has additional 16 GB persistent memory to serve as an extra cache. Messages are sent from producers to consumers in a fixed size of 1 KB. The data volumes we process are 100 TB, 500 TB and 1 PB respectively. 
 
-\subsection{Evaluation of LakeBrain}
+
+Figure~\ref{} shows the results. As the messages to process increase from 50000 per second to 1.5 million per second, the system throughput increases linearly, reaching a peak of 1.2 GB/s with a workload of 1.3 million message per second. \texttt{Set-1} and \texttt{Set-2} achieve almost the same throughputs, indicating that it does not improve the throughput to add persistent memory as a cache. However, as shown in Figure~\ref{}(b), persist memory reduces the latency as we expect, especially when the workload is 200k messages per second or less. Figure~\ref{}(c) shows the high elasticity of the stream storage. The service gracefully scales from 1000 to 10000 partitions in less than 10 seconds. The good scalability  demonstrates a significant advantage of the data centric and disaggregated storage design\footnote{term?}. \cc{Below is hard to follow!} Finally, Figure~\ref{}(d) compares the volumes of different storage strategies. Without scarifying the reliability, \sys provides the option to use erasure coding\footnote{term?} and column-store which can offer three to five times of volume compared to standard storage with one or more replicas. 
+
+
+
+
+
+
+
+
+
+\subsection{Evaluation of \brain}
+
+In this part, we evaluate the two components in \brain, $i.e.,$ auto-compaction and predicate-aware partitioning.
+
+ 
+\noindent \textbf{Auto-Compaction:} To precisely evaluate the effectiveness of our automatic compaction strategy, a \texttt{TPC-H} based test bed\footnote{@ a term?} is set up to ingest data from the message streaming platform to the data lake storage, during which a compaction strategy is tested. We run the experiment with 24 GB to 90 GB data and three compaction strategies are deployed: (1) No compaction. (2) A static strategy which simply compacts data files in a 30 second interval. (3) Auto-compaction, respectively. 
+During the ingestion, multiple rounds of \texttt{TPC-H} queries are executed in parallel  to obtain their end-to-end performance. As shown in Figure~\ref{}(a), the results depict how much improvement of  query performance that the compaction strategies can make, compared with baselines.
+ We ca observe that the auto-compaction strategy outperforms the static one for all data volumes. As the data volume increases, the advantage becomes more significant. 
+ \cc{Why?}
+
+
+In addition to the query performance, we also evaluate the block utilization of the auto compaction. Specifically, we control the file ingestion speed such that we can generate different number of files to measure both the run time and the block utilization in different workloads. The run time is evaluated along with the block utilization because an ideal strategy should improve the utilization without scarifying the performance. Similar to above, we deploy three methods: (1) No compaction, (2) The static strategy compacts data files in a fixed time interval\footnote{*no need to repeat, which interval?}, and (3) Auto-compaction. We can observe that the auto-compaction outperforms the static strategy in term of block utilization. 
+
+
+\cc{why?}
+
+\cc{Ingestion speed? Below is hard to follow!}
+
+When we deploy the auto-compaction, the system is able to identify good compaction opportunities in which there are many small files and both the file ingestion speed and the block utilization are relatively low. 
+
+File ingestion speed is important because compaction commits will fail if there are file access conflicts. As a comparison, it is hardly to avoid unnecessary or unsuccessful compactions in the static compaction strategy hence its performance is less ideal. Figure~\ref{}(b) summarizes the results of all three test groups. Compared with no compaction and the static  strategy, our method performs better in term of both block utilization and query run time.
+
+
+\noindent \textbf{Predicate-Aware Partitioning:} We also tested the partitioning method on the \texttt{TPC-H} test bed with different scale factors. We train the probabilistic model with 3\% of the data randomly sampled from the lineitem table in a dataset generated with a scale factor of 2. After that, we obtain the optimized partitioning policy with the proposed method and evaluate our system on the full dataset with scale factors of 2, 5, 10 and 100. To evaluate the performance, we compare the resulting bytes skipped for lineitem table with 1) no partition (full), 2) partitioning by the day of l\_shipdate (day), and 3) our proposed method using sum-product networks (spn). We compare the results with partitioning by the day of l\_shipdate considering it appears frequently in the pushdown predicates for lineitem table. The workload includes \texttt{TPC-H} query 6, 12 and 19 which involve lineitem table and include predicates other than l\_shipdate. We skipped the other \texttt{TPC-H} queries because their performance is driven mainly by multiple tables joining performance which is beyond our purpose.
+
+The results presented in Figure 15(c,d) shows that the proposed method obtains non-marginal performance gains in terms of both bytes scanned and the runtime. The fine-grained partitioning is superior on the queries in terms of data skipping compared to partitioning by the day of l\_shipdate because the optimized partitioning policy split the data based on other predicates except l\_shipdate. Even though the runtime for the queries are dominated by table joining, the optimized partitioning also demonstrated some improvements for query 6 and query 19, considering we only optimize the partition of the lineitem table. 
+
+
+\cc{Why not reverse as previous sections?}
+
 
 \subsection{Evaluation of Query Pushdown}
+In this experiment we evaluate the query operator pushdown method which we believe can provide stable query runtime regardless of network conditions. This is significant in the real-world deployment as it is not always an option to upgrade the data center network. In fact, many customers who we have worked with did the opposite to ask us to reuse their existing network to reduce the overall upgrade costs. Hence, it is a critical design that the query operator pushdown method ensures the query processing time and the application service level agreements even with a constraint network bandwidth.
+
+Two groups of clusters with different network bandwidths are used in this experiment, one with 10 Gb bandwidth and the other with 1 Gb. To precisely assess the benefits, we carefully select three live queries with data intensive operations and 4.8 TB data from a China Mobile production environment. Two different query engines, Hive and Presto, are deployed to process the SQL queries for generalization. It is observed that in the test group without query operator pushdown, the query performance varies widely across engines. When the queries are executed in the 10 Gb ethernet, Presto completes the jobs in about 900 seconds while Hive takes around 1200 seconds. When network bandwidth drops to 1 Gb, all the execution time soars to over 3000 seconds. As a comparison, we applied query operator pushdown in the second test group. The runtime of all the queries is close to 900 seconds with less than 10 difference, regardless of compute engines and network bandwidths. This means a 4 times performance advantage when the engine process queries in a 1 Gb bandwidth network. In summary, we can conclude that our generalized query operator pushdown method introduces stable and high performance to query processing in a storage-disaggregated architecture. 
+
+
 
 
 \subsection{China Mobile Use Case}
