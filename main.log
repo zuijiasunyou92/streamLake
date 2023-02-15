@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.9.30)  15 FEB 2023 12:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.9.30)  15 FEB 2023 13:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2043,10 +2043,9 @@ LaTeX Warning: Reference `' on page 9 undefined on input line 111.
 LaTeX Warning: Reference `' on page 9 undefined on input line 125.
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+LaTeX Warning: Reference `' on page 9 undefined on input line 131.
 
- [9.9])
-(./sections/08-related.tex) (./sections/09-conclusion.tex) (./main.bbl
+[9.9]) (./sections/08-related.tex) (./sections/09-conclusion.tex) (./main.bbl
 
 Package natbib Warning: Empty `thebibliography' environment on input line 40.
 
@@ -2055,7 +2054,7 @@ Package natbib Warning: Empty `thebibliography' environment on input line 40.
 Class acmart Warning: Some images may lack descriptions.
 
 
-Overfull \vbox (1.999pt too high) has occurred while \output is active []
+Overfull \vbox (1.499pt too high) has occurred while \output is active []
 
  [10.10]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 102.
@@ -2083,8 +2082,8 @@ LaTeX Warning: There were undefined references.
 ### simple group (level 1) entered at line 1061 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 42220 strings out of 492995
- 773804 string characters out of 6132704
+ 42221 strings out of 492995
+ 773816 string characters out of 6132704
  928388 words of memory out of 5000000
  44491 multiletter control sequences out of 15000+600000
  165839 words of font info for 265 fonts, out of 8000000 for 9000
@@ -2109,10 +2108,10 @@ ibertine/LinLibertineTI.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/pub
 lic/txfonts/rtxmi.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/ne
 wtx/txsys.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/newtx/zxlr
 i.pfb>
-Output written on main.pdf (10 pages, 860961 bytes).
+Output written on main.pdf (10 pages, 861217 bytes).
 PDF statistics:
- 538 PDF objects out of 1000 (max. 8388607)
- 423 compressed objects within 5 object streams
- 100 named destinations out of 1000 (max. 500000)
+ 540 PDF objects out of 1000 (max. 8388607)
+ 425 compressed objects within 5 object streams
+ 101 named destinations out of 1000 (max. 500000)
  40715 words of extra memory for PDF output out of 42996 (max. 10000000)
 
