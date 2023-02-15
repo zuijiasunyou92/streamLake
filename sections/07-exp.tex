@@ -85,6 +85,22 @@ The batch processing speed in \sys is better than \hdfs when the workload is 50 
 
 The message stream processing speed in \sys is competitive to \kafka. \sys and \kafka process about 300 thousand messages per second when the workload is 10 million records. Both systems scale to process about 500 thousand messages per second when the workloads are 100 million and more. 
 
+\begin{figure*}
+	\centering
+	\includegraphics[width=\textwidth]{figures/streamengine}
+	\caption{Stream Engine Throughput, Latency, Scalability and Space Consumption.}
+	\label{fig:streamengine}
+\end{figure*}
+
+
+
+\begin{figure*}
+	\centering
+	\includegraphics[width=\textwidth]{figures/LakeBrain}
+	\caption{LakeBrain Compaction and Partitioning Performance.}
+	\label{fig:lakebrain}
+\end{figure*}
+
 
 \subsection{Evaluation of Message Streaming}
 
@@ -135,6 +151,14 @@ Even though the runtime for the queries is dominated by table joining, the optim
 
 
 \cc{Why not reverse as previous sections?}
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\columnwidth]{figures/Querytime}
+	\caption{Computation Pushdown Query Time.}
+	\label{fig:pushdown}
+\end{figure}
 
 
 \subsection{Evaluation of Query Pushdown}
