@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.9.30)  16 FEB 2023 16:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.9.30)  16 FEB 2023 20:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1819,20 +1819,13 @@ LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/b/n' will be
 (Font)              scaled to size 9.0pt on input line 35.
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/b/n' will be
 (Font)              scaled to size 8.0pt on input line 35.
-)
-(./sections/03-archi.tex) (./sections/04-storage.tex
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [1.1{/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
-
-]
-LaTeX Font Info:    Try loading font information for T1+zi4 on input line 12.
+LaTeX Font Info:    Try loading font information for T1+zi4 on input line 56.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/inconsolata/t1zi4.fd
 File: t1zi4.fd 2016/12/29 T1/zi4 (Inconsolata)
 )
 LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
-(Font)              scaled to size 9.0pt on input line 12.
+(Font)              scaled to size 9.0pt on input line 56.
 Package microtype Info: Loading generic settings for font family
 (microtype)             `zi4' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
@@ -1843,8 +1836,12 @@ Package microtype Info: Character `textendash ' is missing
 Package microtype Info: Character `textemdash ' is missing
 (microtype)             in font `T1/zi4/m/n/9'.
 (microtype)             Ignoring protrusion settings for this character.
+)
+(./sections/03-archi.tex) (./sections/04-storage.tex [1.1{/usr/local/texlive/20
+17/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
-<figures/streamobject.pdf, id=114, 585.18625pt x 423.5825pt>
+]
+<figures/streamobject.pdf, id=115, 585.18625pt x 423.5825pt>
 File: figures/streamobject.pdf Graphic file (type pdf)
 
 <use figures/streamobject.pdf>
@@ -1866,7 +1863,7 @@ Package microtype Info: Character `textendash ' is missing
 Package microtype Info: Character `textemdash ' is missing
 (microtype)             in font `T1/zi4/b/n/9'.
 (microtype)             Ignoring protrusion settings for this character.
-<figures/write.pdf, id=129, 510.90875pt x 642.4pt>
+<figures/write.pdf, id=130, 510.90875pt x 642.4pt>
 File: figures/write.pdf Graphic file (type pdf)
  <use figures/write.pdf>
 Package pdftex.def Info: figures/write.pdf used on input line 39.
@@ -2118,7 +2115,7 @@ LaTeX Warning: There were undefined references.
 Here is how much of TeX's memory you used:
  42241 strings out of 492995
  774254 string characters out of 6132704
- 927641 words of memory out of 5000000
+ 928641 words of memory out of 5000000
  44505 multiletter control sequences out of 15000+600000
  165839 words of font info for 265 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
@@ -2142,7 +2139,7 @@ ibertine/LinLibertineTI.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/pub
 lic/txfonts/rtxmi.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/ne
 wtx/txsys.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/newtx/zxlr
 i.pfb>
-Output written on main.pdf (11 pages, 987693 bytes).
+Output written on main.pdf (11 pages, 988365 bytes).
 PDF statistics:
  585 PDF objects out of 1000 (max. 8388607)
  446 compressed objects within 5 object streams

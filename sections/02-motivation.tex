@@ -26,11 +26,11 @@
 %Furthermore, enterprise customers working with petabytes of data report that it often requires weeks to months to extend the business data pipelines to support new analytic requirements due to the complexity of tools in the big data stack. Complete and flexible big data pipeline enterprise solutions are needed in order to shorten launch time in new analytic use cases.
 
 
-\noindent \underline{\textit{Storage scalability.}}  Data volumes are expected to continue growing rapidly. For instance, as the number of 5G users increases, the amount of log data collected by our customers increases 5 times. The storage systems should be able to scale gracefully to store petabytes of new data.
+\noindent \underline{\textit{High storage scalability.}}  Data volumes are expected to continue growing rapidly. For instance, as the number of 5G users increases, the amount of log data collected by our customers increases 5 times. The storage systems should be able to scale gracefully to store petabytes of new data.
 
 
 
-\noindent \underline{\textit{Cost.}} Flexible and cost-effective end-to-end solutions are important in real world deployment. For instance, some data centers of our customers still use 1 GE network although 10 GE network has already been a standard practice. When we deploy a new system to these data centers, the system should be able to remain its SLA even though facing network constraints. As many customers' IT budget growths are often slower than the exponential growth'of their data volumes and application requirements, our system design should take customer's previous IT investment into accounts and provide flexibilities to deploy in various datacenter infrastructures.
+\noindent \underline{\textit{Low cost.}} Flexible and cost-effective end-to-end solutions are important in real world deployment. For instance, some data centers of our customers still use 1 GE network although 10 GE network has already been a standard practice. When we deploy a new system to these data centers, the system should be able to remain its SLA even though facing network constraints. As many customers' IT budget growths are often slower than the exponential growth'of their data volumes and application requirements, our system design should take customer's previous IT investment into accounts and provide flexibilities to deploy in various datacenter infrastructures.
 
 \cc{Not high level enough! cost or flexibility, which part?}
 
@@ -38,7 +38,7 @@
 %Flexibility: Business requirements can change rapidly, so it's important to have a flexible infrastructure that can adapt quickly to changing needs.
 
 
-\noindent \underline{\textit{Reliability.}} Data reliability and security remains a top priority in our customers' big data usage as any data loss or leak  could lead to serious damage. An enterprise data pipeline should provide built-in data reliability and security to provide full protection to the data.
+\noindent \underline{\textit{High reliability.}} Data reliability and security remains a top priority in our customers' big data usage as any data loss or leak  could lead to serious damage. An enterprise data pipeline should provide built-in data reliability and security to provide full protection to the data.
 
 
 \cc{Security seems not mentioned afterfords!}
@@ -49,16 +49,28 @@
 
 \cc{How the system address the above 4 aspects? There should be a correspondence! ref to the following Sections.}
 
-\noindent \textbf{Use case.}
-An application of StreamLake in China Mobile data lakes with production data demonstrates a solid optimization in term of resource utilization. As the world's largest mobile network operator, China Mobile manages one of the largest data analytic platforms in China. Over 4.8 petabytes of fresh business operation and network logging data flows from business branches and edge devices scattered across over 30 provinces and regions to several centralized data centers. This fresh data first lands on a collection and exchange platform where the team can perform data exchanges across data centers. Then it is loaded into the analytic platform. Data warehouse and big data engines run billions of jobs and analytic models with the data to provide location services, network logging analyses and many other applications to support internal and external business and users. As its data grows to the exabyte scale, the platform starts to experience high skews of resource utilization. For instance, the utilizations of CPU, memory and storage are 26\%, 41\% and 66\% on average based on a 14-day measurement in a data center.
 
-We deployed StreamLake to a China Mobile data center with 20 petabytes of production data to evaluate its impacts. The existing data analytic architecture was replaced by a disaggregated-storage architecture in which its storage is powered by Huawei OceanStor Pacific with the StreamLake framework. Moderate changes are applied to connect the analytic engines to StreamLake.
-
-The evaluation shows a significant improvement of resource utilization. The new system runs the same number of analytic jobs with 39\% less servers that thanks to high utilization of data and server resources in StreamLake. Besides this, it also introduces additional benefits in term of performance and service flexibility. For instance, some batch queries can speed up 4 times when the query operator pushdown and the LakeBrain features are enabled. Another example is the message streaming. The platform originally had to maintain 300+ Kafka servers. The expansion of partitions and nodes posed a big challenge to the China Mobile IT team. With the stream storage in StreamLake, the team no longer needs to manually manage the Kafka servers. In addition, minimum data migration is required to scale the system, and maintenance costs are thus greatly reduced. 
 
 %StreamLake has been successfully applied to a China Mobile data lake with production data, resulting in significant optimization of resource utilization. China Mobile manages one of the largest data analytic platforms in China, with over 4.8 petabytes of fresh business operation and network logging data flowing in from across 30 provinces and regions. As the platform grew to the exabyte scale, resource utilization became increasingly skewed, with average CPU, memory, and storage utilizations at 26%, 41%, and 66% respectively.
 
-%To address this challenge, we deployed StreamLake in a China Mobile data center with 20 petabytes of production data, replacing the existing analytic architecture with a disaggregated-storage architecture powered by Huawei OceanStor Pacific with the StreamLake framework. The evaluation of the new system showed a 39\% reduction in servers needed to run the same number of analytic jobs, thanks to high utilization of data and server resources in StreamLake. In addition, the system also offered improved performance and service flexibility. For example, batch queries could be sped up by four times when the query operator pushdown and the LakeBrain features were enabled, and message streaming no longer required manual management of 300+ Kafka servers. The introduction of StreamLake also required minimal data migration for scaling, resulting in significantly reduced maintenance costs.
+\noindent \textbf{Use case.} To satisfy the user requirements by achieving the above goals, we build a storage system \sys that \cc{XXX} and deploy it in China Mobile data lakes with production data, \cc{resulting in significant optimization of ?resource utilization?.}  China Mobile manages one of the largest data analytic platforms in China.
+Over 4.8 petabytes \cc{per day?} of fresh data flow from business branches and edge devices scattered across over 30 provinces to several centralized data centers. The fresh data first lands on a collection and exchange platform where data exchanges across data centers. Then it is loaded into the analytic platform. Data warehouse and big data engines run billions of jobs  over the data to provide location services, network logging analysis and many other applications to serve users.
+As the platform grew to the exabyte scale, \cc{resource utilization} became increasingly skewed, with average CPU, memory, and storage utilizations at 26\%, 41\%, and 66\% respectively.\cc{Not 100}
+
+
+%An application of StreamLake in China Mobile data lakes with production data demonstrates a solid optimization in term of resource utilization. As the world's largest mobile network operator, China Mobile manages one of the largest data analytic platforms in China. Over 4.8 petabytes of fresh business operation and network logging data flows from business branches and edge devices scattered across over 30 provinces and regions to several centralized data centers. This fresh data first lands on a collection and exchange platform where the team can perform data exchanges across data centers. Then it is loaded into the analytic platform. Data warehouse and big data engines run billions of jobs and analytic models with the data to provide location services, network logging analyses and many other applications to support internal and external business and users. As its data grows to the exabyte scale, the platform starts to experience high skews of resource utilization. For instance, the utilizations of CPU, memory and storage are 26\%, 41\% and 66\% on average based on a 14-day measurement in a data center.
+
+To overcome this, we deployed StreamLake in a China Mobile data center with 20 petabytes of production data, replacing the existing analytic architecture with a disaggregated-storage architecture powered by Huawei OceanStor Pacific with  \sys framework.\cc{Moderate changes are applied to connect the analytic engines to StreamLake.}
+
+\cc{The evaluation shows a significant improvement of resource utilization.}
+ \sys runs the same number of analytic jobs with 39\% less servers, due to the high utilization of \cc{data and server resources} in \sys. Besides, \sys also introduces  benefits in term of performance and service flexibility. For instance, some batch queries can speed up to 4 times when the query operator pushdown and the \brain are enabled. 
+ For message streaming, originally, they had to maintain 300 more \kafka servers, and the expansion of partitions and nodes posed a big challenge to the China Mobile IT team. With the stream storage in StreamLake, the team no longer needs to \cc{manually} manage the Kafka servers. In addition, minimum data migration is required to scale the system, and thus maintenance costs are thus greatly reduced. 
+ 
+ \cc{which factors are shown in the exp figure??}
+
+
+
+% The evaluation of the new system showed a 39\% reduction in servers needed to run the same number of analytic jobs, thanks to high utilization of data and server resources in StreamLake. In addition, the system also offered improved performance and service flexibility. For example, batch queries could be sped up by four times when the query operator pushdown and the LakeBrain features were enabled, and message streaming no longer required manual management of 300+ Kafka servers. The introduction of StreamLake also required minimal data migration for scaling, resulting in significantly reduced maintenance costs.
 
 
 
