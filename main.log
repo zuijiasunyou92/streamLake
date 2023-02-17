@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.9.30)  17 FEB 2023 12:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.9.30)  17 FEB 2023 14:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1847,20 +1847,15 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [1.1{/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 ]
-<figures/archi.pdf, id=113, 1393.205pt x 527.9725pt>
+<figures/archi.pdf, id=113, 654.445pt x 527.9725pt>
 File: figures/archi.pdf Graphic file (type pdf)
  <use figures/archi.pdf>
-Package pdftex.def Info: figures/archi.pdf used on input line 14.
-(pdftex.def)             Requested size: 487.62906pt x 184.79314pt.
-
-Overfull \hbox (246.48157pt too wide) in paragraph at lines 13--16
- [] 
- []
-
+Package pdftex.def Info: figures/archi.pdf used on input line 13.
+(pdftex.def)             Requested size: 229.05917pt x 184.79314pt.
 LaTeX Font Info:    Font shape `T1/zi4/bx/n' in size <9> not available
-(Font)              Font shape `T1/zi4/b/n' tried instead on input line 16.
+(Font)              Font shape `T1/zi4/b/n' tried instead on input line 15.
 LaTeX Font Info:    Font shape `T1/zi4/b/n' will be
-(Font)              scaled to size 9.0pt on input line 16.
+(Font)              scaled to size 9.0pt on input line 15.
 Package microtype Info: Character `textendash ' is missing
 (microtype)             in font `T1/zi4/b/n/9'.
 (microtype)             Ignoring protrusion settings for this character.
@@ -1868,7 +1863,8 @@ Package microtype Info: Character `textemdash ' is missing
 (microtype)             in font `T1/zi4/b/n/9'.
 (microtype)             Ignoring protrusion settings for this character.
 
-Class acmart Warning: A possible image without description on input line 19.
+
+Class acmart Warning: A possible image without description on input line 17.
 
 ) (./sections/04-storage.tex
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
@@ -2094,7 +2090,17 @@ Package pdftex.def Info: figures/Querytime.pdf used on input line 158.
 Class acmart Warning: A possible image without description on input line 161.
 
 [11.11 <./figures/LakeBrain.pdf> <./figures/Querytime.pdf>])
-(./sections/08-related.tex) (./sections/09-conclusion.tex) (./main.bbl
+(./sections/08-related.tex
+Underfull \hbox (badness 5302) in paragraph at lines 8--9
+\T1/LinuxLibertineT-TLF/m/n/9 (+20) used open-source stream-ing plat-forms in i
+n-dus-try. Un-like
+ []
+
+) (./sections/09-conclusion.tex
+Underfull \vbox (badness 7291) has occurred while \output is active []
+
+)
+(./main.bbl
 
 Package natbib Warning: Empty `thebibliography' environment on input line 40.
 
@@ -2103,8 +2109,8 @@ Package natbib Warning: Empty `thebibliography' environment on input line 40.
 Class acmart Warning: Some images may lack descriptions.
 
 
-Overfull \vbox (1.48032pt too high) has occurred while \output is active []
-
+Package balance Warning: You have called \balance in second column
+(balance)                Columns might not be balanced.
 
 [12.12]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 102.
@@ -2157,7 +2163,7 @@ ibertine/LinLibertineTI.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/pub
 lic/txfonts/rtxmi.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/ne
 wtx/txsys.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/newtx/zxlr
 i.pfb>
-Output written on main.pdf (12 pages, 1015708 bytes).
+Output written on main.pdf (12 pages, 1019242 bytes).
 PDF statistics:
  603 PDF objects out of 1000 (max. 8388607)
  458 compressed objects within 5 object streams
