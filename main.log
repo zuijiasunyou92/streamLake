@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.9.30)  17 FEB 2023 10:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.9.30)  17 FEB 2023 11:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1851,7 +1851,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 )
 (./sections/04-storage.tex
-<figures/streamobject.pdf, id=116, 585.18625pt x 423.5825pt>
+<figures/streamobject.pdf, id=118, 585.18625pt x 423.5825pt>
 File: figures/streamobject.pdf Graphic file (type pdf)
 
 <use figures/streamobject.pdf>
@@ -1877,7 +1877,7 @@ Package microtype Info: Character `textemdash ' is missing
 (microtype)             in font `T1/zi4/b/n/9'.
 (microtype)             Ignoring protrusion settings for this character.
 
-<figures/write.pdf, id=151, 510.90875pt x 642.4pt>
+<figures/write.pdf, id=153, 510.90875pt x 642.4pt>
 File: figures/write.pdf Graphic file (type pdf)
  <use figures/write.pdf>
 Package pdftex.def Info: figures/write.pdf used on input line 39.
@@ -1886,7 +1886,7 @@ Package pdftex.def Info: figures/write.pdf used on input line 39.
 
 Class acmart Warning: A possible image without description on input line 45.
 
-<figures/tableobject.pdf, id=155, 854.19125pt x 345.29pt>
+<figures/tableobject.pdf, id=157, 854.19125pt x 345.29pt>
 File: figures/tableobject.pdf Graphic file (type pdf)
 
 <use figures/tableobject.pdf>
@@ -1901,7 +1901,7 @@ Overfull \hbox (15.11186pt too wide) in paragraph at lines 63--66
 Class acmart Warning: A possible image without description on input line 69.
 
 ) (./sections/05-dataprocessing.tex [3.3 <./figures/write.pdf> <./figures/table
-object.pdf>] <figures/streamservice.pdf, id=232, 645.41125pt x 338.26375pt>
+object.pdf>] <figures/streamservice.pdf, id=234, 645.41125pt x 338.26375pt>
 File: figures/streamservice.pdf Graphic file (type pdf)
 
 <use figures/streamservice.pdf>
@@ -1915,7 +1915,7 @@ Overfull \hbox (17.01244pt too wide) in paragraph at lines 19--22
 
 Class acmart Warning: A possible image without description on input line 25.
 
-<figures/producer.pdf, id=234, 641.39626pt x 298.11375pt>
+<figures/producer.pdf, id=236, 641.39626pt x 298.11375pt>
 File: figures/producer.pdf Graphic file (type pdf)
 
 <use figures/producer.pdf>
@@ -1925,7 +1925,7 @@ Package pdftex.def Info: figures/producer.pdf used on input line 30.
 
 Class acmart Warning: A possible image without description on input line 36.
 
-<figures/config.pdf, id=238, 543.02875pt x 418.56375pt>
+<figures/config.pdf, id=240, 543.02875pt x 418.56375pt>
 File: figures/config.pdf Graphic file (type pdf)
 
 <use figures/config.pdf>
@@ -1968,7 +1968,7 @@ LaTeX Warning: Reference `' on page 5 undefined on input line 91.
 
 LaTeX Warning: Reference `' on page 5 undefined on input line 91.
 
-[5.5] <figures/cache.pdf, id=326, 638.385pt x 394.47375pt>
+[5.5] <figures/cache.pdf, id=328, 638.385pt x 394.47375pt>
 File: figures/cache.pdf Graphic file (type pdf)
 
 <use figures/cache.pdf>
@@ -1984,7 +1984,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 118--118
 Class acmart Warning: A possible image without description on input line 121.
 
 [6.6 <./figures/cache.pdf>]
-<figures/serverless.pdf, id=366, 365.365pt x 381.425pt>
+<figures/serverless.pdf, id=368, 365.365pt x 381.425pt>
 File: figures/serverless.pdf Graphic file (type pdf)
 
 <use figures/serverless.pdf>
@@ -1999,7 +1999,7 @@ Class acmart Warning: A possible image without description on input line 180.
 Underfull \vbox (badness 3536) has occurred while \output is active []
 
 
-<figures/sql.pdf, id=402, 718.685pt x 194.7275pt>
+<figures/sql.pdf, id=404, 718.685pt x 194.7275pt>
 File: figures/sql.pdf Graphic file (type pdf)
  <use figures/sql.pdf>
 Package pdftex.def Info: figures/sql.pdf used on input line 21.
@@ -2013,7 +2013,7 @@ Overfull \hbox (10.39603pt too wide) in paragraph at lines 21--24
 Class acmart Warning: A possible image without description on input line 26.
 
 [8.8 <./figures/sql.pdf>]
-<figures/case.pdf, id=426, 470.75874pt x 155.58125pt>
+<figures/case.pdf, id=428, 470.75874pt x 155.58125pt>
 File: figures/case.pdf Graphic file (type pdf)
  <use figures/case.pdf>
 Package pdftex.def Info: figures/case.pdf used on input line 41.
@@ -2022,7 +2022,7 @@ Package pdftex.def Info: figures/case.pdf used on input line 41.
 
 Class acmart Warning: A possible image without description on input line 46.
 
-<figures/streamengine.pdf, id=430, 2860.4471pt x 570.60805pt>
+<figures/streamengine.pdf, id=432, 2860.4471pt x 570.60805pt>
 File: figures/streamengine.pdf Graphic file (type pdf)
 
 <use figures/streamengine.pdf>
@@ -2032,7 +2032,7 @@ Package pdftex.def Info: figures/streamengine.pdf used on input line 90.
 
 Class acmart Warning: A possible image without description on input line 93.
 
-<figures/LakeBrain.pdf, id=431, 2883.88599pt x 688.99669pt>
+<figures/LakeBrain.pdf, id=433, 2883.88599pt x 688.99669pt>
 File: figures/LakeBrain.pdf Graphic file (type pdf)
 
 <use figures/LakeBrain.pdf>
@@ -2077,7 +2077,7 @@ LaTeX Warning: Reference `' on page 11 undefined on input line 141.
 
 LaTeX Warning: Reference `' on page 11 undefined on input line 149.
 
-<figures/Querytime.pdf, id=474, 2168.28159pt x 639.68129pt>
+<figures/Querytime.pdf, id=476, 2168.28159pt x 639.68129pt>
 File: figures/Querytime.pdf Graphic file (type pdf)
 
 <use figures/Querytime.pdf>
@@ -2150,10 +2150,10 @@ ibertine/LinLibertineTI.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/pub
 lic/txfonts/rtxmi.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/ne
 wtx/txsys.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/newtx/zxlr
 i.pfb>
-Output written on main.pdf (11 pages, 991943 bytes).
+Output written on main.pdf (11 pages, 992263 bytes).
 PDF statistics:
- 586 PDF objects out of 1000 (max. 8388607)
- 447 compressed objects within 5 object streams
+ 588 PDF objects out of 1000 (max. 8388607)
+ 449 compressed objects within 5 object streams
  104 named destinations out of 1000 (max. 500000)
  40722 words of extra memory for PDF output out of 42996 (max. 10000000)
 
