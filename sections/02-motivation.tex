@@ -47,29 +47,12 @@
 
 
 
-\cc{How the system address the above 4 aspects? There should be a correspondence! ref to the following Sections.}
+
 
 
 
 %StreamLake has been successfully applied to a China Mobile data lake with production data, resulting in significant optimization of resource utilization. China Mobile manages one of the largest data analytic platforms in China, with over 4.8 petabytes of fresh business operation and network logging data flowing in from across 30 provinces and regions. As the platform grew to the exabyte scale, resource utilization became increasingly skewed, with average CPU, memory, and storage utilizations at 26%, 41%, and 66% respectively.
 
-\noindent \textbf{Use case.} To satisfy the user requirements by achieving the above goals, we build a storage system \sys that \cc{XXX} and deploy it in China Mobile data lakes with production data, \cc{resulting in significant optimization of ?resource utilization?.}  China Mobile manages one of the largest data analytic platforms in China.
-Over 4.8 petabytes \cc{per day?} of fresh data flow from business branches and edge devices scattered across over 30 provinces to several centralized data centers. The fresh data first lands on a collection and exchange platform where data exchanges across data centers. Then it is loaded into the analytic platform. Data warehouse and big data engines run billions of jobs  over the data to provide location services, network logging analysis and many other applications to serve users.
-As the platform grew to the exabyte scale, \cc{resource utilization} became increasingly skewed, with average CPU, memory, and storage utilizations at 26\%, 41\%, and 66\% respectively.\cc{Not 100}
-
-
-%An application of StreamLake in China Mobile data lakes with production data demonstrates a solid optimization in term of resource utilization. As the world's largest mobile network operator, China Mobile manages one of the largest data analytic platforms in China. Over 4.8 petabytes of fresh business operation and network logging data flows from business branches and edge devices scattered across over 30 provinces and regions to several centralized data centers. This fresh data first lands on a collection and exchange platform where the team can perform data exchanges across data centers. Then it is loaded into the analytic platform. Data warehouse and big data engines run billions of jobs and analytic models with the data to provide location services, network logging analyses and many other applications to support internal and external business and users. As its data grows to the exabyte scale, the platform starts to experience high skews of resource utilization. For instance, the utilizations of CPU, memory and storage are 26\%, 41\% and 66\% on average based on a 14-day measurement in a data center.
-
-To overcome this, we deployed StreamLake in a China Mobile data center with 20 petabytes of production data, replacing the existing analytic architecture with a disaggregated-storage architecture powered by Huawei OceanStor Pacific with  \sys framework.\cc{Moderate changes are applied to connect the analytic engines to StreamLake.}
-
-\cc{The evaluation shows a significant improvement of resource utilization.}
- \sys runs the same number of analytic jobs with 39\% less servers, due to the high utilization of \cc{data and server resources} in \sys. Besides, \sys also introduces  benefits in term of performance and service flexibility. For instance, some batch queries can speed up to 4 times when the query operator pushdown and the \brain are enabled. 
- For message streaming, originally, they had to maintain 300 more \kafka servers, and the expansion of partitions and nodes posed a big challenge to the China Mobile IT team. With the stream storage in StreamLake, the team no longer needs to \cc{manually} manage the Kafka servers. In addition, minimum data migration is required to scale the system, and thus maintenance costs are thus greatly reduced. 
- 
- \cc{which factors are shown in the exp figure??}
- 
-  
- \cc{The structural figure is necessary??}
 
 
 
