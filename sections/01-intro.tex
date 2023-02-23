@@ -6,9 +6,8 @@
 
 As the Internet of Things (IoT) and 5G communication technologies become increasingly prevalent, massive amounts of data are being collected, stored, and analyzed.
  The traditional architecture of data infrastructure  has been challenged by cloud-native designs, where compute and storage resources are pooled to serve massive structured and unstructured data in an elastic and cost-efficient manner.
-  Analytical systems such as data warehouses and big data platforms have also evolved from siloed~\footnote{a term?} constructions to disaggregated storage and compute architectures. For example, data lake storage~\cite{}, with its 10$\times$ better price, availability, and persistence compared to traditional storage formats, has been very popular for storing massive online and offline data captured, so as to support large-scale data analysis.
+  Analytical systems such as data warehouses and big data platforms have also evolved from siloed~\footnote{a term?} constructions to disaggregated storage and compute architectures. For example, data lake storage ($e.g.,$ AWS S3~\cite{}, Huawei OceanStor Pacific~\cite{}), with its 10$\times$ better price, availability, and persistence compared to traditional storage formats, has been very popular for storing massive various data, so as to support large-scale data analysis.
 
-   Enterprise data analysts can easily leverage data lake storage implementations such as AWS S3~\cite{} or Huawei OceanStor Pacific~\cite{} as a reliable centralized  storage pool, on top of which  data preparation and analytical pipelines are built.
 
 However, as large enterprises further digitalize their business, the data to be stored and analyzed explode. Over the past several years, we have collaborated closely with over 200 enterprise customers from 16 different industries to better understand their big data processing requirements. Our analysis of key statistics has revealed the following insights:
 
@@ -23,23 +22,18 @@ Also, when processing data through data pipelines, in many cases, customers  hav
 \noindent \underline{\textit{Data retention.}} In practice, 43\% customers are required to store data between 1 and 5 years. 22\% store between 5 and 10 years and 27\% store at least 10 years, according to regulations and practices in different industries.
 
 
-
-
-To satisfy the above users' requirements, we aim to design a data lake storage system to support stream and batch data co-processing with high efficiency, persistence, scalability and low Total Cost Ownership (TCO). To this end, the system has several significant aspects  to be considered. 
-
- First, as users always face petabytes of log streaming data, it is challenging to store the data persistently at low cost, while keeping high processing efficiency and scalability. For example, in practice, given the same data, over which users may conduct stream or batch processing for different applications, thus storing two copies for different processes is costly.
+To satisfy the above users' requirements, we aim to design a data lake storage system to support stream and batch data co-processing with high efficiency, persistence, scalability and low Total Cost Ownership (TCO). To this end, the system has several significant aspects  to be considered. (1) As users always face petabytes of log streaming data, it is challenging to store the data persistently at low cost, while keeping high scalability and processing efficiency. For example, as streaming data needs real-time processing,  typical system like Kafka uses local file system as the storage, which lacks of scalibility capacity because the computation and storage are tightly coupled. Also, in practice, given the same data, over which users may conduct stream or batch processing for different applications, thus storing two copies for different processes is costly.
  %流的存储很贵，因为要实时处理，所以计算存储强耦合，不能各自scale。扩的时候一起扩，会贵。 
  %分叉了不好办，改了一个影响另一个
- If one considers to store as stream data, and convert it to batch when batch processing is necessary, it will be time-consuming to load the data to the compute engine and conduct the conversion.	
-
-
+% If one considers to store as stream data, and convert it to batch when batch processing is necessary, it will be time-consuming to load the data to the compute engine and conduct the conversion.	
 % 数据有多个备份(multiple copy) 更新自己备份 别人不aware 导致数据不一致 delta lake video
-Second, since users may update data individually,  they cannot see all the updates, thus leading to corrupted low-quality data. Hence, it is significant to support atomic writes to achieve high quality data. \cc{any more challenge (efficiency problem) induced by this, and can be addressed by our cache?}
+(2) In a data analysis pipeline, there are likely to be multiple copies when data goes through the pipeline. If these copies are updates individually, data  will be corrupted because   they are not aware of the updates.   
+ Hence, it is significant to support atomic writes to achieve high quality data.
+  \cc{does the metadata read latency has relation with the copies?}
 %元数据读取时间长
+(3) In data lake storage, compute-and-storage \cc{disaggregated} architecture  is applied for scalability,  and thus it is challenging to perform an end-to-end optimization like in a database. Hence, it is critical to consider how to incorporate an optimizer in the storage engine, so as to optimize the query performance and resource utilization.
 
-
-Third, to achieve high scalability, the typical compute-and-storage separation architecture should be applied in the data lake, and thus it is challenging to perform an end-to-end optimization like in a database. Hence, it is critical to consider how to incorporate an optimizer in the storage engine, so as to optimize the query performance and resource utilization.
-%
+% 
 
 
 
@@ -107,6 +101,12 @@ For message streaming, originally, they had to maintain 300 more \kafka servers,
 \cc{The structural figure is necessary??}
 
  
+ 
+ 
+ 
+ 
+ 
+ \iffalse
 
 To address this common problem of big data platforms in enterprise production environments, researchers and engineers in our data management community have evolved existing compute engines or designed new system components to converge data pipelines and enhance data re-usage. For example, first, unified engines~\cite{} for stream and batch processing as well as lakehouse technologies~\cite{} with ACID-compliant transactions are developed. These approaches are closely tied to a specific compute engine, optimizing an end-to-end process with a point view. However, in order to cover various business analytical needs, enterprise production data pipelines need close collaboration between multiple analytic tools. Hence, rather optimizing for a single step or module, it requires us to take an end-to-end view to make effective collaborative optimizations in real world. Second, in the modern cloud-native storage-disaggregated architecture, network overhead is expensive if we maintain a shared state layer in the compute cluster which requires frequent and massive data accesses to the storage. Third, separating data management from the storage layer misses the opportunities to apply advanced storage technologies~\cite{} which are critical to process massive data cost-effectively. Finally, data layout management strategies such as compaction and partitioning are key to ensure overall storage utilization and query performance. Existing approaches~\cite{} normally apply static or manual methods to compact small files or manage data partitions. This is sub-optimal compared to dynamic self-learning algorithms in production with complex data pipelines and massive data. We argue that it is reasonable to dedicate the data management component to the storage side and intelligently optimize it on top of the data lake persistent storage to enable shortest dataflows and to maximize the potential of data re-usage across engines in a cost-efficient and collaborative manner.
 
@@ -125,5 +125,7 @@ We extend the message streaming service to support lakehouse data formats for qu
 We introduce a new data lake optimizer in storage. It applies reinforcement learning and probabilistic network algorithms with storage characteristics and query history to optimize the data layout dynamically, optimizing both the query time and the storage block utilization.
 
 We conduct a use case study with the China mobile IT team to evaluate the StreamLake implementation. Compared to the current system, the experiments show that the new design brings in 39\% to 4x resource usage and performance gains.
+
+\fi
 
 %The rest of this paper is organized as follows. Section 2-6 detail the motivation, design and implementation of key components such like the stream storage, the lakehouse framework and the data lake optimizer. Section 7 discusses the experiments. Section 8 compares related work. Conclusions are drawn in Section 9.
