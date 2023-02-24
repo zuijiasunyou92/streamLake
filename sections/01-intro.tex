@@ -41,10 +41,10 @@ To address these issues, we deploy our \sys storage system with its novel design
 First, in terms of the streaming storage, we implement the compute-and-storage \cc{disaggregated} architecture to achieve high scalability. To be specific, 
 %存储层 分发层的分离，stream object，读写流消息。
  we introduce the \textit{stream object}  to read/write the streaming messages, based on which our streaming service becomes elastic, $i.e.,$ the number of instances for processing the messages can be efficiently adjusted without data migration. The object has buffers to support real-time stream processing, and load-balanced storage and redundant persistence are also achieved. 
-Besides, to better reduce the storage cost,  \sys is built on the tired storage Huawei OceanStor, which can automatically compact and manage cold data if necessary.
+Besides, to better reduce the storage cost,  \sys is built on the tiering storage Huawei OceanStor, which can automatically migrate data between SSD and HDD.
 To better achieve cost-effective stream and batch co-processing, the \textit{stream object}  can be automatically converted  to  \textit{table object}, and vice versa. In this way, data can be maintained for just one copy rather than storing for two copies separately, and thus the storage cost is reduced. 
 Existing systems like the widely-used Kafka~\ cite{} uses the local file system to persist data, which is less elastic than the disaggregated storage.  Pravega~\cite{} and Pulsar~\cite{} adopt the 
-disaggregated architecture, but unlike we can automatically mange cold data based on our built-in tired storage (or conduct table-stream conversion to save the cost), they have to migrate the data to  cost-friendly storage system like  HDFS~\cite{} or S3~\cite{}.
+disaggregated architecture, but unlike we can automatically mange cold data based on our built-in tiering storage (or conduct table-stream conversion to save the cost), they have to migrate the data to other cost-friendly storage systems like  HDFS~\cite{} or S3~\cite{}.
 %自动分级 自动分成冷存储，转成表格式
 
 
@@ -58,38 +58,30 @@ Third,  we build an intelligent data lake optimizer \brain at the storage-side t
 
 Overall, our \sys has the following characteristics.
 
+\noindent \underline{\textit{High storage scalability.}} Leveraging the stream object, \sys adopts the compute-and-storage disaggregated architecture that allows for elastically adjusting computing and storage resources according to the \cc{user requirements/system status}  for both stream and batch data. In this way, our system can  scale gracefully to store petabytes of new data.
 
-\noindent \underline{\textit{High processing efficiency.}} 
+\noindent \underline{\textit{High processing efficiency.}} The  stream object in \sys provides efficient read/write APIs to support real-time stream processing. Also, our stream object also provides load-balanced stream storage, which can also help to improve the efficiency. In addition, we also  adopt the query computation pushdown to reduce the data transfer between the storage and query engine. Furthermore, the \brain optimizer can improve the query performance by optimizing the data layout. 
 
+\noindent \underline{\textit{High reliability.}} \sys is built on top of the Huawei OceanStor Pacific~\cite{}, which has built-in data reliability and security to provide full protection to the data.
 
-\noindent \underline{\textit{High storage scalability.}}
+\noindent \underline{\textit{Low TCO.}} Overall, \sys can save the users' cost a lot leveraging  our novel designs as well as the ability of our Huawei OceanStor storage. For example, we do not have to store two copies of data for stream and batch processing, and the built-in tiering storage can also save the storage cost. The disaggragated architecture makes the users require their compute or storage resources as needed. The \brain optimizer and  pushdown also  save the compute resource by improving the query efficiency.
 
-
-\noindent \underline{\textit{Low TCO.}} 
-
-
-\noindent \underline{\textit{High reliability.}}
-
-\noindent \textbf{Use case.} To satisfy the user requirements by achieving the above goals, we build a storage system \sys that \cc{XXX} and deploy it in China Mobile data lakes with production data, \cc{resulting in significant optimization of ?resource utilization?.}  China Mobile manages one of the largest data analytic platforms in China.
-Over 4.8 petabytes \cc{per day?} of fresh data flow from business branches and edge devices scattered across over 30 provinces to several centralized data centers. The fresh data first lands on a collection and exchange platform where data exchanges across data centers. Then it is loaded into the analytic platform. Data warehouse and big data engines run billions of jobs  over the data to provide location services, network logging analysis and many other applications to serve users.
-As the platform grew to the exabyte scale, \cc{resource utilization} became increasingly skewed, with average CPU, memory, and storage utilizations at \cc{26\%, 41\%, and 66\%} respectively.
+\noindent \textbf{Use case.} We deployed \sys  in China Mobile data lakes with production data, resulting in significant optimization of resource utilization and performance.  China Mobile manages one of the largest data analytic platforms in China.
+Over 4.8 petabytes \cc{per day?} of fresh data flow from business branches and edge devices scattered across over 30 provinces to several centralized data centers. As shown in Figure~\ref{fig:mobile}(a), the fresh data first lands on a collection and exchange platform where data exchanges across data centers. Then it is loaded into the analytic platform. Data warehouse and big data engines run billions of jobs  over the data to provide location services, network logging analysis and many other applications to serve users.
+As the platform grew to the exabyte scale, resource utilization became increasingly skewed, with average CPU, memory, and storage utilizations at \cc{26\%, 41\%, and 66\%} respectively.
 
 
 
 
-To overcome this, we deployed StreamLake in a China Mobile data center with 20 petabytes of production data, replacing the existing analytic architecture with a disaggregated-storage architecture powered by Huawei OceanStor Pacific with  \sys framework.\cc{Moderate changes are applied to connect the analytic engines to StreamLake.}
-
-\cc{The evaluation shows a significant improvement of resource utilization.}
-\sys runs the same number of analytic jobs with 39\% less servers, due to the high utilization of \cc{data and server resources} in \sys. Besides, \sys also introduces  benefits in term of performance and service flexibility. For instance, some batch queries can speed up to 4 times when the query operator pushdown and the \brain are enabled. 
-For message streaming, originally, they had to maintain 300 more \kafka servers, and the expansion of partitions and nodes posed a big challenge to the China Mobile IT team. With the stream storage in StreamLake, the team no longer needs to \cc{manually} manage the Kafka servers. In addition, minimum data migration is required to scale the system, and thus maintenance costs are thus greatly reduced. 
-
-\cc{which factors are shown in the exp figure??}
+To overcome this, we deployed \sys in a China Mobile data center with 20 petabytes of production data, replacing the existing analytic architecture with a disaggregated-storage architecture powered by Huawei OceanStor Pacific with  \sys framework.\cc{Moderate changes are applied to connect the analytic engines to StreamLake.}
 
 
-\cc{The structural figure is necessary??}
+ Figure~\ref{fig:mobile}(b) shows some general evaluation result of our deployment. \sys runs the same number of analytic jobs with 39\% less servers, due to the high utilization of \cc{data and server resources} in \sys. \cc{Besides, \sys also introduces  benefits in term of performance and service flexibility. For instance, some batch queries can speed up to 4 times when the query operator pushdown and the \brain are enabled. }
+For message streaming, originally, they had to maintain 300 more \kafka servers, and the expansion of partitions and nodes posed a big challenge to the China Mobile IT team. With the stream storage in \sys, the team no longer needs to \cc{manually} manage the Kafka servers. In addition, minimum data migration is required to scale the system, and thus maintenance costs are thus greatly reduced. More detailed evaluation is shown in Section~\ref{sec:exp}.
 
+\cc{why not illustrate TCO?}
  
- 
+\cc{how to reflect the performance, flexibility? Current version is not clear.}
  
  
  

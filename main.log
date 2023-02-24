@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.9.30)  24 FEB 2023 08:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.9.30)  24 FEB 2023 21:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1843,24 +1843,53 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [1.1{/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
-])
-(./sections/02-motivation.tex
-Underfull \vbox (badness 1337) has occurred while \output is active []
+]
+Underfull \hbox (badness 3088) in paragraph at lines 65--66
+$[]$ \T1/zi4/m/n/9 StreamLake \T1/LinuxLibertineT-TLF/m/n/9 (+20) is built on t
+op of the Huawei
+ []
+
+LaTeX Font Info:    Font shape `T1/zi4/bx/n' in size <8> not available
+(Font)              Font shape `T1/zi4/b/n' tried instead on input line 79.
+LaTeX Font Info:    Font shape `T1/zi4/b/n' will be
+(Font)              scaled to size 8.0pt on input line 79.
+Package microtype Info: Character `textendash ' is missing
+(microtype)             in font `T1/zi4/b/n/8'.
+(microtype)             Ignoring protrusion settings for this character.
+Package microtype Info: Character `textemdash ' is missing
+(microtype)             in font `T1/zi4/b/n/8'.
+(microtype)             Ignoring protrusion settings for this character.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 )
 (./sections/03-archi.tex
+<figures/mobile.pdf, id=119, 1015.795pt x 480.79625pt>
+File: figures/mobile.pdf Graphic file (type pdf)
 
-LaTeX Warning: Reference `' on page 2 undefined on input line 7.
+<use figures/mobile.pdf>
+Package pdftex.def Info: figures/mobile.pdf used on input line 14.
+(pdftex.def)             Requested size: 253.94812pt x 120.19876pt.
 
-<figures/archi.pdf, id=119, 654.445pt x 527.9725pt>
+Overfull \hbox (12.80063pt too wide) in paragraph at lines 14--16
+ [][] 
+ []
+
+
+Class acmart Warning: A possible image without description on input line 19.
+
+LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
+(Font)              scaled to size 7.0pt on input line 31.
+[2.2 <./figures/mobile.pdf>]
+<figures/archi.pdf, id=154, 654.445pt x 527.9725pt>
 File: figures/archi.pdf Graphic file (type pdf)
  <use figures/archi.pdf>
-Package pdftex.def Info: figures/archi.pdf used on input line 13.
+Package pdftex.def Info: figures/archi.pdf used on input line 61.
 (pdftex.def)             Requested size: 229.05917pt x 184.79314pt.
 LaTeX Font Info:    Font shape `T1/zi4/bx/n' in size <9> not available
-(Font)              Font shape `T1/zi4/b/n' tried instead on input line 15.
+(Font)              Font shape `T1/zi4/b/n' tried instead on input line 63.
 LaTeX Font Info:    Font shape `T1/zi4/b/n' will be
-(Font)              scaled to size 9.0pt on input line 15.
+(Font)              scaled to size 9.0pt on input line 63.
 Package microtype Info: Character `textendash ' is missing
 (microtype)             in font `T1/zi4/b/n/9'.
 (microtype)             Ignoring protrusion settings for this character.
@@ -1869,12 +1898,10 @@ Package microtype Info: Character `textemdash ' is missing
 (microtype)             Ignoring protrusion settings for this character.
 
 
-Class acmart Warning: A possible image without description on input line 17.
+Class acmart Warning: A possible image without description on input line 66.
 
-LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 7.0pt on input line 20.
-[2.2]) (./sections/04-storage.tex
-<figures/streamobject.pdf, id=129, 585.18625pt x 423.5825pt>
+) (./sections/04-storage.tex
+<figures/streamobject.pdf, id=157, 585.18625pt x 423.5825pt>
 File: figures/streamobject.pdf Graphic file (type pdf)
 
 <use figures/streamobject.pdf>
@@ -1884,47 +1911,43 @@ Package pdftex.def Info: figures/streamobject.pdf used on input line 19.
 
 Class acmart Warning: A possible image without description on input line 24.
 
-[3.3 <./figures/archi.pdf>] <figures/write.pdf, id=162, 510.90875pt x 642.4pt>
+[3.3 <./figures/archi.pdf> <./figures/streamobject.pdf>]
+<figures/write.pdf, id=193, 510.90875pt x 642.4pt>
 File: figures/write.pdf Graphic file (type pdf)
-
-<use figures/write.pdf>
-Package pdftex.def Info: figures/write.pdf used on input line 39.
+ <use figures/write.pdf>
+Package pdftex.def Info: figures/write.pdf used on input line 32.
 (pdftex.def)             Requested size: 153.2738pt x 192.72148pt.
 
 
-Class acmart Warning: A possible image without description on input line 45.
+Class acmart Warning: A possible image without description on input line 38.
 
-<figures/tableobject.pdf, id=166, 854.19125pt x 345.29pt>
+<figures/tableobject.pdf, id=196, 854.19125pt x 345.29pt>
 File: figures/tableobject.pdf Graphic file (type pdf)
 
 <use figures/tableobject.pdf>
-Package pdftex.def Info: figures/tableobject.pdf used on input line 63.
+Package pdftex.def Info: figures/tableobject.pdf used on input line 64.
 (pdftex.def)             Requested size: 256.25935pt x 103.58778pt.
 
-Overfull \hbox (15.11186pt too wide) in paragraph at lines 63--66
+Overfull \hbox (15.11186pt too wide) in paragraph at lines 64--67
  [][] 
  []
 
 
-Class acmart Warning: A possible image without description on input line 69.
+Class acmart Warning: A possible image without description on input line 70.
 
-) (./sections/05-dataprocessing.tex [4.4 <./figures/streamobject.pdf> <./figure
-s/write.pdf> <./figures/tableobject.pdf>]
-<figures/streamservice.pdf, id=254, 645.41125pt x 338.26375pt>
+) (./sections/05-dataprocessing.tex
+<figures/streamservice.pdf, id=202, 645.41125pt x 338.26375pt>
 File: figures/streamservice.pdf Graphic file (type pdf)
 
 <use figures/streamservice.pdf>
 Package pdftex.def Info: figures/streamservice.pdf used on input line 19.
-(pdftex.def)             Requested size: 258.15993pt x 135.30309pt.
-
-Overfull \hbox (17.01244pt too wide) in paragraph at lines 19--22
- [][] 
- []
+(pdftex.def)             Requested size: 232.34787pt x 121.77484pt.
 
 
 Class acmart Warning: A possible image without description on input line 25.
 
-<figures/producer.pdf, id=256, 641.39626pt x 298.11375pt>
+[4.4 <./figures/write.pdf> <./figures/tableobject.pdf>]
+<figures/producer.pdf, id=263, 641.39626pt x 298.11375pt>
 File: figures/producer.pdf Graphic file (type pdf)
 
 <use figures/producer.pdf>
@@ -1934,7 +1957,7 @@ Package pdftex.def Info: figures/producer.pdf used on input line 30.
 
 Class acmart Warning: A possible image without description on input line 36.
 
-<figures/config.pdf, id=260, 543.02875pt x 418.56375pt>
+<figures/config.pdf, id=266, 543.02875pt x 418.56375pt>
 File: figures/config.pdf Graphic file (type pdf)
 
 <use figures/config.pdf>
@@ -1956,57 +1979,43 @@ Package microtype Info: Character `textendash ' is missing
 Package microtype Info: Character `textemdash ' is missing
 (microtype)             in font `T1/zi4/m/it/9'.
 (microtype)             Ignoring protrusion settings for this character.
-[5.5 <./figures/streamservice.pdf> <./figures/producer.pdf>]
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 8.0pt on input line 71.
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 6.2pt on input line 71.
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/sb/n' will be
-(Font)              scaled to size 8.0pt on input line 71.
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/sb/n' will be
-(Font)              scaled to size 6.2pt on input line 71.
-LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 6.2pt on input line 71.
-LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 8.0pt on input line 71.
+[5.5 <./figures/streamservice.pdf> <./figures/producer.pdf> <./figures/config.p
+df>]
+
+LaTeX Warning: Reference `' on page 6 undefined on input line 93.
 
 
-LaTeX Warning: Reference `' on page 6 undefined on input line 91.
+LaTeX Warning: Reference `' on page 6 undefined on input line 93.
 
-
-LaTeX Warning: Reference `' on page 6 undefined on input line 91.
-
-[6.6 <./figures/config.pdf>]
-<figures/cache.pdf, id=343, 638.385pt x 394.47375pt>
+<figures/cache.pdf, id=328, 638.385pt x 394.47375pt>
 File: figures/cache.pdf Graphic file (type pdf)
  <use figures/cache.pdf>
-Package pdftex.def Info: figures/cache.pdf used on input line 115.
+Package pdftex.def Info: figures/cache.pdf used on input line 117.
 (pdftex.def)             Requested size: 191.51697pt x 118.34303pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 118--118
-[]\T1/LinuxLibertineT-TLF/b/n/9 Figure 8: |Write Cache Ac-cel-er-a-tion in Lake
+Underfull \hbox (badness 10000) in paragraph at lines 120--120
+[]\T1/LinuxLibertineT-TLF/b/n/9 Figure 9: |Write Cache Ac-cel-er-a-tion in Lake
 -house
  []
 
 
-Class acmart Warning: A possible image without description on input line 121.
+Class acmart Warning: A possible image without description on input line 123.
 
-[7.7 <./figures/cache.pdf>]
-<figures/serverless.pdf, id=386, 365.365pt x 381.425pt>
+[6.6] <figures/serverless.pdf, id=355, 365.365pt x 381.425pt>
 File: figures/serverless.pdf Graphic file (type pdf)
 
 <use figures/serverless.pdf>
-Package pdftex.def Info: figures/serverless.pdf used on input line 174.
+Package pdftex.def Info: figures/serverless.pdf used on input line 176.
 (pdftex.def)             Requested size: 127.87965pt x 133.50075pt.
 
 
-Class acmart Warning: A possible image without description on input line 180.
+Class acmart Warning: A possible image without description on input line 182.
 
-) (./sections/06-optimization.tex [8.8 <./figures/serverless.pdf>])
-(./sections/07-exp.tex <figures/sql.pdf, id=421, 718.685pt x 194.7275pt>
+[7.7 <./figures/cache.pdf>]) (./sections/06-optimization.tex [8.8 <./figures/se
+rverless.pdf>]) (./sections/07-exp.tex
+<figures/sql.pdf, id=420, 718.685pt x 194.7275pt>
 File: figures/sql.pdf Graphic file (type pdf)
-
-<use figures/sql.pdf>
+ <use figures/sql.pdf>
 Package pdftex.def Info: figures/sql.pdf used on input line 21.
 (pdftex.def)             Requested size: 251.54352pt x 68.15564pt.
 
@@ -2017,17 +2026,17 @@ Overfull \hbox (10.39603pt too wide) in paragraph at lines 21--24
 
 Class acmart Warning: A possible image without description on input line 26.
 
-[9.9] <figures/case.pdf, id=436, 470.75874pt x 155.58125pt>
+<figures/case.pdf, id=425, 470.75874pt x 155.58125pt>
 File: figures/case.pdf Graphic file (type pdf)
-
-<use figures/case.pdf>
+ <use figures/case.pdf>
 Package pdftex.def Info: figures/case.pdf used on input line 41.
 (pdftex.def)             Requested size: 494.2969pt x 163.36037pt.
 
 
 Class acmart Warning: A possible image without description on input line 46.
 
-<figures/streamengine.pdf, id=440, 2860.4471pt x 570.60805pt>
+[9.9 <./figures/sql.pdf>]
+<figures/streamengine.pdf, id=449, 2860.4471pt x 570.60805pt>
 File: figures/streamengine.pdf Graphic file (type pdf)
 
 <use figures/streamengine.pdf>
@@ -2037,7 +2046,7 @@ Package pdftex.def Info: figures/streamengine.pdf used on input line 90.
 
 Class acmart Warning: A possible image without description on input line 93.
 
-<figures/LakeBrain.pdf, id=441, 2883.88599pt x 688.99669pt>
+<figures/LakeBrain.pdf, id=450, 2883.88599pt x 688.99669pt>
 File: figures/LakeBrain.pdf Graphic file (type pdf)
 
 <use figures/LakeBrain.pdf>
@@ -2059,7 +2068,7 @@ LaTeX Warning: Reference `' on page 10 undefined on input line 111.
 
 LaTeX Warning: Reference `' on page 10 undefined on input line 111.
 
-[10.10 <./figures/sql.pdf>]
+[10.10 <./figures/case.pdf>]
 LaTeX Font Info:    Font shape `T1/zi4/bx/n' in size <10.95> not available
 (Font)              Font shape `T1/zi4/b/n' tried instead on input line 121.
 LaTeX Font Info:    Font shape `T1/zi4/b/n' will be
@@ -2077,14 +2086,14 @@ LaTeX Warning: Reference `' on page 11 undefined on input line 127.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [11.11 <./figures/case.pdf> <./figures/streamengine.pdf>]
+ [11.11 <./figures/streamengine.pdf> <./figures/LakeBrain.pdf>]
 
 LaTeX Warning: Reference `' on page 12 undefined on input line 141.
 
 
 LaTeX Warning: Reference `' on page 12 undefined on input line 149.
 
-<figures/Querytime.pdf, id=492, 2168.28159pt x 639.68129pt>
+<figures/Querytime.pdf, id=503, 2168.28159pt x 639.68129pt>
 File: figures/Querytime.pdf Graphic file (type pdf)
 
 <use figures/Querytime.pdf>
@@ -2094,18 +2103,13 @@ Package pdftex.def Info: figures/Querytime.pdf used on input line 158.
 
 Class acmart Warning: A possible image without description on input line 161.
 
-) (./sections/08-related.tex [12.12 <./figures/LakeBrain.pdf> <./figures/Queryt
-ime.pdf>]
+) (./sections/08-related.tex
 Underfull \hbox (badness 5302) in paragraph at lines 8--9
 \T1/LinuxLibertineT-TLF/m/n/9 (+20) used open-source stream-ing plat-forms in i
 n-dus-try. Un-like
  []
 
-) (./sections/09-conclusion.tex
-Underfull \vbox (badness 7869) has occurred while \output is active []
-
-)
-(./main.bbl
+[12.12 <./figures/Querytime.pdf>]) (./sections/09-conclusion.tex) (./main.bbl
 
 Package natbib Warning: Empty `thebibliography' environment on input line 40.
 
@@ -2114,17 +2118,17 @@ Package natbib Warning: Empty `thebibliography' environment on input line 40.
 Class acmart Warning: Some images may lack descriptions.
 
 
-Package balance Warning: You have called \balance in second column
-(balance)                Columns might not be balanced.
+Overfull \vbox (1.249pt too high) has occurred while \output is active []
 
-[13.13]
+ [13.13]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 102.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 102.
- (./main.aux)
+
+(./main.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 102.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 102.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 5F8F6F8580EE2ECDCEFC08B8CF65CE02;3895.
+(rerunfilecheck)             Checksum: 98F8C5853678091110B3EE0671EA1C96;3788.
 
 
 LaTeX Font Warning: Size substitutions with differences
@@ -2142,17 +2146,17 @@ LaTeX Warning: There were undefined references.
 ### simple group (level 1) entered at line 1061 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 42254 strings out of 492995
- 774479 string characters out of 6132704
- 929699 words of memory out of 5000000
- 44510 multiletter control sequences out of 15000+600000
- 166210 words of font info for 267 fonts, out of 8000000 for 9000
+ 42161 strings out of 492995
+ 772592 string characters out of 6132704
+ 926720 words of memory out of 5000000
+ 44451 multiletter control sequences out of 15000+600000
+ 140039 words of font info for 232 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
- 60i,12n,94p,10381b,13604s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,11n,94p,10381b,13603s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/libertine/l
-btn_oexx6f.enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/inconsolata/
-i4-t1-4.enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/libertine/lbtn_
-25tcsq.enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/libertine/lbtn_7
+btn_oexx6f.enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/libertine/lb
+tn_25tcsq.enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/inconsolata/i
+4-t1-4.enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/libertine/lbtn_7
 grukw.enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/newtx/libertineal
 t.enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/loc
 al/texlive/2017/texmf-dist/fonts/enc/dvips/libertine/lbtn_76gpa5.enc}{/usr/loca
@@ -2168,10 +2172,10 @@ ibertine/LinLibertineTI.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/pub
 lic/txfonts/rtxmi.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/ne
 wtx/txsys.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/newtx/zxlr
 i.pfb>
-Output written on main.pdf (13 pages, 1027330 bytes).
+Output written on main.pdf (13 pages, 1163218 bytes).
 PDF statistics:
- 610 PDF objects out of 1000 (max. 8388607)
- 464 compressed objects within 5 object streams
- 108 named destinations out of 1000 (max. 500000)
- 40727 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 606 PDF objects out of 1000 (max. 8388607)
+ 448 compressed objects within 5 object streams
+ 94 named destinations out of 1000 (max. 500000)
+ 35092 words of extra memory for PDF output out of 35830 (max. 10000000)
 
