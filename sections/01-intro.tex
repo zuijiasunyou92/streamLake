@@ -31,32 +31,19 @@ To satisfy the above users' requirements, we aim to design a data lake storage s
  Hence, it is significant to support atomic writes to achieve high quality data.
   \cc{does the metadata read latency has relation with the copies?}
 %元数据读取时间长
-(3) In data lake storage, compute-and-storage \cc{disaggregated} architecture  is applied for scalability,  and thus it is challenging to perform an end-to-end optimization like in a database. Hence, it is critical to consider how to incorporate an optimizer in the storage engine, so as to optimize the query performance and resource utilization.
+(3) In data lake storage,  it is challenging to perform an end-to-end optimization like in a database because the computing engine is always decoupled with the storage. Hence, it is critical to consider how to incorporate an optimizer in the storage engine, so as to optimize the query performance and resource utilization.
 
-% 
-
-
-
-
-
-
-
-
-
-%The management costs rise rapidly and become a heavy burden. For instance, 4.8 petabytes fresh data flow into data lakes daily for storage and analysis in China Mobile, the world's largest mobile network operator, and the existing architectures of analytic systems are inapt to scale and process petabytes of data gracefully. Hence, expensive additional operations have to be introduced to support analytic needs. Similarly, we have observed the same situation in other large cooperate customers which Huawei closely works with. A large amount of resources and costs have to be added as the analytic system scales. Although storage increase is inevitable as data grow, a large portion of the cost increases in the analytic systems is because compute engines in data pipelines fail to share data management properly. Hence, massive server resources are wasted in data transfers, re-computing and re-storing intermediate states across engines even though these engines may use same data inputs.
-
-
-%As large enterprises continue to digitize their businesses, the amount of data to be stored and analyzed is growing exponentially. This results in significant management costs that can become a heavy burden. For example, China Mobile, the world's largest mobile network operator, receives 4.8 petabytes of fresh data every day for storage and analysis. However, existing analytic systems are not equipped to handle petabytes of data gracefully. This means that expensive additional operations must be introduced to support analytic needs. This same situation is observed in other large corporate customers that Huawei closely works with, where a significant amount of resources and costs must be added as the analytic system scales. While storage increases are inevitable as data grows, a significant portion of the cost increases in analytic systems is due to compute engines in data pipelines failing to share data management properly. As a result, massive server resources are wasted in data transfers, re-computing, and re-storing intermediate states across engines, even though these engines may use the same data inputs.
 
 
 To address these issues, we deploy our \sys system with its novel design to serve enterprise-level  \cc{massive message stream ingestion and data pipeline co-processing.}
 
 
-First, in terms of the streaming storage,
+First, in terms of the streaming storage, we implement the compute-and-storage \cc{disaggregated} architecture to achieve high scalability. To be specific, 
 %存储层 分发层的分离，stream object，读写流消息。
- we introduce the \textit{stream object}  to provide efficient stream storage and access. It designs the read/write interfaces to support real-time streaming by \cc{XXX (for read), XXX (for write)}. 
-To achieve cost-effective stream and batch co-processing, we also design the \textit{table object} that can be automatically converted  to the \textit{stream object}, and vice versa. In this way, data can be maintained for just one copy rather than storing for two copies separately, and thus the storage cost is reduced. 
-Existing works~\cc{\cite{}}, but \cc{XX}.
+ we introduce the \textit{stream object}  to read/write the streaming messages, based on which our streaming service becomes elastic, $i.e.,$ the number of instances for processing the messages can be efficiently adjusted without data migration. The object has buffers to support real-time stream processing, and load-balance storage and redundant persistence are also achieved. 
+Besides, to better reduce the storage cost,  \sys is built on the tired storage Huawei OceanStor, which can automatically compact and manage cold data if necessary.
+To better achieve cost-effective stream and batch co-processing, the \textit{stream object}  can be automatically converted  to  \textit{table object}, and vice versa. In this way, data can be maintained for just one copy rather than storing for two copies separately, and thus the storage cost is reduced. 
+Existing systems like the widely-used Kafka~\cite{} uses the local file system to persist data, which is less elastic than the disaggregated storage.  Pravega~\cite{} and Pulsar~\cite{} adopt the disaggregated architecture, but unlike we can automatically mange cold data based on our built-in tired storage (or conduct table-stream conversion to save the cost), they have to migrate the data to  cost-friendly storage system like  HDFS~\cite{} or S3~\cite{}.
 %自动分级 自动分成冷存储，转成表格式
 
 
