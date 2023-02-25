@@ -37,12 +37,24 @@ PSO is used to search for the global optimum, a population-based method that doe
 RL secondly finds a more sophisticated policy based on the states of the data lake environment.
 The optimization process involves considering a set of discrete compaction configurations within the action space. Since the state space is continuous, a function approximation method is preferred. The stability of the training process is critical due to the high degree of variability in query performance in a distributed environment, so proximal policy optimization (PPO) is applied.
 
+\begin{figure}[htbp]
+	\includegraphics[scale=0.35]{figures/rl}
+	\centering
+	\vspace{-1em}
+	\caption{Automatic Compaction using RL.}
+	\label{fig:rl}
+	\vspace{-1em}
+\end{figure}
+
 A deep neural network (DNN) is used to approximate the policy and the value function, with a shared feature backbone network that covers both global and local characteristics of the states. The output from the feature network is processed by two fully connected networks to compute the policy output and the action value. The actor and critic are alternatively updated after collecting new trajectories using the latest policy during training.
 
 Once a desired result is obtained, the numerical output of the compaction strategy is translated into actionable operations by the data lake connector for a specific data lake engine, facilitating the optimization process.
 
 
-\subsection{Predicate-aware Fine-grained Partitioning}~\label{subsec:partition}
+
+
+
+\subsection{Predicate-aware Partitioning}~\label{subsec:partition}
 
 Optimizing data partitioning~\footnote{* we should first say what is the data partition problem (does the previous section mention it?)} involves assigning records to storage blocks in the most efficient manner possible, thereby reducing the number of blocks accessed during queries. Our partitioning approach is based on the query-tree framework [43], and utilizes a sum-product network (SPN) probabilistic model [19, 26, 31] to model the distribution of the data in LakeBrain. This is done in order to ensure fast inference speed and avoid repeatedly scanning the datasets.
 
@@ -54,6 +66,17 @@ The query-tree framework creates a tree-based partitioning strategy using pushdo
  By using probabilistic models to characterize the dataset, we can identify the most suitable partitioning policy. The probabilistic model-based cardinality estimation, as demonstrated in Figure 11, is used to estimate the number of records in each partition, \cc{How?? query-driven or data-driven? both cases should have queries to test} instead of scanning the original data, thereby saving a significant amount of time. This greatly improves the speed of the partitioning optimization algorithm, making it suitable for large-scale systems.
 
 Additionally, probabilistic models allow us to represent a sequence of datasets with a series of probabilistic models that have a fixed structure but varying parameters. This is achieved by representing a sequence of datasets as a series of multi-dimensional vectors, each representing the learnable variables in the probabilistic model with a fixed length, i.e. a time series. We can then use time series prediction methods to predict future probabilistic models, and use these predictions to estimate the number of records in a partition during partitioning optimization\cc{like a magic}.
+
+
+\begin{figure}[htbp]
+	\includegraphics[scale=0.6]{figures/partition}
+	\centering
+	\vspace{-1em}
+	\caption{Predicate-aware Partitioning.}
+	\label{fig:partition}
+	\vspace{-1em}
+\end{figure}
+
 
 \cc{Not coherent with the Next!}
 

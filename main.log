@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.9.30)  25 FEB 2023 12:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.9.30)  25 FEB 2023 18:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1921,11 +1921,11 @@ Package pdftex.def Info: figures/write.pdf used on input line 32.
 
 Class acmart Warning: A possible image without description on input line 38.
 
-<figures/tableobject.pdf, id=196, 854.19125pt x 345.29pt>
-File: figures/tableobject.pdf Graphic file (type pdf)
+<figures/tableobjects.pdf, id=196, 854.19125pt x 345.29pt>
+File: figures/tableobjects.pdf Graphic file (type pdf)
 
-<use figures/tableobject.pdf>
-Package pdftex.def Info: figures/tableobject.pdf used on input line 64.
+<use figures/tableobjects.pdf>
+Package pdftex.def Info: figures/tableobjects.pdf used on input line 64.
 (pdftex.def)             Requested size: 256.25935pt x 103.58778pt.
 
 Overfull \hbox (15.11186pt too wide) in paragraph at lines 64--67
@@ -1946,7 +1946,7 @@ Package pdftex.def Info: figures/streamservice.pdf used on input line 19.
 
 Class acmart Warning: A possible image without description on input line 25.
 
-[4.4 <./figures/write.pdf> <./figures/tableobject.pdf>]
+[4.4 <./figures/write.pdf> <./figures/tableobjects.pdf>]
 <figures/producer.pdf, id=263, 641.39626pt x 298.11375pt>
 File: figures/producer.pdf Graphic file (type pdf)
 
@@ -2013,10 +2013,30 @@ Package pdftex.def Info: figures/serverless.pdf used on input line 156.
 Class acmart Warning: A possible image without description on input line 162.
 
 [7.7 <./figures/cache.pdf> <./figures/serverless.pdf>])
-(./sections/06-optimization.tex [8.8]) (./sections/07-exp.tex
-<figures/sql.pdf, id=397, 718.685pt x 194.7275pt>
+(./sections/06-optimization.tex <figures/rl.pdf, id=382, 594.22pt x 248.93pt>
+File: figures/rl.pdf Graphic file (type pdf)
+
+<use figures/rl.pdf>
+Package pdftex.def Info: figures/rl.pdf used on input line 41.
+(pdftex.def)             Requested size: 207.98012pt x 87.1268pt.
+
+
+Class acmart Warning: A possible image without description on input line 47.
+
+[8.8 <./figures/rl.pdf>] <figures/partition.pdf, id=410, 345.29pt x 252.945pt>
+File: figures/partition.pdf Graphic file (type pdf)
+
+<use figures/partition.pdf>
+Package pdftex.def Info: figures/partition.pdf used on input line 72.
+(pdftex.def)             Requested size: 207.17558pt x 151.76816pt.
+
+
+Class acmart Warning: A possible image without description on input line 78.
+
+) (./sections/07-exp.tex <figures/sql.pdf, id=415, 718.685pt x 194.7275pt>
 File: figures/sql.pdf Graphic file (type pdf)
- <use figures/sql.pdf>
+
+<use figures/sql.pdf>
 Package pdftex.def Info: figures/sql.pdf used on input line 21.
 (pdftex.def)             Requested size: 251.54352pt x 68.15564pt.
 
@@ -2027,7 +2047,8 @@ Overfull \hbox (10.39603pt too wide) in paragraph at lines 21--24
 
 Class acmart Warning: A possible image without description on input line 26.
 
-<figures/case.pdf, id=402, 470.75874pt x 155.58125pt>
+[9.9 <./figures/partition.pdf> <./figures/sql.pdf>]
+<figures/case.pdf, id=459, 470.75874pt x 155.58125pt>
 File: figures/case.pdf Graphic file (type pdf)
  <use figures/case.pdf>
 Package pdftex.def Info: figures/case.pdf used on input line 41.
@@ -2036,8 +2057,7 @@ Package pdftex.def Info: figures/case.pdf used on input line 41.
 
 Class acmart Warning: A possible image without description on input line 46.
 
-[9.9 <./figures/sql.pdf>]
-<figures/streamengine.pdf, id=425, 2860.4471pt x 570.60805pt>
+<figures/streamengine.pdf, id=463, 2860.4471pt x 570.60805pt>
 File: figures/streamengine.pdf Graphic file (type pdf)
 
 <use figures/streamengine.pdf>
@@ -2047,7 +2067,7 @@ Package pdftex.def Info: figures/streamengine.pdf used on input line 90.
 
 Class acmart Warning: A possible image without description on input line 93.
 
-<figures/LakeBrain.pdf, id=426, 2883.88599pt x 688.99669pt>
+<figures/LakeBrain.pdf, id=464, 2883.88599pt x 688.99669pt>
 File: figures/LakeBrain.pdf Graphic file (type pdf)
 
 <use figures/LakeBrain.pdf>
@@ -2069,7 +2089,6 @@ LaTeX Warning: Reference `' on page 10 undefined on input line 111.
 
 LaTeX Warning: Reference `' on page 10 undefined on input line 111.
 
-[10.10 <./figures/case.pdf>]
 LaTeX Font Info:    Font shape `T1/zi4/bx/n' in size <10.95> not available
 (Font)              Font shape `T1/zi4/b/n' tried instead on input line 121.
 LaTeX Font Info:    Font shape `T1/zi4/b/n' will be
@@ -2081,20 +2100,19 @@ Package microtype Info: Character `textemdash ' is missing
 (microtype)             in font `T1/zi4/b/n/10.95'.
 (microtype)             Ignoring protrusion settings for this character.
 
+LaTeX Warning: Reference `' on page 10 undefined on input line 127.
 
-LaTeX Warning: Reference `' on page 11 undefined on input line 127.
-
-
+[10.10]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [11.11 <./figures/streamengine.pdf> <./figures/LakeBrain.pdf>]
+ [11.11 <./figures/case.pdf> <./figures/streamengine.pdf>]
 
 LaTeX Warning: Reference `' on page 12 undefined on input line 141.
 
 
 LaTeX Warning: Reference `' on page 12 undefined on input line 149.
 
-<figures/Querytime.pdf, id=478, 2168.28159pt x 639.68129pt>
+<figures/Querytime.pdf, id=506, 2168.28159pt x 639.68129pt>
 File: figures/Querytime.pdf Graphic file (type pdf)
 
 <use figures/Querytime.pdf>
@@ -2110,10 +2128,8 @@ Underfull \hbox (badness 5302) in paragraph at lines 8--9
 n-dus-try. Un-like
  []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [12.12 <./figures/Querytime.pdf>]) (./sections/09-conclusion.tex) (./main.bbl
+[12.12 <./figures/LakeBrain.pdf> <./figures/Querytime.pdf>])
+(./sections/09-conclusion.tex) (./main.bbl
 
 Package natbib Warning: Empty `thebibliography' environment on input line 40.
 
@@ -2128,7 +2144,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 102.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 102.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 102.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 98F8C5853678091110B3EE0671EA1C96;3788.
+(rerunfilecheck)             Checksum: 0DB18738E9194295CEEFEE9A49C47E46;3720.
 
 
 LaTeX Font Warning: Size substitutions with differences
@@ -2146,13 +2162,13 @@ LaTeX Warning: There were undefined references.
 ### simple group (level 1) entered at line 1061 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 42147 strings out of 492995
- 772424 string characters out of 6132704
- 926720 words of memory out of 5000000
- 44451 multiletter control sequences out of 15000+600000
+ 42161 strings out of 492995
+ 772683 string characters out of 6132704
+ 930832 words of memory out of 5000000
+ 44461 multiletter control sequences out of 15000+600000
  140039 words of font info for 232 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
- 60i,11n,94p,10381b,13603s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,12n,94p,10381b,13603s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/libertine/l
 btn_oexx6f.enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/libertine/lb
 tn_25tcsq.enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/inconsolata/i
@@ -2172,10 +2188,10 @@ ibertine/LinLibertineTI.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/pub
 lic/txfonts/rtxmi.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/ne
 wtx/txsys.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/newtx/zxlr
 i.pfb>
-Output written on main.pdf (13 pages, 1162760 bytes).
+Output written on main.pdf (13 pages, 1222757 bytes).
 PDF statistics:
- 579 PDF objects out of 1000 (max. 8388607)
- 421 compressed objects within 5 object streams
- 80 named destinations out of 1000 (max. 500000)
- 35092 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 619 PDF objects out of 1000 (max. 8388607)
+ 441 compressed objects within 5 object streams
+ 82 named destinations out of 1000 (max. 500000)
+ 35102 words of extra memory for PDF output out of 35830 (max. 10000000)
 
