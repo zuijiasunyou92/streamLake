@@ -73,31 +73,33 @@ $\bullet$~\textit{The \texttt{archive} configuration} automates the archiving of
 Overall, the \sys stream storage provides guaranteed delivery, efficient transfer, and high elasticity for enterprise use.
 
 \noindent\textbf{Delivery Guarantee:} Our system ensures consistent message delivery through several measures. (1) Data within a stream object is strictly ordered, ensuring that messages are consumed in the order in which they are received. (2) Message writing is idempotent, which means that for network failure, duplicate messages sent by the producer  can be identified.
- (3) Strong data consistency is achieved by eliminating unreliable components like file systems and page caches, and storing data in  stream objects that can tolerant node, network, and disk failures. (4) The system provides exactly-once\footnote{@} semantics through the use of a transaction manager and the two-phase commit protocol. This tracks participant actions and ensures that all results in a transaction are visible or invisible at the same time.
+ (3) Strong data consistency is achieved by eliminating unreliable components like file systems and page caches, and storing data in  stream objects that can tolerant node, network, and disk failures. (4) The system provides \cc{exactly-once} semantics through the use of a transaction manager and the two-phase commit protocol. This tracks participant actions and ensures that all results in a transaction are visible or invisible at the same time.
  
  %There are two typical scenarios. The first is that a producer writes a batch of messages to multiple streams. All messages are either successfully written or failed. The second scenario is that the application reads the message, processes the message, and writes the message to a new stream and the whole process are either successful or failed.
 
-\noindent\textbf{Efficient Transfer:} Our system implements several mechanisms to efficiently transfer data. First, Stream workers and stream objects are connected through a data bus\footnote{*reviewer suggest to extend} with RDMA, which reduces the switch overhead in the TCP/IP protocol stack. Second, an I/O aggregation mechanism is used to aggregate small I/O requests and increase throughput. This function can be disabled for latency-sensitive\footnote{low latency?} scenarios. Finally, a local cache is implemented at the stream object client to speed up message consumption.
+\noindent\textbf{Efficient Transfer:} Our system implements several mechanisms to efficiently transfer data. First, Stream workers and stream objects are connected through a data bus with RDMA, which reduces the switch overhead in the TCP/IP protocol stack. Second, an I/O aggregation mechanism is used to aggregate small I/O requests and increase throughput. This function can be disabled for latency-sensitive\cc{low latency?} scenarios. Finally, a local cache is implemented at the stream object client to speed up message consumption.
 
-\noindent\textbf{High Elasticity:} Our system provides high elasticity by decoupling data storage and data serving. The number of stream workers can be adjusted without data migration, and the mapping between stream workers and stream objects can be updated to reflect the changes in a matter of seconds. This allows the message streaming service to easily scale up or down to accommodate changes in service demand.
+\noindent\textbf{High Scalability:} Our system provides high \cc{elasticity} by decoupling data storage and data serving. The number of stream workers can be adjusted without data migration, and the mapping between stream workers and stream objects can be updated to reflect the changes in a matter of seconds. This allows the message streaming service to easily scale up or down to accommodate changes in service demand.
 
 
 
 \subsection{Lakehouse Read and Write}~\label{subsec:lakehouse}
 
  \sys also provides support for concurrent tabular data reads and writes, similar to  the architecture of lakehouse~\cite{}.
-  This section  describes the storage conversion from stream messages to tabular records\footnote{why discuss the conversion here}, as well as the implementation of key lakehouse operations.
+  This section  describes the storage conversion from stream messages to tabular records, as well as the implementation of key lakehouse operations.
 
-\cc{What is the advantage of this conversion?}
+\cc{Why mention here?}
 
-\noindent \textbf{Stream-to-table conversion.} This process is performed by a background service and results in the conversion of records in stream objects to table objects, allowing for efficient downstream processing, which is triggered by the \texttt{convert\_2\_table} configuration in Figure~\ref{fig:config}, which include the table schema and bounds for data freshness~\footnote{bounds?} in the downstream processing.  The table schema must be specified at the topic declaration, as it determines the expectations for field types and values across all messages.  To effectively leverage the storage, users~\footnote{*why not automatic?} can choose to just retain messages in crucial topics as stream objects  to support real time applications while converting most \cc{stream} data to table objects.  The reverse conversion, from table records to stream messages, is also supported for data playback. As shown in Figure~\ref{} and Table~\ref{}, this design provides a good trade-off  between the system cost and latency, which also  helps to decouple the data processing from the business logics.
+\noindent \textbf{Stream-to-table conversion.} This process is performed by a background service and results in the conversion of records in stream objects to table objects, allowing for efficient downstream processing, which is triggered by the \texttt{convert\_2\_table} configuration in Figure~\ref{fig:config}, which include the table schema and \cc{bounds} for data freshness in the downstream processing.  The table schema must be specified at the topic declaration, as it determines the expectations for field types and values across all messages.  To effectively leverage the storage, users \cc{*why not automatic?} can choose to just retain messages in crucial topics as stream objects  to support real time applications while converting \cc{most stream data} to table objects.  The reverse conversion, from table records to stream messages, is also supported for data playback. As shown in Figure~\ref{exp:fig:case} and Table~\ref{tab:case}, this design provides a good trade-off  between the system cost and latency, which also  helps to decouple the data processing from the business logics.
 
 \cc{What is the connection between the two paragraphs?}
 
+\cc{Currently, do we emphasize sth important w.r.t. the table object?}
 
-Our \sys services implement lakehouse read/write operations using a table object and high-performance caches and computation pushdowns, which eliminate unnecessary data transmission and accelerate concurrent data reads and writes.\footnote{who optimize who?} In the rest of this subsection, we will introduce the implementation of key read/write operations in details.
 
-\noindent \textbf{\texttt{CREATE TABLE:}} This operation begins by registering the table information, such as the schema, path, database, and table name, in the catalog. The \texttt{/data} and \texttt{/metadata} directories are then created under the table path. Then table configurations (schema, partition spec\footnote{?}, target file size, etc) are written to the metadata directory for persistence.
+Our \sys services implement lakehouse read/write operations using a table object and high-performance caches and computation pushdowns, which eliminate unnecessary data transmission and accelerate concurrent data reads and writes.\cc{not clear enough} In the rest of this subsection, we will introduce the implementation of key read/write operations in details.
+
+\noindent \textbf{\texttt{CREATE TABLE:}} This operation begins by registering the table information, such as the schema, path, database, and table name, in the catalog. The \texttt{/data} and \texttt{/metadata} directories are then created under the table path. Then table configurations (schema, \cc{partition spec}, target file size, etc.) are written to the metadata directory for persistence.
 
 
 
@@ -105,10 +107,13 @@ Our \sys services implement lakehouse read/write operations using a table object
 
 \noindent \underline{\textit{(a) Data persistence:}} Records are written directly to the persistent layer as parquet files in the corresponding partition path under the table root directory.
 
-\noindent \underline{\textit{(b) Metadata caching:}} Metadata updates are mostly small I/O operations. \footnote{*There seems a lack of summarization like why, bennefit and connection.}
+
+\cc{There seems should be an emphasize.}
+
+\noindent \underline{\textit{(b) Metadata caching:}} Metadata updates are mostly small I/O operations. 
 To avoid generating significant number of small files, we leverage a global write cache to aggregate the metadata updates, which is achieved through the following steps:
-(b-1) Each added parquet file generates a commit record containing file-level metadata and descriptions. All new commit records\footnote{a commit includes multiples records?} are written to the write cache as key-value pairs when a commit is made.
-(b-2) The latest snapshot will be read from the persistence layer to the cache and its commit data will be updated\footnote{is there an arrow from storage to b2?}.
+(b-1) Each added parquet file generates a commit record containing file-level metadata and descriptions. All new commit records are written to the write cache as key-value pairs when a commit is made.
+(b-2) The latest snapshot will be read from the persistence layer to the cache and its commit data will be updated \cc{is there an arrow from storage to b2?}.
 (b-3) The snapshot descriptions and version history in the catalog are also read from the persistence layer and  overwritten by adding the latest snapshot description. 
 
 \noindent \underline{\textit{(c) Metadata persistence:}} Metadata in the NVM write cache is asynchronously flushed to the persistent storage pool when the buffer is full. A metadata management process (\texttt{MetaFresher}) transforms the commits and snapshots from key-value pairs to files and writes them to the \texttt{table/metadata} directory.
@@ -127,7 +132,7 @@ To avoid generating significant number of small files, we leverage a global writ
 
 \noindent \textbf{\texttt{DELETE:}} The delete operation begins with a select operation to find files containing records that match the filtering conditions. There are two cases to consider:
 If the filtering conditions match all data in several partitions, only the metadata will be updated, and a new commit version will be generated by eliminating the information of deleted partitions.
-If the filtering conditions only match some files, these files will be read, and the data matching the filtering condition will be deleted. Computation pushdowns\footnote{next section, s?} are applied to process file reads and writes without\footnote{without?} data transmission to/from the compute engines.
+If the filtering conditions only match some files, these files will be read, and the data matching the filtering condition will be deleted. Computation pushdowns\footnote{next section, s?} are applied to process file reads and writes \cc{without} data transmission to/from the compute engines.
 
 
 \noindent \textbf{\texttt{UPDATE:}} Similar to the delete operation, update operation also uses a select statement to identify records that match the specified conditions. Optimizations, such as pushdowns\footnote{same}, are applied to reduce\footnote{reduce or without?} data movements during the file read and write processes.
@@ -139,14 +144,25 @@ If the filtering conditions only match some files, these files will be read, and
 \subsection{Query Operator Computation Push Down}~\label{subsec:pushdown}
 
 
-In this subsection, we introduce the computation pushdown to reduce the amount of data transfer between the  storage engine of \sys and the query engines \footnote{we can support many query engines? Will we mention it?}. It is built on top of an elastic, serverless engine\footnote{@} in the data service layer. Here, we choose serverless computing as our execution model due to it is lightweight  and flexible, which allow us to quickly start a large number of instances for computation tasks near the data sources, and free the resources as soon as the tasks are completed. The elasticity is important since CPU resources can be scarce during critical data management jobs.
+In this subsection, we introduce the computation pushdown to reduce the amount of data transfer between the  storage engine of \sys and the query engines \footnote{we can support many query engines? Will we mention it?}. It is built on top of an elastic, serverless engine\footnote{@} in the data service layer. Here, we choose serverless computing as our execution model because it is lightweight  and flexible, which allow us to quickly start a large number of instances for computation tasks near the data sources, and free the resources as soon as the tasks are completed. The elasticity is important since CPU resources can be scarce during critical data management jobs.
 
 The main components of the serverless function engine are shown in Figure 9, which include function dispatcher, worker instances, a worker manager, and a function repository. The function dispatcher schedules jobs and manages workflows, and worker instances execute the tasks. The worker manager oversees server resources and the life cycle of worker instances, and the function repository registers and stores function images. These modules work together to support elastic serverless computing.
 
 
 \cc{pushdown what?}
 
-To be specific, when a job request is received, the function dispatcher obtains the data location from the storage devices and selects the appropriate storage nodes based on data distribution and available resources. The worker manager is then requested to deploy worker instances to the selected node. The worker instances download the necessary functions from the repository and execute the jobs using data from the storage infrastructure. Upon completion, a callback message is sent to the caller to notify them of the results. To ensure service quality, elastic scaling policies are used to dynamically adjust the number of nodes based on workload. For example, a load balancing method\footnote{not specific} is used to balance scheduling among instances.
+
+\begin{figure}[htbp]
+	\includegraphics[scale=0.35]{figures/serverless}
+	\centering
+	\vspace{-1em}
+	\caption{Serverless Function Engine.}
+	\label{fig:serverless}
+	\vspace{-1em}
+\end{figure}
+
+To be specific, when a job request is received, the function dispatcher obtains the data location from the storage devices and selects the appropriate storage nodes based on data distribution and available resources. The worker manager is then requested to deploy worker instances to the selected node. The worker instances download the necessary functions from the repository and execute the jobs using data from the storage infrastructure. Upon completion, a callback message is sent to the caller to notify them of the results. To ensure service quality, elastic scaling policies are used to dynamically adjust the number of nodes based on workload. 
+For example, a load-balanced method\footnote{not specific} is used to balance scheduling among instances.
 
 
 To achieve maximum pushdown benefits, three categories of query operators are supported, 
@@ -162,7 +178,7 @@ To achieve maximum pushdown benefits, three categories of query operators are su
 \end{itemize}
 
 These operators are selected because the size of their output could be significantly smaller than the input, and thereby a large optimization opportunity can be achieved.
-These query operators are implemented as separate functions, which are registered and executed in the serverless engine service. The implementation allows for sharing and reuse of the same query operator function by different query engines, as long as its image\footnote{@} is registered in the serverless engine.
+These query operators are implemented as separate functions, which are registered and executed in the serverless engine service. The implementation allows for sharing and reuse of the same query operator function by different query engines, as long as its \cc{image} is registered in the serverless engine.
 
 \cc{need connection}
 
@@ -172,14 +188,6 @@ As soon as the query results are ready, the NDP Proxy transfers them back to the
 Overall,  this process leverages the flexibility and elasticity of serverless computing, which allows for efficient use and release of server resources as required, resulting in better overall performance and resource utilization.
 
 
-\begin{figure}[htbp]
-	\includegraphics[scale=0.35]{figures/serverless}
-	\centering
-	\vspace{-1em}
-	\caption{Serverless Function Engine.}
-	\label{fig:serverless}
-	\vspace{-1em}
-\end{figure}
 
 
 

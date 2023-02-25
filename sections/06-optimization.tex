@@ -5,16 +5,22 @@
 Optimizing  query processing over large-scale data is significant in data warehouse and big data systems, as discussed in~\cite{}. However, for the \sys system with
 complicated storage-disaggregated architecture with  multiple compute engines, it is challenging to optimize the end-to-end performance and resource usage. The reasons are two-fold. First, it is hard to capture the entire environment about the compute and storage cluster as well as the queries executed by other engines simultaneously. Second, even though all the environment data is available, it is still hard to optimize because of the large search space due to the large number of tunable and interdependent variables~\cite{}.
 
+\cc{Do we address the first challenge ???}
 
-To address the challenges, we present~\brain, a novel data lake storage optimizer that complements end-to-end data pipeline optimization. Unlike query engine optimizers that focus on join ordering and cardinality estimation~\cite{}, \brain aims to optimize data usage in storage~\footnote{seems coarse. what does it mean?} during query execution, which is key to improve both query performance and storage resource utilization in a storage-disaggregated design.
+
+To address the challenges, we present~\brain, a novel data lake storage optimizer that complements end-to-end data pipeline optimization. Unlike query engine optimizers that focus on join ordering and cardinality estimation~\cite{}, \brain aims to optimize data usage in storage~\cc{Then where is the performance?} during query execution, which is key to improve both query performance and storage resource utilization in a storage-disaggregated design.
 
 \cc{Do you really design to achieve e2e optimization? what is the intuition of e2e?}
 
-On the one hand, in a streaming application scenario, data ingestion and transactions often result in numerous small files, leading to low query performance on merge-on-read (MOR)\footnote{@} tables. LakeBrain  designs the automatic compaction (Section~\ref{subsec:compaction}) to combine these small files into fewer and larger ones, so as to  improve inter-cluster storage and network usage as well as query performance~\footnote{messy, query performance, storage resource, which one?}.
+On the one hand, in a streaming application scenario, data ingestion and transactions often result in numerous small files, leading to low query performance on merge-on-read (MOR)\footnote{@} tables. Typical methods always \cc{XXX}.
+ \brain  designs the automatic compaction (Section~\ref{subsec:compaction}) to combine these small files into fewer and larger ones, so as to  improve inter-cluster storage and network usage as well as query performance~\footnote{messy, query performance, storage resource, which one?}.
 
 \cc{Below is very hard to follow! what is talking about?where is the partition? what is the connection with the above?}
 
-LakeBrain's design is kept simple for ease of extension and support for different applications. It consists of three components: a statistics collector, the core optimization logic, and an executor. The statistics collector gathers system configurations, environment variables, and workload history, while the core optimization logic employs heuristic rules, probabilistic models, and machine learning algorithms to suggest the best strategy candidates. The executor then deploys the chosen strategy, with its effects being collected as feedback by the statistics collector for future optimization.
+On the other hand, with the data volume increasing, we  have to partition the data into different storage blocks such that the query efficiency can be much improved. In practice, users always select a single (or multiple) column as the partition key,  apply   a hash function to the values of the key, and then distribute the data to different blocks based on the partition values. This method is sub-optimal $w.r.t.$ the latency because it may lead to imbalanced data distribution. \brain  designs predicate-aware  method to partition the data in a fine-grained way such that given a query, the number of blocks to be assessed is minimized, and thus the efficiency is improved. (Section~\ref{subsec:partition})
+
+
+%LakeBrain's design is kept simple for ease of extension and support for different applications. It consists of three components: a statistics collector, the core optimization logic, and an executor. The statistics collector gathers system configurations, environment variables, and workload history, while the core optimization logic employs heuristic rules, probabilistic models, and machine learning algorithms to suggest the best strategy candidates. The executor then deploys the chosen strategy, with its effects being collected as feedback by the statistics collector for future optimization.
 
 Next, we will illustrate the above aspects in detail.
 
