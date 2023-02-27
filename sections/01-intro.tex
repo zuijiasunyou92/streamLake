@@ -22,12 +22,13 @@ Also, when processing data through data pipelines, in many cases, customers  hav
 \noindent \underline{\textit{Data retention.}} In practice, 43\% customers are required to store data between 1 and 5 years. 22\% store between 5 and 10 years and 27\% store at least 10 years, according to regulations and practices in different industries.
 
 
-To satisfy the above users' requirements, we aim to design a data lake storage system to support stream and batch data processing with high efficiency, persistence, scalability and low total cost of ownership (TCO). To this end, the system has several significant aspects  to be considered. (1) As users always face petabytes of log streaming data, it is challenging to store the data persistently at low cost, while keeping high scalability and processing efficiency. For example, as streaming data needs real-time processing,  typical system like Kafka uses local file system as the storage, which lacks of scalibility capacity because the computation and storage are tightly coupled. Also, in practice, given the same data, over which users may conduct stream or batch processing for different applications, thus storing two copies for different processes is costly.
+To satisfy the above users' requirements, we aim to design a data lake storage system to support stream and batch data processing with high efficiency, persistence, scalability and low total cost of ownership (TCO). To this end, the system has several significant aspects  to be considered. (1) As users always face petabytes of log streaming data, it is challenging to store the data persistently at low cost, while keeping high elasticity and processing efficiency. For example, as streaming data needs real-time processing,  typical system like Kafka uses local file system as the storage, which lacks of elasticity capacity because the computation and storage are tightly coupled. Also, in practice, given the same data, over which users may conduct stream or batch processing for different applications, thus storing two copies for different processes is costly.
  %流的存储很贵，因为要实时处理，所以计算存储强耦合，不能各自scale。扩的时候一起扩，会贵。 
  %分叉了不好办，改了一个影响另一个
 % If one considers to store as stream data, and convert it to batch when batch processing is necessary, it will be time-consuming to load the data to the compute engine and conduct the conversion.	
 % 数据有多个备份(multiple copy) 更新自己备份 别人不aware 导致数据不一致 delta lake video
-(2) In a data analysis pipeline, there are likely to be multiple copies when data goes through the pipeline. If these copies are updates individually, data  could be inconsistent.   
+(2) In a data analysis pipeline, there are likely to be multiple copies when data goes through the pipeline.
+If these copies are updated individually, data  could be inconsistent.   
  Hence, it is significant to support atomic writes to achieve high quality data.
 (3) In data lake storage,  it is challenging to perform  optimization like in a database because the computing engine is always decoupled with the storage. Hence, it is critical to consider how to incorporate an optimizer in the storage engine, so as to optimize system performance.
 
@@ -43,19 +44,18 @@ First, in terms of the streaming storage, we implement the compute-and-storage d
  we introduce the \textit{stream object}  to read/write the streaming messages, based on which our streaming service becomes elastic, $i.e.,$ the number of instances for processing the messages can be efficiently adjusted without data migration. The object has buffers to support real-time stream processing, and load-balanced storage and redundant persistence are also achieved. 
 Besides, to better reduce the storage cost,  \sys is built on the tiering storage Huawei OceanStor, which can automatically migrate data between SSD and HDD.
 To better achieve cost-effective stream and batch processing, the \textit{stream object}  can be automatically converted  to  \textit{table object}, and vice versa. In this way, data can be maintained for just one copy rather than storing for two copies separately, and thus the storage cost is reduced. 
-Existing systems like the widely-used Kafka~\cite{} uses the local file system to persist data, which is less elastic than the disaggregated storage.  Pravega~\cite{} and Pulsar~\cite{} adopt the 
-disaggregated architecture, but unlike we can automatically mange cold data based on our built-in tiering storage (or conduct table-stream conversion to save the cost), they have to migrate the data to other cost-friendly storage systems like  HDFS~\cite{} or S3~\cite{}.
+Existing systems like the widely-used Kafka~\cite{} uses the local file system to persist data, which is less elastic than the disaggregated storage.  Pravega~\cite{} and Pulsar~\cite{} adopt the disaggregated architecture, but unlike we can automatically mange cold data based on our built-in tiering storage (or conduct table-stream conversion to save the cost), they have to migrate the data to other cost-friendly storage systems like  HDFS~\cite{} or S3~\cite{}.
 %自动分级 自动分成冷存储，转成表格式
 
 
 
 
 Second, in terms of supporting updates, Lakehouse system~\cite{} can address this by achieving concurrent read and write in an ACID manner. We also implement the lakehouse functionality in \sys to support ACID via the table object.
-Particularly, we design a global Non-Volatile Memory (NVM) cache that combines small I/O accesses $w.r.t.$ the metadata, so as to improve the efficiency of visiting the remote disaggregated storage.
+Particularly, we design a global Non-Volatile Memory (NVM) cache that combines small I/O accesses $w.r.t.$ the metadata, so as to improve the efficiency of  compute engines visiting the remote disaggregated storage.
 %元数据是大量小文件读写 
 
 Third,  we build an intelligent data lake optimizer \brain at the storage-side that focuses on optimizing the data layout in the storage, so as to improve the resource utilization as well as  query performance. Many recent works~\cite{}  have focused on using machine learning techniques to  optimize database systems, including the knob tuner, query optimizer etc. For the data lake system with the disaggregated storage, we think that it is a promising direction to design an optimizer and we conduct the following two attempts.
- We design a reinforcement learning based automatic compaction module  to decide whether to compact small files considering the system state at a certain system status, so as to \cc{improve the block utilization while keeping the system running smoothly.} We also build a predicate-aware partitioning model that is utilized to judiciously distribute data to storage blocks to reduce the number of blocks to be visited, so as to improve the query efficiency.  
+ We design a reinforcement learning based automatic compaction module  to decide whether to compact small files considering the system state at a certain system status, so as to \cc{improve the block utilization while keeping the system running smoothly.} We also build a predicate-aware partitioning model that is utilized to judiciously distribute data to \cc{storage blocks} to reduce the number of blocks to be visited, so as to improve the query efficiency.  
 
 Overall, our \sys has the following characteristics.
 
@@ -66,11 +66,11 @@ Overall, our \sys has the following characteristics.
 \noindent \underline{\textit{High reliability.}} \sys is built on top of the Huawei OceanStor Pacific~\cite{}, which has built-in data reliability and security to provide full protection to the data.
 
 \noindent \underline{\textit{Low TCO.}} Overall, \sys can save the users' cost a lot leveraging  our novel designs as well as the ability of our Huawei OceanStor storage. The cost mostly includes the cost of  storage and computing servers. 
-On the one hand, we use erasure coding as the data redundancy strategy, which stores less copies of data than other systems like HDFS, and we also use built-in tiering storage and  compression techniques to save the storage cost. Besides, for semantics of stream and batch data, we can just store one copy to further save the cost.
+On the one hand, we use erasure coding as the data redundancy strategy, which stores less copies of data than other systems like HDFS (improving the disk utilization rate from 33\% to 91\%), and we also use built-in tiering storage and  compression techniques to save the storage cost. Besides, we can just store one copy to serve both  stream and batch data processing, which  further saves the cost.
 On the other hand,  The \brain optimizer and  pushdown also  save the compute resource by improving the query efficiency. Moreover, the disaggragated architecture makes the users require their compute or storage resources as needed. 
 
 
- The disaggragated architecture makes the users require their compute or storage resources as needed. The \brain optimizer and  pushdown also  save the compute resource by improving the query efficiency.
+% The disaggragated architecture makes the users require their compute or storage resources as needed. The \brain optimizer and  pushdown also  save the compute resource by improving the query efficiency.
  
 % TCO 计算 + 存储
 
