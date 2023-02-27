@@ -4,7 +4,7 @@
 
 In this Section, we present the data processing services  in the data layer. Driven by practical application scenarios discussed in Section~\ref{sec:intro}, these services provide a comprehensive, enterprise-level data lake storage solution  to efficiently store and process  log messages at scale. The StreamLake services encompass a stream storage system for message streaming (Section~\ref{subsec:stream}), lakehouse-format read/write capabilities for efficient tabular data processing (Section~\ref{subsec:lakehouse}),  and support for query operator computation pushdown (Section~\ref{subsec:pushdown}).
 
-\cc{where can we say sth about co-processing?}
+%\cc{where can we say sth about co-processing?}
 
 \subsection{Message Streaming}~\label{subsec:stream}
 We develop a  distributed stream storage engine that facilitates message streaming at large scale. Our engine leverages the stream object storage abstraction to ensure enterprise-level scalability via the disaggregated storage architecture.
@@ -62,24 +62,26 @@ $\bullet$~\textit{The \texttt{stream\_num} configuration} sets the parallelism o
 
 $\bullet$~\textit{The \texttt{quota} configuration} sets the maximum processing rate for each stream. In the example, each stream can process up to $10^6$ messages per second.
 
-$\bullet$~\textit{The \texttt{scm\_cache} configuration} enables the use of \cc{SCM} caches.
+$\bullet$~\textit{The \texttt{scm\_cache} configuration} enables the use of storage class memory (SCM) caches.
 
-$\bullet$~\textit{The \texttt{convert\_2\_table} configuration} enables the automatic conversion of stream object messages to table object records, and it can also be converted back. When it is set, a background process will apply the \texttt{table\_schema} to convert messages to table object records periodically and save them in \texttt{table\_path}, \ie the table object directory. The conversion is triggered by either an accumulation of $10^7$ messages or the passing of 36000 seconds. \cc{This helps to reduce the storage cost because we can just store one copy to achieve both stream and batch processing. Also, XXX}
+$\bullet$~\textit{The \texttt{convert\_2\_table} configuration} enables the automatic conversion of stream object messages to table object records, and it can also be converted back. When it is set, a background process will apply the \texttt{table\_schema} to convert messages to table object records periodically and save them in \texttt{table\_path}, \ie the table object directory. The conversion is triggered by either an accumulation of $10^7$ messages or the passing of 36000 seconds.  The advantage of this configuration will be illustrated in Section~\ref{subsec:lakehouse}.
 
-% If one considers to store as stream data, and convert it to batch when batch processing is necessary, it will be time-consuming to load the data to the compute engine and conduct the conversion.
 
-$\bullet$~\textit{The \texttt{archive} configuration} automates the archiving of historical data to meet business and regulatory requirements. Data can be stored in the cost-effective \sys archive storage pool or exported to an external storage system specified in the \textit{\texttt{external\_archive\_url} configuration}. The \textit{\texttt{archive\_size} configuration} denotes the data volume in MB that triggers archiving, and the \textit{\texttt{row\_2\_col} configuration} determines whether the data is archived in a columnar format.
+
+
+
+$\bullet$~\textit{The \texttt{archive} configuration} automates the archiving of historical data to meet business and regulatory requirements. Data can be stored in the cost-effective \sys archive storage pool or automatically exported to an external storage system specified in the \textit{\texttt{external\_archive\_url} configuration}. The \textit{\texttt{archive\_size} configuration} denotes the data volume in MB that triggers archiving, and the \textit{\texttt{row\_2\_col} configuration} determines whether the data is archived in a columnar format. 
 
 Overall, the \sys stream storage provides guaranteed delivery, efficient transfer, and high elasticity for enterprise use.
 
 \noindent\textbf{Delivery Guarantee:} Our system ensures consistent message delivery through several measures. (1) Data within a stream object is strictly ordered, ensuring that messages are consumed in the order in which they are received. (2) Message writing is idempotent, which means that for network failure, duplicate messages sent by the producer  can be identified.
- (3) Strong data consistency is achieved by eliminating unreliable components like file systems and page caches, and storing data in  stream objects that can tolerant node, network, and disk failures. (4) The system provides \cc{exactly-once} semantics through the use of a transaction manager and the two-phase commit protocol. This tracks participant actions and ensures that all results in a transaction are visible or invisible at the same time.
+ (3) Strong data consistency is achieved by eliminating unreliable components like file systems and page caches, and storing data in  stream objects that can tolerant node, network, and disk failures. (4) The system provides exactly-once semantics through the use of a transaction manager and the two-phase commit protocol. This tracks participant actions and ensures that all results in a transaction are visible or invisible at the same time.
  
  %There are two typical scenarios. The first is that a producer writes a batch of messages to multiple streams. All messages are either successfully written or failed. The second scenario is that the application reads the message, processes the message, and writes the message to a new stream and the whole process are either successful or failed.
 
-\noindent\textbf{Efficient Transfer:} Our system implements several mechanisms to efficiently transfer data. First, Stream workers and stream objects are connected through a data bus with RDMA, which reduces the switch overhead in the TCP/IP protocol stack. Second, an I/O aggregation mechanism is used to aggregate small I/O requests and increase throughput. This function can be disabled for latency-sensitive\cc{low latency?} scenarios. Finally, a local cache is implemented at the stream object client to speed up message consumption.
+\noindent\textbf{Efficient Transfer:} Our system implements several mechanisms to efficiently transfer data. First, Stream workers and stream objects are connected through a data bus with RDMA, which reduces the switch overhead in the TCP/IP protocol stack. Second, an I/O aggregation mechanism is used to aggregate small I/O requests and increase throughput. This function can be disabled for latency-sensitive scenarios. Finally, a local cache is implemented at the stream object client to speed up message consumption.
 
-\noindent\textbf{High Scalability:} Our system provides high \cc{elasticity} by decoupling data storage and data serving. The number of stream workers can be adjusted without data migration, and the mapping between stream workers and stream objects can be updated to reflect the changes in a matter of seconds. This allows the message streaming service to easily scale up or down to accommodate changes in service demand.
+\noindent\textbf{High Scalability:} Our system provides high elasticity by decoupling data storage and data serving to achieve high scalability. The number of stream workers can be adjusted without data migration, and the mapping between stream workers and stream objects can be updated to reflect the changes in a matter of seconds. This allows the message streaming service to easily scale up or down to accommodate changes in service demand.
 
 
 
@@ -87,19 +89,24 @@ Overall, the \sys stream storage provides guaranteed delivery, efficient transfe
 
  \sys also provides support for concurrent tabular data reads and writes, similar to  the architecture of lakehouse~\cite{}.
   This section  describes the storage conversion from stream messages to tabular records, as well as the implementation of key lakehouse operations.
+ 
+ %insert table
 
-\cc{Why mention here?}
-
-\noindent \textbf{Stream-to-table conversion.} This process is performed by a background service and results in the conversion of records in stream objects to table objects, allowing for efficient downstream processing, which is triggered by the \texttt{convert\_2\_table} configuration in Figure~\ref{fig:config}, which include the table schema and \cc{bounds} for data freshness in the downstream processing.  The table schema must be specified at the topic declaration, as it determines the expectations for field types and values across all messages.  To effectively leverage the storage, users \cc{*why not automatic?} can choose to just retain messages in crucial topics as stream objects  to support real time applications while converting \cc{most stream data} to table objects.  The reverse conversion, from table records to stream messages, is also supported for data playback. As shown in Figure~\ref{exp:fig:case} and Table~\ref{tab:case}, this design provides a good trade-off  between the system cost and latency, which also  helps to decouple the data processing from the business logics.
+\noindent \textbf{Stream-to-table conversion.} This process is performed by a background service and results in the conversion of records in stream objects to table objects, allowing for efficient downstream processing, which is triggered by the \texttt{convert\_2\_table} configuration in Figure~\ref{fig:config}, which include the table schema and time for data freshness in the downstream processing.  The table schema must be specified at the topic declaration, as it determines the expectations for field types and values across all messages. 
+ To effectively leverage the storage, users  can choose to just retain messages in crucial topics as stream objects  to support real time applications while converting most stream data to table objects.  The reverse conversion, from table records to stream messages, is also supported for data playback. 
+ %As shown in Figure~\ref{exp:fig:case} and Table~\ref{tab:case}, this design provides a good trade-off  between the system cost and latency, which also  helps to decouple the data processing from the business logics.
+ 
+ 
+ \cc{This helps to reduce the storage cost because we can just store one copy to achieve both stream and batch processing. Also, this design can reduce unnecessary data movement between the storage and compute clusters for data conversion.}
 
 \cc{What is the connection between the two paragraphs?}
 
-\cc{Currently, do we emphasize sth important w.r.t. the table object?}
+\cc{Do we emphasize sth important w.r.t. the table object?}
 
 
-Our \sys services implement lakehouse read/write operations using a table object and high-performance caches and computation pushdowns, which eliminate unnecessary data transmission and accelerate concurrent data reads and writes.\cc{not clear enough} In the rest of this subsection, we will introduce the implementation of key read/write operations in details.
+For tabular data processing, our \sys services implement lakehouse read/write operations using a table object and high-performance caches to accelerate concurrent data reads and writes. In the rest of this subsection, we will introduce the implementation of key read/write operations in details.
 
-\noindent \textbf{\texttt{CREATE TABLE:}} This operation begins by registering the table information, such as the schema, path, database, and table name, in the catalog. The \texttt{/data} and \texttt{/metadata} directories are then created under the table path. Then table configurations (schema, \cc{partition spec}, target file size, etc.) are written to the metadata directory for persistence.
+\noindent \textbf{\texttt{CREATE TABLE:}} This operation begins by registering the table information, such as the schema, path, database, and table name, in the catalog. The \texttt{/data} and \texttt{/metadata} directories are then created under the table path. Then table configurations (schema, partition specification, target file size, etc.) are written to the metadata directory for persistence.
 
 
 
@@ -113,7 +120,7 @@ Our \sys services implement lakehouse read/write operations using a table object
 \noindent \underline{\textit{(b) Metadata caching:}} Metadata updates are mostly small I/O operations. 
 To avoid generating significant number of small files, we leverage a global write cache to aggregate the metadata updates, which is achieved through the following steps:
 (b-1) Each added parquet file generates a commit record containing file-level metadata and descriptions. All new commit records are written to the write cache as key-value pairs when a commit is made.
-(b-2) The latest snapshot will be read from the persistence layer to the cache and its commit data will be updated \cc{is there an arrow from storage to b2?}.
+(b-2) The latest snapshot will be read from the persistence layer to the cache and its commit data will be updated.
 (b-3) The snapshot descriptions and version history in the catalog are also read from the persistence layer and  overwritten by adding the latest snapshot description. 
 
 \noindent \underline{\textit{(c) Metadata persistence:}} Metadata in the NVM write cache is asynchronously flushed to the persistent storage pool when the buffer is full. A metadata management process (\texttt{MetaFresher}) transforms the commits and snapshots from key-value pairs to files and writes them to the \texttt{table/metadata} directory.
@@ -132,24 +139,25 @@ To avoid generating significant number of small files, we leverage a global writ
 
 \noindent \textbf{\texttt{DELETE:}} The delete operation begins with a select operation to find files containing records that match the filtering conditions. There are two cases to consider:
 If the filtering conditions match all data in several partitions, only the metadata will be updated, and a new commit version will be generated by eliminating the information of deleted partitions.
-If the filtering conditions only match some files, these files will be read, and the data matching the filtering condition will be deleted. Computation pushdowns\footnote{next section, s?} are applied to process file reads and writes \cc{without} data transmission to/from the compute engines.
+If the filtering conditions only match some files, these files will be read, and the data matching the filtering condition will be deleted. Computation pushdowns are applied to process file reads and writes to reduce data transmission to/from the compute engines.
 
 
-\noindent \textbf{\texttt{UPDATE:}} Similar to the delete operation, update operation also uses a select statement to identify records that match the specified conditions. Optimizations, such as pushdowns\footnote{same}, are applied to reduce\footnote{reduce or without?} data movements during the file read and write processes.
+\noindent \textbf{\texttt{UPDATE:}} Similar to the delete operation, update operation also uses a select statement to identify records that match the specified conditions. Optimizations, such as pushdowns, are applied to reduce data movements during the file read and write processes.
 
 \noindent \textbf{\texttt{Drop Table:}} There are two types of drop table operations:
- (1) Drop table soft unregisters the table from the catalog but retains the table's metadata and data in the persistent layer for potential future restoration. To restore a soft-deleted table, a new table can be created and linked to the original table path, effectively registering the deleted table back to the catalog.\footnote{@}
+ (1) Drop table soft unregisters the table from the catalog but retains the table's metadata and data in the persistent layer for potential future restoration. To restore a soft-deleted table, a new table can be created and linked to the original table path, effectively registering the deleted table back to the catalog.
 (2) Drop table hard  removes both the metadata (files under \texttt{/metadata}) and data (files under \texttt{/data}) of the table and clears the table from the catalog. Note that some of the metadata may have been written to the acceleration cache during the drop table hard operation and will be flushed to the persistent layer asynchronously in the background. The operation to delete the metadata will first clear it from the cache, and then delete it from the disk.
 
 \subsection{Query Operator Computation Push Down}~\label{subsec:pushdown}
 
+ %Finally, we build and open sourced plugins [14, 28] for popular big data engines such as Hive, Spark, and Presto [13, 32] to invoke query operator  pushdown. Users can easily install these plugins and speed up critical query processing
 
-In this subsection, we introduce the computation pushdown to reduce the amount of data transfer between the  storage engine of \sys and the query engines \footnote{we can support many query engines? Will we mention it?}. It is built on top of an elastic, serverless engine\footnote{@} in the data service layer. Here, we choose serverless computing as our execution model because it is lightweight  and flexible, which allow us to quickly start a large number of instances for computation tasks near the data sources, and free the resources as soon as the tasks are completed. The elasticity is important since CPU resources can be scarce during critical data management jobs.
+\cc{S3 select}
+
+In this subsection, we introduce the computation pushdown to reduce the amount of data transfer between the  storage engine of \sys and the query engines. It is built on top of an elastic, serverless engine in the data service layer. Here, we choose serverless computing as our execution model because it is lightweight  and flexible, which allow us to quickly start a large number of instances for computation tasks near the data sources, and free the resources as soon as the tasks are completed. The elasticity is important since CPU resources can be scarce during critical data management jobs.
 
 The main components of the serverless function engine are shown in Figure 9, which include function dispatcher, worker instances, a worker manager, and a function repository. The function dispatcher schedules jobs and manages workflows, and worker instances execute the tasks. The worker manager oversees server resources and the life cycle of worker instances, and the function repository registers and stores function images. These modules work together to support elastic serverless computing.
 
-
-\cc{pushdown what?}
 
 
 \begin{figure}[htbp]
@@ -178,11 +186,11 @@ To achieve maximum pushdown benefits, three categories of query operators are su
 \end{itemize}
 
 These operators are selected because the size of their output could be significantly smaller than the input, and thereby a large optimization opportunity can be achieved.
-These query operators are implemented as separate functions, which are registered and executed in the serverless engine service. The implementation allows for sharing and reuse of the same query operator function by different query engines, as long as its \cc{image} is registered in the serverless engine.
+These query operators are implemented as separate functions, which are registered and executed in the serverless engine service. The implementation allows for sharing and reuse of the same query operator function by different query engines, as long as its image is registered in the serverless engine.
 
-\cc{need connection}
+\cc{need connection, reviewer comments}
 
-To facilitate the pushdown of query operators from the compute layer to the storage cluster in \sys, we have introduced the NDP Proxy\footnote{why need ndp, the full name?}. 
+To facilitate the pushdown of query operators from the compute layer to the storage cluster in \sys, we have introduced the near data processing (NDP) Proxy. 
  During query planning, the optimizer of  query  identifies operators that can be pushed down and sends the information to the NDP Proxy.  Then the NDP Proxy inserts these requests into a queue for traffic control and then sends them to the serverless engine for execution as shown in Figure 9.
 As soon as the query results are ready, the NDP Proxy transfers them back to the compute engine using the high-speed data exchange bus of \sys, so as to ensure efficient data transfer.
 Overall,  this process leverages the flexibility and elasticity of serverless computing, which allows for efficient use and release of server resources as required, resulting in better overall performance and resource utilization.

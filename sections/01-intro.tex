@@ -6,7 +6,7 @@
 
 As the Internet of Things (IoT) and 5G communication technologies become increasingly prevalent, massive amounts of data are being collected, stored, and analyzed.
  The traditional architecture of data infrastructure  has been challenged by cloud-native designs, where compute and storage resources are pooled to serve massive structured and unstructured data in an elastic and cost-efficient manner.
-  Analytical systems such as data warehouses and big data platforms have also evolved from siloed~\footnote{a term?} constructions to disaggregated storage and compute architectures. For example, data lake storage ($e.g.,$ AWS S3~\cite{}, Huawei OceanStor Pacific~\cite{}), with its 10$\times$ better price, availability, and persistence compared to traditional storage formats, has been very popular for storing massive various data, so as to support large-scale data analysis.
+  Analytical systems such as data warehouses and big data platforms have also evolved from siloed constructions to disaggregated storage and compute architectures. For example, data lake storage ($e.g.,$ AWS S3~\cite{}, Huawei OceanStor Pacific~\cite{}), with its 10$\times$ better price, availability, and persistence compared to traditional storage formats, has been very popular for storing massive various data, so as to support large-scale data analysis.
 
 
 However, as large enterprises further digitalize their business, the data to be stored and analyzed explode. Over the past several years, we have collaborated closely with over 200 enterprise customers from 16 different industries to better understand their big data processing requirements. Our analysis of key statistics has revealed the following insights:
@@ -22,67 +22,79 @@ Also, when processing data through data pipelines, in many cases, customers  hav
 \noindent \underline{\textit{Data retention.}} In practice, 43\% customers are required to store data between 1 and 5 years. 22\% store between 5 and 10 years and 27\% store at least 10 years, according to regulations and practices in different industries.
 
 
-To satisfy the above users' requirements, we aim to design a data lake storage system to support stream and batch data co-processing with high efficiency, persistence, scalability and low Total Cost Ownership (TCO). To this end, the system has several significant aspects  to be considered. (1) As users always face petabytes of log streaming data, it is challenging to store the data persistently at low cost, while keeping high scalability and processing efficiency. For example, as streaming data needs real-time processing,  typical system like Kafka uses local file system as the storage, which lacks of scalibility capacity because the computation and storage are tightly coupled. Also, in practice, given the same data, over which users may conduct stream or batch processing for different applications, thus storing two copies for different processes is costly.
+To satisfy the above users' requirements, we aim to design a data lake storage system to support stream and batch data processing with high efficiency, persistence, scalability and low total cost of ownership (TCO). To this end, the system has several significant aspects  to be considered. (1) As users always face petabytes of log streaming data, it is challenging to store the data persistently at low cost, while keeping high scalability and processing efficiency. For example, as streaming data needs real-time processing,  typical system like Kafka uses local file system as the storage, which lacks of scalibility capacity because the computation and storage are tightly coupled. Also, in practice, given the same data, over which users may conduct stream or batch processing for different applications, thus storing two copies for different processes is costly.
  %流的存储很贵，因为要实时处理，所以计算存储强耦合，不能各自scale。扩的时候一起扩，会贵。 
  %分叉了不好办，改了一个影响另一个
 % If one considers to store as stream data, and convert it to batch when batch processing is necessary, it will be time-consuming to load the data to the compute engine and conduct the conversion.	
 % 数据有多个备份(multiple copy) 更新自己备份 别人不aware 导致数据不一致 delta lake video
-(2) In a data analysis pipeline, there are likely to be multiple copies when data goes through the pipeline. If these copies are updates individually, data  will be corrupted because   they are not aware of the updates.   
+(2) In a data analysis pipeline, there are likely to be multiple copies when data goes through the pipeline. If these copies are updates individually, data  could be inconsistent.   
  Hence, it is significant to support atomic writes to achieve high quality data.
-\cc{It seems hard to add the efficiency of metadata read challenge here.}
-%元数据读取时间长
-(3) In data lake storage,  it is challenging to perform an end-to-end optimization like in a database because the computing engine is always decoupled with the storage. Hence, it is critical to consider how to incorporate an optimizer in the storage engine, so as to optimize system performance.
+(3) In data lake storage,  it is challenging to perform  optimization like in a database because the computing engine is always decoupled with the storage. Hence, it is critical to consider how to incorporate an optimizer in the storage engine, so as to optimize system performance.
+
+%(3) Unlike the database system in which the optimizer has full assess to the storage layer, and thus it can make optimal suggestion to improve execution in the storage layer. But in the  data lake storage, the computing engine is always decoupled with the storage, it has no direct access to the statistics in the storage, and thus we should incorporate an optimizer for this situation.
 
 
 
-To address these issues, we deploy our \sys storage system with its novel design to serve enterprise-level  stream and batch data co-processing.
+To address these issues, we deploy our \sys storage system with its novel design to serve enterprise-level  stream and batch data processing.
 
 
-First, in terms of the streaming storage, we implement the compute-and-storage \cc{disaggregated} architecture to achieve high scalability. To be specific, 
+First, in terms of the streaming storage, we implement the compute-and-storage disaggregated architecture to achieve high scalability and reliability. To be specific, 
 %存储层 分发层的分离，stream object，读写流消息。
  we introduce the \textit{stream object}  to read/write the streaming messages, based on which our streaming service becomes elastic, $i.e.,$ the number of instances for processing the messages can be efficiently adjusted without data migration. The object has buffers to support real-time stream processing, and load-balanced storage and redundant persistence are also achieved. 
 Besides, to better reduce the storage cost,  \sys is built on the tiering storage Huawei OceanStor, which can automatically migrate data between SSD and HDD.
-To better achieve cost-effective stream and batch co-processing, the \textit{stream object}  can be automatically converted  to  \textit{table object}, and vice versa. In this way, data can be maintained for just one copy rather than storing for two copies separately, and thus the storage cost is reduced. 
-Existing systems like the widely-used Kafka~\ cite{} uses the local file system to persist data, which is less elastic than the disaggregated storage.  Pravega~\cite{} and Pulsar~\cite{} adopt the 
+To better achieve cost-effective stream and batch processing, the \textit{stream object}  can be automatically converted  to  \textit{table object}, and vice versa. In this way, data can be maintained for just one copy rather than storing for two copies separately, and thus the storage cost is reduced. 
+Existing systems like the widely-used Kafka~\cite{} uses the local file system to persist data, which is less elastic than the disaggregated storage.  Pravega~\cite{} and Pulsar~\cite{} adopt the 
 disaggregated architecture, but unlike we can automatically mange cold data based on our built-in tiering storage (or conduct table-stream conversion to save the cost), they have to migrate the data to other cost-friendly storage systems like  HDFS~\cite{} or S3~\cite{}.
 %自动分级 自动分成冷存储，转成表格式
 
 
 
 
-Second, in terms of supporting updates, Lakehouse system~\cite{} can address this by achieving concurrent read and write in an ACID manner. We also implement the lakehouse functionality in \sys to supports ACID for \cc{both stream and batch data.} Particularly, we design a global Non-Volatile Memory (NVM) cache that combines small I/O accesses $w.r.t.$ the metadata, so as to improve the efficiency of visiting the object storage.
+Second, in terms of supporting updates, Lakehouse system~\cite{} can address this by achieving concurrent read and write in an ACID manner. We also implement the lakehouse functionality in \sys to support ACID via the table object.
+Particularly, we design a global Non-Volatile Memory (NVM) cache that combines small I/O accesses $w.r.t.$ the metadata, so as to improve the efficiency of visiting the remote disaggregated storage.
 %元数据是大量小文件读写 
 
-Third,  we build an intelligent data lake optimizer \brain at the storage-side that focuses on optimizing the data layout in the storage, so as to improve the resource utilization as well as  query performance. Many recent works~\cc{}  have focused on using machine learning techniques to  optimize database systems, including the knob tuner, query optimizer etc. For the data lake system with the disaggregated storage, we think that it is a promising direction to design an optimizer and we conduct the following two attempts.
- We design a reinforcement learning based automatic compaction module  to decide whether to compact small files considering the system state, so as to \cc{improve the block utilization while keeping the system running smoothly.} We also build a predicate-aware partitioning model that is utilized to judiciously distribute data to storage blocks to reduce the number of blocks to be visited, so as to improve the query efficiency.  
+Third,  we build an intelligent data lake optimizer \brain at the storage-side that focuses on optimizing the data layout in the storage, so as to improve the resource utilization as well as  query performance. Many recent works~\cite{}  have focused on using machine learning techniques to  optimize database systems, including the knob tuner, query optimizer etc. For the data lake system with the disaggregated storage, we think that it is a promising direction to design an optimizer and we conduct the following two attempts.
+ We design a reinforcement learning based automatic compaction module  to decide whether to compact small files considering the system state at a certain system status, so as to \cc{improve the block utilization while keeping the system running smoothly.} We also build a predicate-aware partitioning model that is utilized to judiciously distribute data to storage blocks to reduce the number of blocks to be visited, so as to improve the query efficiency.  
 
 Overall, our \sys has the following characteristics.
 
-\noindent \underline{\textit{High storage scalability.}} Leveraging the stream object, \sys adopts the compute-and-storage disaggregated architecture that allows for elastically adjusting computing and storage resources according to the \cc{user requirements/system status}  for both stream and batch data. In this way, our system can  scale gracefully to store petabytes of new data.
+\noindent \underline{\textit{High storage scalability.}} Leveraging the stream object and table object, \sys adopts the compute-and-storage disaggregated architecture that allows for elastically adjusting computing and storage resources according to  dynamic workloads  for both stream and batch data. In this way, our system can  scale gracefully to store petabytes of new data.
 
-\noindent \underline{\textit{High processing efficiency.}} The  stream object in \sys provides efficient read/write APIs to support real-time stream processing. Also, our stream object also provides load-balanced stream storage, which can also help to improve the efficiency. In addition, we also  adopt the query computation pushdown to reduce the data transfer between the storage and query engine. Furthermore, the \brain optimizer can improve the query performance by optimizing the data layout. 
+\noindent \underline{\textit{High processing efficiency.}} The  stream object in \sys provides efficient read/write APIs to support real-time stream processing. Also, our stream object also provides load-balanced stream storage, which can also help  improve the efficiency. In addition, we also  adopt the query computation pushdown to reduce the data transfer between the storage and query engine. Furthermore, the \brain optimizer can improve the query performance by optimizing the data layout. 
 
 \noindent \underline{\textit{High reliability.}} \sys is built on top of the Huawei OceanStor Pacific~\cite{}, which has built-in data reliability and security to provide full protection to the data.
 
-\noindent \underline{\textit{Low TCO.}} Overall, \sys can save the users' cost a lot leveraging  our novel designs as well as the ability of our Huawei OceanStor storage. For example, we do not have to store two copies of data for stream and batch processing, and the built-in tiering storage can also save the storage cost. The disaggragated architecture makes the users require their compute or storage resources as needed. The \brain optimizer and  pushdown also  save the compute resource by improving the query efficiency.
+\noindent \underline{\textit{Low TCO.}} Overall, \sys can save the users' cost a lot leveraging  our novel designs as well as the ability of our Huawei OceanStor storage. The cost mostly includes the cost of  storage and computing servers. 
+On the one hand, we use erasure coding as the data redundancy strategy, which stores less copies of data than other systems like HDFS, and our built-in tiering storage can also save the storage cost. Besides, for semantics of stream and batch data, we can just store one copy to further save the cost.
+On the other hand,  The \brain optimizer and  pushdown also  save the compute resource by improving the query efficiency. Moreover, the disaggragated architecture makes the users require their compute or storage resources as needed. 
+
+
+ The disaggragated architecture makes the users require their compute or storage resources as needed. The \brain optimizer and  pushdown also  save the compute resource by improving the query efficiency.
+ 
+% TCO 计算 + 存储
+
+%主动副本，自己存为了不同sementic，不是为了reliability
+
+%two copies
+
+%Erasure code, compression
+
+%分级
 
 \noindent \textbf{Use case.} We deployed \sys  in China Mobile data lakes with production data, resulting in significant optimization of resource utilization and performance.  China Mobile manages one of the largest data analytic platforms in China.
-Over 4.8 petabytes \cc{per day?} of fresh data flow from business branches and edge devices scattered across over 30 provinces to several centralized data centers. As shown in Figure~\ref{fig:mobile}(a), the fresh data first lands on a collection and exchange platform where data exchanges across data centers. Then it is loaded into the analytic platform. Data warehouse and big data engines run billions of jobs  over the data to provide location services, network logging analysis and many other applications to serve users.
-As the platform grew to the exabyte scale, resource utilization became increasingly skewed, with average CPU, memory, and storage utilizations at \cc{26\%, 41\%, and 66\%} respectively.
+Over 4.8 petabytes per day of fresh data flow from business branches and edge devices scattered across over 30 provinces to several centralized data centers. As shown in Figure~\ref{fig:mobile}(a), the fresh data first lands on a collection and exchange platform where data exchanges across data centers. Then it is loaded into the analytic platform. Data warehouse and big data engines run billions of jobs  over the data to provide location services, network logging analysis and many other applications to serve users.
+As the platform grew to the exabyte scale, resource utilization became increasingly skewed, with average CPU, memory, and storage utilizations at 26\%, 41\%, and 66\% respectively.
 
 
 
 
-To overcome this, we deployed \sys in a China Mobile data center with 20 petabytes of production data, replacing the existing analytic architecture with a disaggregated-storage architecture powered by Huawei OceanStor Pacific with  \sys framework.\cc{Moderate changes are applied to connect the analytic engines to StreamLake.}
+To overcome this, we deployed \sys in a China Mobile data center with 20 petabytes of production data, replacing the existing analytic architecture with a disaggregated-storage architecture powered by Huawei OceanStor Pacific with  \sys framework.
+ Figure~\ref{fig:mobile}(b) shows some general evaluation result of our deployment. With \sys, our customers can  run the same number of analytic jobs with 39\% less servers, due to the high utilization of   server resources in \sys, and leading to 37\% cost saving (TCO).   In addition, our customers no longer need to maintain data management between independent \kafka and \hdfs servers, which could be expensive and error-prone.
+Moreover, minimum data migration is required to scale the system, and thus maintenance cost is thus greatly reduced.
+ More detailed evaluation is shown in Section~\ref{sec:exp}.
 
 
- Figure~\ref{fig:mobile}(b) shows some general evaluation result of our deployment. \sys runs the same number of analytic jobs with 39\% less servers, due to the high utilization of \cc{data and server resources} in \sys. \cc{Besides, \sys also introduces  benefits in term of performance and service flexibility. For instance, some batch queries can speed up to 4 times when the query operator pushdown and the \brain are enabled. }
-For message streaming, originally, they had to maintain 300 more \kafka servers, and the expansion of partitions and nodes posed a big challenge to the China Mobile IT team. With the stream storage in \sys, the team no longer needs to \cc{manually} manage the Kafka servers. In addition, minimum data migration is required to scale the system, and thus maintenance costs are thus greatly reduced. More detailed evaluation is shown in Section~\ref{sec:exp}.
-
-\cc{why not illustrate TCO?}
- 
-\cc{how to reflect the performance, flexibility? Current version is not clear.}
- 
  
  
  
@@ -91,7 +103,7 @@ For message streaming, originally, they had to maintain 300 more \kafka servers,
 To address this common problem of big data platforms in enterprise production environments, researchers and engineers in our data management community have evolved existing compute engines or designed new system components to converge data pipelines and enhance data re-usage. For example, first, unified engines~\cite{} for stream and batch processing as well as lakehouse technologies~\cite{} with ACID-compliant transactions are developed. These approaches are closely tied to a specific compute engine, optimizing an end-to-end process with a point view. However, in order to cover various business analytical needs, enterprise production data pipelines need close collaboration between multiple analytic tools. Hence, rather optimizing for a single step or module, it requires us to take an end-to-end view to make effective collaborative optimizations in real world. Second, in the modern cloud-native storage-disaggregated architecture, network overhead is expensive if we maintain a shared state layer in the compute cluster which requires frequent and massive data accesses to the storage. Third, separating data management from the storage layer misses the opportunities to apply advanced storage technologies~\cite{} which are critical to process massive data cost-effectively. Finally, data layout management strategies such as compaction and partitioning are key to ensure overall storage utilization and query performance. Existing approaches~\cite{} normally apply static or manual methods to compact small files or manage data partitions. This is sub-optimal compared to dynamic self-learning algorithms in production with complex data pipelines and massive data. We argue that it is reasonable to dedicate the data management component to the storage side and intelligently optimize it on top of the data lake persistent storage to enable shortest dataflows and to maximize the potential of data re-usage across engines in a cost-efficient and collaborative manner.
 
 
-In this paper, we present a data lake storage framework, StreamLake, with its novel design to support massive message stream ingestion and data pipeline co-processing. This framework provides community compatible API for message stream processing, allowing inflow messages to bypass the compute layer and to be injected to the data lake storage cluster directly. It also supports ACID-compliant transactions, query time-travel, and query operator pushdowns to minimize data transfer and maximize data sharing. A new data lake optimizer is introduced where reinforcement learning and probabilistic network algorithms are applied to data layout management to optimize query time and server resource usage. All these features are built on top of the Huawei OceanStor Pacific storage and the system applies advanced capabilities in the Huawei storage such as in-cluster RDMA network, tiered storage, erasure coding and instant snapshot~\cite{} to achieve superior system resource utilization with reasonable costs. With this centralized stateful storage, analytic engine instances can be more elastic and hence server resources can be highly utilized. We have experimented this framework in a China Mobile data lake with 20 petabytes of data. The system has demonstrated significant server usage gains. We conclude our contributions as follows:
+\cc{In this paper, we present a data lake storage framework, StreamLake, with its novel design to support massive message stream ingestion and data pipeline co-processing. } This framework provides community compatible API for message stream processing, allowing inflow messages to bypass the compute layer and to be injected to the data lake storage cluster directly. It also supports ACID-compliant transactions, query time-travel, and query operator pushdowns to minimize data transfer and maximize data sharing. A new data lake optimizer is introduced where reinforcement learning and probabilistic network algorithms are applied to data layout management to optimize query time and server resource usage. All these features are built on top of the Huawei OceanStor Pacific storage and the system applies advanced capabilities in the Huawei storage such as in-cluster RDMA network, tiered storage, erasure coding and instant snapshot~\cite{} to achieve superior system resource utilization with reasonable costs. With this centralized stateful storage, analytic engine instances can be more elastic and hence server resources can be highly utilized. We have experimented this framework in a China Mobile data lake with 20 petabytes of data. The system has demonstrated significant server usage gains. We conclude our contributions as follows:
 
 We propose a novel design of a data lake storage co-processing framework to unify log message streaming, processing and querying acceleration in disaggregated data lake storage, improving both the resource utilization and the speed of data processing pipelines in scale.
 
