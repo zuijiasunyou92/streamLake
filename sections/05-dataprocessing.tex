@@ -6,12 +6,14 @@ In this Section, we present the data processing services  in the data layer. Dri
 
 %\cc{where can we say sth about co-processing?}
 
+
+\cc{reviewer comments}
+
 \subsection{Message Streaming}~\label{subsec:stream}
 We develop a  distributed stream storage engine that facilitates message streaming at large scale. Our engine leverages the stream object storage abstraction to ensure enterprise-level scalability via the disaggregated storage architecture.
 
 
 \noindent\textbf{Overall architecture of streaming service.} The high-level design of the stream service is shown in Figure~\ref{fig:service}. The stream storage system comprises of producers, consumers, stream workers, stream objects, and a stream dispatcher, which work together to provide seamless message streaming.
-
 
 
 \begin{figure}[htbp]
@@ -88,20 +90,17 @@ Overall, the \sys stream storage provides guaranteed delivery, efficient transfe
 \subsection{Lakehouse Read and Write}~\label{subsec:lakehouse}
 
  \sys also provides support for concurrent tabular data reads and writes, similar to  the architecture of lakehouse~\cite{}.
-  This section  describes the storage conversion from stream messages to tabular records, as well as the implementation of key lakehouse operations.
+ Besides directly inserting tabular data, we can also get it from the conversion from streaming data.
+  In this section, we first  describe the storage conversion from stream messages to tabular records, and then the implementation of key lakehouse operations.
  
  %insert table
 
 \noindent \textbf{Stream-to-table conversion.} This process is performed by a background service and results in the conversion of records in stream objects to table objects, allowing for efficient downstream processing, which is triggered by the \texttt{convert\_2\_table} configuration in Figure~\ref{fig:config}, which include the table schema and time for data freshness in the downstream processing.  The table schema must be specified at the topic declaration, as it determines the expectations for field types and values across all messages. 
  To effectively leverage the storage, users  can choose to just retain messages in crucial topics as stream objects  to support real time applications while converting most stream data to table objects.  The reverse conversion, from table records to stream messages, is also supported for data playback. 
  %As shown in Figure~\ref{exp:fig:case} and Table~\ref{tab:case}, this design provides a good trade-off  between the system cost and latency, which also  helps to decouple the data processing from the business logics.
- 
- 
- \cc{This helps to reduce the storage cost because we can just store one copy to achieve both stream and batch processing. Also, this design can reduce unnecessary data movement between the storage and compute clusters for data conversion.}
+ This conversion helps to reduce the storage cost because we can just store one copy to achieve both stream and batch processing. Also, this design can reduce unnecessary data movement between the storage and compute clusters for data conversion.
 
-\cc{What is the connection between the two paragraphs?}
 
-\cc{Do we emphasize sth important w.r.t. the table object?}
 
 
 For tabular data processing, our \sys services implement lakehouse read/write operations using a table object and high-performance caches to accelerate concurrent data reads and writes. In the rest of this subsection, we will introduce the implementation of key read/write operations in details.
@@ -115,7 +114,7 @@ For tabular data processing, our \sys services implement lakehouse read/write op
 \noindent \underline{\textit{(a) Data persistence:}} Records are written directly to the persistent layer as parquet files in the corresponding partition path under the table root directory.
 
 
-\cc{There seems should be an emphasize.}
+%\cc{There seems should be an emphasize.}
 
 \noindent \underline{\textit{(b) Metadata caching:}} Metadata updates are mostly small I/O operations. 
 To avoid generating significant number of small files, we leverage a global write cache to aggregate the metadata updates, which is achieved through the following steps:
@@ -152,9 +151,8 @@ If the filtering conditions only match some files, these files will be read, and
 
  %Finally, we build and open sourced plugins [14, 28] for popular big data engines such as Hive, Spark, and Presto [13, 32] to invoke query operator  pushdown. Users can easily install these plugins and speed up critical query processing
 
-\cc{S3 select}
 
-In this subsection, we introduce the computation pushdown to reduce the amount of data transfer between the  storage engine of \sys and the query engines. It is built on top of an elastic, serverless engine in the data service layer. Here, we choose serverless computing as our execution model because it is lightweight  and flexible, which allow us to quickly start a large number of instances for computation tasks near the data sources, and free the resources as soon as the tasks are completed. The elasticity is important since CPU resources can be scarce during critical data management jobs.
+In this subsection, we introduce the computation pushdown \cc{(similar to S3 Select~\cite{})} to reduce the amount of data transfer between the  storage engine of \sys and the query engines. \cc{Different from S3 Select,} it is built on top of an elastic, serverless engine in the data service layer. Here, we choose serverless computing as our execution model because it is lightweight  and flexible, which allows us to quickly start a large number of instances for computation tasks near the data sources, and free the resources as soon as the tasks are completed. The elasticity is important since CPU resources can be scarce during critical data management jobs.
 
 The main components of the serverless function engine are shown in Figure 9, which include function dispatcher, worker instances, a worker manager, and a function repository. The function dispatcher schedules jobs and manages workflows, and worker instances execute the tasks. The worker manager oversees server resources and the life cycle of worker instances, and the function repository registers and stores function images. These modules work together to support elastic serverless computing.
 
@@ -188,7 +186,7 @@ To achieve maximum pushdown benefits, three categories of query operators are su
 These operators are selected because the size of their output could be significantly smaller than the input, and thereby a large optimization opportunity can be achieved.
 These query operators are implemented as separate functions, which are registered and executed in the serverless engine service. The implementation allows for sharing and reuse of the same query operator function by different query engines, as long as its image is registered in the serverless engine.
 
-\cc{need connection, reviewer comments}
+\cc{reviewer comments}
 
 To facilitate the pushdown of query operators from the compute layer to the storage cluster in \sys, we have introduced the near data processing (NDP) Proxy. 
  During query planning, the optimizer of  query  identifies operators that can be pushed down and sends the information to the NDP Proxy.  Then the NDP Proxy inserts these requests into a queue for traffic control and then sends them to the serverless engine for execution as shown in Figure 9.

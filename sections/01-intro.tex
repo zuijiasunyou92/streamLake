@@ -66,7 +66,7 @@ Overall, our \sys has the following characteristics.
 \noindent \underline{\textit{High reliability.}} \sys is built on top of the Huawei OceanStor Pacific~\cite{}, which has built-in data reliability and security to provide full protection to the data.
 
 \noindent \underline{\textit{Low TCO.}} Overall, \sys can save the users' cost a lot leveraging  our novel designs as well as the ability of our Huawei OceanStor storage. The cost mostly includes the cost of  storage and computing servers. 
-On the one hand, we use erasure coding as the data redundancy strategy, which stores less copies of data than other systems like HDFS, and our built-in tiering storage can also save the storage cost. Besides, for semantics of stream and batch data, we can just store one copy to further save the cost.
+On the one hand, we use erasure coding as the data redundancy strategy, which stores less copies of data than other systems like HDFS, and we also use built-in tiering storage and  compression techniques to save the storage cost. Besides, for semantics of stream and batch data, we can just store one copy to further save the cost.
 On the other hand,  The \brain optimizer and  pushdown also  save the compute resource by improving the query efficiency. Moreover, the disaggragated architecture makes the users require their compute or storage resources as needed. 
 
 
