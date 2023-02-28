@@ -9,14 +9,6 @@
 \section{Lakebrain optimization} 
 \label{sec:lakebrain}
 
-Optimizing  query processing over large-scale data is significant in data warehouse and big data systems, as discussed in~\cite{}. However, for the \sys system with
-complicated storage-disaggregated architecture, it is challenging to optimize the query performance and resource usage. The reasons are two-fold. First, it is hard to capture the entire environment about the compute and storage cluster as well as the queries executed by other engines simultaneously. Second, even though all the environment data is available, it is still hard to optimize because of the large search space due to the large number of tunable and interdependent variables~\cite{}.
-
-
-
-To address the challenges, we present~\brain, a novel data lake storage optimizer that aims to optimize the  the data layout at the storage-side, so as to improve the resource utilization as well as  query performance.
- Unlike query engine optimizers that focus on join order and cardinality estimation~\cite{}, \brain aims to optimize data layout in storage, which is key to improve both query performance and storage resource utilization in a storage-disaggregated design. In this Section, we mainly focus on two cases, $i.e.,$ automatic compacting small files  and judiciously partitioning tables to improve the resource utilization improve the query performance.
-Next, we will illustrate the above aspects in detail.
 
 
 
@@ -75,6 +67,14 @@ Overall, the training process is that given each state in the system, when actin
 %Once a desired result is obtained, the numerical output of the compaction strategy is translated into actionable operations by the data lake connector for a specific data lake engine, facilitating the optimization process.
 
 
+Optimizing  query processing over large-scale data is significant in data warehouse and big data systems, as discussed in~\cite{}. However, for the \sys system with
+complicated storage-disaggregated architecture, it is challenging to optimize the query performance and resource usage. The reasons are two-fold. First, it is hard to capture the entire environment about the compute and storage cluster as well as the queries executed by other engines simultaneously. Second, even though all the environment data is available, it is still hard to optimize because of the large search space due to the large number of tunable and interdependent variables~\cite{}.
+
+
+
+To address the challenges, we present~\brain, a novel data lake storage optimizer that aims to optimize the  the data layout at the storage-side, so as to improve the resource utilization as well as  query performance.
+Unlike query engine optimizers that focus on join order and cardinality estimation~\cite{}, \brain aims to optimize data layout in storage, which is key to improve both query performance and storage resource utilization in a storage-disaggregated design. In this Section, we mainly focus on two cases, $i.e.,$ automatic compacting small files  and judiciously partitioning tables to improve the resource utilization improve the query performance.
+Next, we will illustrate the above aspects in detail.
 
 
 
