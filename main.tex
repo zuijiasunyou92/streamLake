@@ -46,8 +46,24 @@
 %% The abstract is a short summary of the work to be presented in the
 %% article.
 \begin{abstract}
-Abstract here.
+Huawei collaborates with some  Chinese largest business companies to store and process exabytes of nationwide operational data in data lake storage to provide business insights. This process involves handling nation-scale streams and batch data processing with massive static server resources, \cc{which requires sub-systems in the analytic platform to process and store massive data cost-efficiently.}
+ However, existing solutions are sub-optimal due to \cc{inevitable data isolation and copies in compute-engine-oriented designs.}
+ 
+ 
+ 
+ To address this problem, we have designed an \cc{experimental} data lake storage system, \sys, which introduces a novel  design to serve log message streaming and batch data processing  in distributed storage, with high scalability, efficiency, reliability and low cost. Specifically, we introduce the stream object as a storage abstraction for streaming data to achieve the storage-disaggregation 
+  architecture with high scalability and reliability. Moreover, we utilize the erasure coding and tiring storage to save the storage cost, and furthermore, the  stream object can be automatically converted to table object such that cost-effective stream and batch data processing can be achieved. For tabular data, we support the lakehouse functionality  to support ACID via the table object, with a global cache to improve the efficiency of \cc{data access between compute and storage engine.}  Also, we design a \brain optimizer at the storage side to optimize the query performance and resource utilization under the storage-disaggregation architecture.
+ %Data intensive operations such as message streaming, query operator pushdown, transaction and query time travel are managed inside the centralized disaggregated storage cluster to minimize data copies and shorten time windows in analytic pipelines.
+ 
+ % Storage features such as multi-level caches and erasure coding along with algorithms like reinforcement learning and probabilistic network are also applied in \sys to further optimize query time and resource usage. 
+  Finally, we have also deployed  \sys in China Mobile, the world's largest mobile network operator  to serve over 20\texttt{PB} production data, and the results \cc{demonstrate improvements of 30\% to 4x} in terms of performance and over 39\% in terms of cost saving.
 \end{abstract}
+
+%Huawei collaborates with some of China's largest business companies to manage and analyze vast amounts of nationwide operational data in data lake storage. This process involves handling nation-scale streams of updates and static server resources, which necessitates the use of sub-systems within the analytic platform to efficiently utilize and share enormous amounts of data. However, existing solutions are suboptimal due to the isolation and duplication of data in compute-engine-oriented designs.
+
+%To address this problem, Huawei has developed an experimental data lake storage system called StreamLake. StreamLake introduces a unique design that supports log message streaming and ETL processing acceleration in distributed storage. To minimize data copies and shorten time windows in analytic pipelines, StreamLake manages data-intensive operations such as message streaming, query operator pushdown, transaction, and query time travel inside a centralized disaggregated storage cluster.
+
+%Furthermore, StreamLake implements storage features such as multi-level caches and erasure coding, as well as algorithms like reinforcement learning and probabilistic networks, to further optimize query time and resource usage. Huawei has tested this framework using production data from China Mobile, the world's largest mobile network operator, and the results demonstrate significant improvements in terms of performance, server resource gains, and query time optimization, ranging from 30% to 4x and over 39%, respectively.
 
 \maketitle
 
