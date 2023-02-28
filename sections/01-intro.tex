@@ -27,9 +27,9 @@ To satisfy the above users' requirements, we aim to design a data lake storage s
  %分叉了不好办，改了一个影响另一个
 % If one considers to store as stream data, and convert it to batch when batch processing is necessary, it will be time-consuming to load the data to the compute engine and conduct the conversion.	
 % 数据有多个备份(multiple copy) 更新自己备份 别人不aware 导致数据不一致 delta lake video
-(2) In a data analysis pipeline, there are likely to be multiple copies when data goes through the pipeline.
-If these copies are updated individually, data  could be inconsistent.   
- Hence, it is significant to support atomic writes to achieve high quality data.
+(2) In a complex data analysis pipeline, there are likely to be multiple copies of data to support different tasks.
+If these copies are updated individually, data  could be inconsistent.    Hence, it is significant to support atomic writes to achieve high quality data.
+%When a partial update to be made, we can choose either to replace all the data, which is expensive,  or only change the relevant copy, which leads to data inconsistency. 
 (3) In data lake storage,  it is challenging to perform  optimization like in a database because the computing engine is always decoupled with the storage. Hence, it is critical to consider how to incorporate an optimizer in the storage engine, so as to optimize system performance.
 
 %(3) Unlike the database system in which the optimizer has full assess to the storage layer, and thus it can make optimal suggestion to improve execution in the storage layer. But in the  data lake storage, the computing engine is always decoupled with the storage, it has no direct access to the statistics in the storage, and thus we should incorporate an optimizer for this situation.
@@ -50,8 +50,8 @@ Existing systems like the widely-used Kafka~\cite{} uses the local file system t
 
 
 
-Second, in terms of supporting updates, Lakehouse system~\cite{} can address this by achieving concurrent read and write in an ACID manner. We also implement the lakehouse functionality in \sys to support ACID via the table object.
-Particularly, we design a global Non-Volatile Memory (NVM) cache that combines small I/O accesses $w.r.t.$ the metadata, so as to improve the efficiency of  compute engines visiting the remote disaggregated storage.
+Second, in terms of supporting updates, Lakehouse system~\cite{} can eliminate multiple copies by achieving concurrent read and write in an ACID manner over one copy. We also implement the lakehouse functionality in \sys to support ACID via the table object.
+Particularly, we design a global Non-Volatile Memory (NVM) cache that combines small I/O accesses $w.r.t.$ the metadata, so as to improve the efficiency of  compute engines visiting data in the remote disaggregated storage.
 %元数据是大量小文件读写 
 
 Third,  we build an intelligent data lake optimizer \brain at the storage-side that focuses on optimizing the data layout in the storage, so as to improve the resource utilization as well as  query performance. Many recent works~\cite{}  have focused on using machine learning techniques to  optimize database systems, including the knob tuner, query optimizer etc. For the data lake system with the disaggregated storage, we think that it is a promising direction to design an optimizer and we conduct the following two attempts.
@@ -90,7 +90,8 @@ As the platform grew to the exabyte scale, resource utilization became increasin
 
 
 To overcome this, we deployed \sys in a China Mobile data center with 20 petabytes of production data, replacing the existing analytic architecture with a disaggregated-storage architecture powered by Huawei OceanStor Pacific with  \sys framework.
- Figure~\ref{fig:mobile}(b) shows some general evaluation result of our deployment. With \sys, our customers can  run the same number of analytic jobs with 39\% less servers, due to the high utilization of   server resources in \sys, and leading to 37\% cost saving (TCO).   In addition, our customers no longer need to maintain data management between independent \kafka and \hdfs servers, which could be expensive and error-prone.
+ Figure~\ref{fig:mobile}(b) shows some general evaluation result of our deployment. With \sys, our customers can  run the same number of analytic jobs with 39\% less servers, due to the high utilization of   server resources in \sys, and leading to 37\% cost saving (TCO).   In addition, our customers no longer need to maintain data management between independent \kafka and \hdfs servers, which could be expensive and error-prone. 
+ Also, a number of  queries can achieve performance improvement from  30\% to $4\times$.
 Moreover, minimum data migration is required to scale the system, and thus maintenance cost is thus greatly reduced.
  More detailed evaluation is shown in Section~\ref{sec:exp}.
 
