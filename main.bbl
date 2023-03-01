@@ -297,9 +297,6 @@
   \bibinfo{volume}{34}, \bibinfo{number}{3} (\bibinfo{year}{2022}),
   \bibinfo{pages}{1096--1116}.
 \newblock
-\urldef\tempurl%
-\url{https://doi.org/10.1109/TKDE.2020.2994641}
-\showDOI{\tempurl}
 
 
 \end{thebibliography}

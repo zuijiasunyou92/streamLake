@@ -83,36 +83,36 @@ Warning--empty address in qdtree
 Warning--empty address in cdbtune
 You've used 19 entries,
             5901 wiz_defined-function locations,
-            1587 strings with 21060 characters,
-and the built_in function-call counts, 23381 in all, are:
-= -- 2671
+            1585 strings with 20994 characters,
+and the built_in function-call counts, 23373 in all, are:
+= -- 2668
 > -- 1026
 < -- 0
 + -- 363
 - -- 340
-* -- 1906
+* -- 1904
 := -- 2301
 add.period$ -- 82
 call.type$ -- 19
 change.case$ -- 160
 chr.to.int$ -- 19
 cite$ -- 120
-duplicate$ -- 1974
-empty$ -- 1402
+duplicate$ -- 1975
+empty$ -- 1403
 format.name$ -- 384
-if$ -- 5527
+if$ -- 5528
 int.to.chr$ -- 2
 int.to.str$ -- 1
 missing$ -- 49
-newline$ -- 216
+newline$ -- 213
 num.names$ -- 90
-pop$ -- 862
+pop$ -- 865
 preamble$ -- 1
 purify$ -- 331
 quote$ -- 0
 skip$ -- 685
 stack$ -- 0
-substring$ -- 1635
+substring$ -- 1632
 swap$ -- 203
 text.length$ -- 0
 text.prefix$ -- 0
@@ -121,5 +121,5 @@ type$ -- 486
 warning$ -- 69
 while$ -- 78
 width$ -- 0
-write$ -- 379
+write$ -- 376
 (There were 70 warnings)
