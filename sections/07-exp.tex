@@ -144,7 +144,7 @@ The  Y-axis means  the times of its original data size   using these redundancy 
 
 \subsection{Evaluation of \brain}
 
-In this part, we evaluate the two components in \brain, $i.e.,$ auto-compaction and predicate-aware partitioning.
+In this part, we evaluate the two components in \brain.
 
  
 \noindent \textbf{Auto-Compaction:} To precisely evaluate the effectiveness of our automatic compaction strategy, a \texttt{TPC-H} based test bed is set up to ingest data from the message streaming platform to the data lake storage, during which a compaction strategy is tested.
@@ -184,17 +184,12 @@ The results  in Figure~\ref{fig:lakebrain}(c,d) shows that the proposed method o
 
 
 \subsection{Evaluation of Query Pushdown}
-In this part, we evaluate the query operator pushdown  which we believe can provide stable query runtime regardless of network conditions. This is significant in the real-world deployment as it is  always expensive to upgrade the data center network. 
-%In fact, many customers who we have worked with did the opposite to ask us to reuse their existing network to reduce the overall upgrade costs. Hence, it is a critical design that the query operator pushdown method ensures the query processing time and the application service level agreements even with a constraint network bandwidth.
-
-
-
-
-In our experiment, we use two groups of clusters with different network bandwidths: one with 10 GB bandwidth and the other with 1 GB. To accurately assess the benefits of the query operator pushdown method, we carefully select three live queries with data-intensive operations and 4.8 TB of data from a China Mobile production environment. We deployed two different query engines, \texttt{Hive}~\cite{hive} and \texttt{Presto}~\cite{presto}, so as to process the SQL queries for generalization.
+In this part, we evaluate the query operator pushdown  which we believe can provide stable query runtime regardless of network conditions. 
+We use two groups of clusters with different network bandwidths: one with 10 GB bandwidth and the other with 1 GB. To accurately assess the benefits of the pushdown, we carefully select three live queries with data-intensive operations and 4.8 TB of data from  China Mobile. We deployed two different query engines, \texttt{Hive}~\cite{hive} and \texttt{Presto}~\cite{presto}, so as to process  SQL queries for generalization.
 
 As shown in Figure~\ref{fig:pushdown} (the X-axis denotes the three commonly-used queries from our customers, and the Y-axis denotes the query time), 
-we can observe that  without query operator pushdown, query performance of baselines varies  across engines. When  queries are executed in the 10 GB Ethernet, \texttt{Presto} completes the jobs in about 900 seconds, while \texttt{Hive} takes around 1200 seconds. When network bandwidth reduces to 1 GB, all execution times increases to over 3000 seconds.
- In comparison, when we apply query operator pushdown, the runtime of all the queries is close to 900 seconds, regardless of compute engines and network bandwidths, which indicates a 4 times performance advantage when the engine processes queries in an 1 GB bandwidth network.  In summary, we can conclude that our generalized query operator pushdown method introduces stable and high performance to query processing in a storage-disaggregated architecture. 
+  without query operator pushdown, query performance of baselines varies  across engines. When  queries are executed in  10 GB Ethernet, \texttt{Presto} completes the jobs in about 900 seconds, while \texttt{Hive} takes around 1200 seconds. When network bandwidth reduces to 1 GB, all execution times increase.
+ In comparison, when we apply query operator pushdown, the runtime of all the queries is close to 900 seconds, regardless of compute engines and network bandwidths, which indicates a 4 times performance advantage when the engine processes queries in an 1 GB bandwidth network.  In summary, our  pushdown method introduces stable and high performance  in a storage-disaggregated architecture. 
 
 
 
