@@ -5,7 +5,7 @@
 \subsection{Experimental Settings}
 
 
-\noindent \textbf{Our Experimental Scenario.} \cc{We  use a  real-world use case to demonstrate the performance of the \sys framework in detail.}    A mobile financial application company collaborates with a mobile carrier to collect and analyze its app usage data. The company aims to understand its app usage patterns to prevent frauds and enhance its product experience. The mobile carrier provides this analytic service through an end-to-end big data processing pipeline. This pipeline includes several jobs such as data collection, normalization, labeling, and querying, as depicted in Figure~\ref{exp:fig:case}.
+\noindent \textbf{Our Experimental Scenario.} To showcase the effectiveness of the \sys framework, we employ a real-world use case simplified from the case in Section~\ref{sec:intro}.   A mobile financial application company collaborates with China Mobile to collect and analyze its app usage data. The company aims to understand its app usage patterns to prevent frauds and enhance its product experience. The mobile carrier provides this analytic service through an end-to-end big data processing pipeline. This pipeline includes several jobs such as data collection, normalization, labeling, and querying, as depicted in Figure~\ref{exp:fig:case}.
 We compare  \sys framework with their current solution to build a big data processing pipeline that can facilitate business analysis.
 
 \noindent \underline{\textit{(a) Collection:}}  The network carrier collects mobile app data packets in  data centers across the nation via deep packet inspection (DPI) and transfers them to a centralized storage pool.
@@ -68,8 +68,16 @@ Overall, Figure~\ref{exp:fig:case} shows the data processing process.  \kafka an
 		& \hdfs              & 212        & 795        & 1548        & 7535        & 14771         \\ \cline{2-7} 
 		& Ratio (H/S)         & 0.82       & 1.19       & 1.32        & 1.55        & 1.53          \\ \hline
 	\end{tabular}
-\caption{\sys v.s. \hdfs and \kafka.}\label{tab:case}
+	\caption{\sys v.s. \hdfs and \kafka.}\label{tab:case}
 \end{table*}
+
+
+
+
+
+
+
+
 
 
 \subsection{Overall Comparison}
@@ -85,21 +93,14 @@ The batch processing speed in \sys is better than \hdfs when the workload is 50 
 %the advantages of skipping irrelevant partitions and query operation pushdown become significant.
 The message stream processing speed in \sys is competitive to \kafka. \sys and \kafka process about 300 thousand messages per second when the workload is 10 million records. Both systems scale to process about 500 thousand messages per second when the workloads are 100 million and more. 
 
+
 \begin{figure*}
 	\centering
 	\includegraphics[width=\textwidth]{figures/streamengine}
-	\caption{Stream Engine Latency, Throughput, Scalability and Space Consumption.}
+	\caption{Evaluation of Message Streaming.}
 	\label{fig:streamengine}
 \end{figure*}
 
-
-
-\begin{figure*}
-	\centering
-	\includegraphics[width=\textwidth]{figures/LakeBrain}
-	\caption{\cc{LakeBrain Compaction and Partitioning Performance.}}
-	\label{fig:lakebrain}
-\end{figure*}
 
 
 \subsection{Evaluation of Message Streaming}
@@ -113,16 +114,24 @@ As shown in Figure~\ref{fig:streamengine}(b), persist memory reduces the latency
 When it comes to the throughput (Figure~\ref{fig:streamengine}(a)), as the messages to process increase from 50000 per second to 1.5 million per second, the system throughput increases linearly. 
 \texttt{Set-1} and \texttt{Set-2} achieve almost the same throughputs, indicating that it does not improve the throughput to add persistent memory as a cache. 
  Figure~\ref{fig:streamengine}(c) shows the high elasticity of the stream storage. The service gracefully scales from 1000 to 10000 partitions in less than 10 seconds. The good scalability  demonstrates a significant advantage of the   disaggregated storage architecture. 
-
-\cc{Below is hard to follow!} 
-Finally, Figure~\ref{fig:streamengine}(d) compares the space consumption different storage strategies (\texttt{Replica} means, \texttt{EC} means erasure code, \texttt{EC+Col-store} means ), where the X-axis denotes and Y-axis denotes.
- Without scarifying the reliability, \sys provides the option to use erasure coding and column-store which can offer three to five times of volume compared to standard storage with one or more replicas. 
-
+Finally, Figure~\ref{fig:streamengine}(d) compares the space consumption different storage strategies (\texttt{Replication} refers to  saving data in its original format using multiple copies, \texttt{EC} refers to using erasure code to store the data, \texttt{EC+Col-store} refers to first converting the data to columnar format and then applying erasure code). 
+The X-axis, $e.g.,$ \texttt{Fault Tolerance(FT)}=1 means that a storage cluster with the redundancy strategies can tolerant one node failure, and no data is lost.
+The  Y-axis means  the times of its original data size   using these redundancy strategies.
 
 
+ Without scarifying the reliability, \sys provides the options (\texttt{EC} and \texttt{EC+Col-store}) to use erasure coding and column-store which can save three to five times of storage cost compared to \texttt{Replication}. 
 
 
 
+
+
+
+\begin{figure*}
+	\centering
+	\includegraphics[width=\textwidth]{figures/LakeBrain}
+	\caption{\cc{LakeBrain Compaction and Partitioning Performance.}}
+	\label{fig:lakebrain}
+\end{figure*}
 
 
 
@@ -156,14 +165,13 @@ The results  in Figure~\ref{fig:lakebrain}(c,d) shows that the proposed method o
 
 
 
-
-
 \begin{figure}
 	\centering
 	\includegraphics[width=\columnwidth]{figures/Querytime}
 	\caption{Computation Pushdown Query Time.}
 	\label{fig:pushdown}
 \end{figure}
+
 
 
 \subsection{Evaluation of Query Pushdown}
@@ -173,9 +181,11 @@ In this part, we evaluate the query operator pushdown  which we believe can prov
 
 
 
-In our experiment, we use two groups of clusters with different network bandwidths: one with 10 GB bandwidth and the other with 1 GB. To accurately assess the benefits of the query operator pushdown method, we carefully select three live queries with data-intensive operations and 4.8 TB of data from a China Mobile production environment. We deployed two different query engines, \texttt{Hive}~\cite{} and \texttt{Presto}~\cite{}, so as to process the SQL queries for generalization.
-We observe that  without query operator pushdown, query performance of baselines varies  across engines. When  queries are executed in the 10 GB Ethernet, \texttt{Presto} completes the jobs in about 900 seconds, while \texttt{Hive} takes around 1200 seconds. When network bandwidth reduces to 1 GB, all execution times increases to over 3000 seconds.
- In comparison, when we apply query operator pushdown, \cc{the runtime of all the queries is close to 900 seconds with less than 10 difference}, regardless of compute engines and network bandwidths, which indicates a four times performance advantage when the engine processes queries in an 1 GB bandwidth network.  In summary, we can conclude that our generalized query operator pushdown method introduces stable and high performance to query processing in a storage-disaggregated architecture. 
+In our experiment, we use two groups of clusters with different network bandwidths: one with 10 GB bandwidth and the other with 1 GB. To accurately assess the benefits of the query operator pushdown method, we carefully select three live queries with data-intensive operations and 4.8 TB of data from a China Mobile production environment. We deployed two different query engines, \texttt{Hive}~\cite{hive} and \texttt{Presto}~\cite{presto}, so as to process the SQL queries for generalization.
+
+As shown in Figure~\ref{fig:pushdown} (the X-axis denotes the three commonly-used queries from our customers, and the Y-axis denotes the query time), 
+we can observe that  without query operator pushdown, query performance of baselines varies  across engines. When  queries are executed in the 10 GB Ethernet, \texttt{Presto} completes the jobs in about 900 seconds, while \texttt{Hive} takes around 1200 seconds. When network bandwidth reduces to 1 GB, all execution times increases to over 3000 seconds.
+ In comparison, when we apply query operator pushdown, the runtime of all the queries is close to 900 seconds, regardless of compute engines and network bandwidths, which indicates a 4 times performance advantage when the engine processes queries in an 1 GB bandwidth network.  In summary, we can conclude that our generalized query operator pushdown method introduces stable and high performance to query processing in a storage-disaggregated architecture. 
 
 
 
