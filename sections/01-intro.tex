@@ -54,7 +54,7 @@ Second, in terms of supporting updates, Lakehouse system~\cite{iceberg,hudi,delt
 Particularly, we design a global Non-Volatile Memory (NVM) cache that combines small I/O accesses $w.r.t.$ the metadata, so as to improve the efficiency of  compute engines visiting data in the remote disaggregated storage.
 %元数据是大量小文件读写 
 
-Third,  we build an intelligent data lake optimizer \brain at the storage-side that focuses on optimizing the data layout in the storage, so as to improve the resource utilization as well as  query performance. Many recent works~\cite{}  have focused on using machine learning techniques to  optimize database systems, including the knob tuner, query optimizer etc. For the data lake system with the disaggregated storage, we think that it is a promising direction to design an optimizer and we conduct the following two attempts.
+Third,  we build an intelligent data lake optimizer \brain at the storage-side that focuses on optimizing the data layout in the storage, so as to improve the resource utilization as well as  query performance. Many recent works~\cite{ottertune, cdbtune,deepdb,naru}  have focused on using machine learning techniques to  optimize database systems, including the knob tuner, query optimizer etc. For the data lake system with the disaggregated storage, we think that it is a promising direction to design an optimizer and we conduct the following two attempts.
  We design a reinforcement learning based automatic compaction module  to decide whether to compact small files considering the system state at a certain system status, so as to \cc{improve the block utilization while keeping the system running smoothly.} We also build a predicate-aware partitioning model that is utilized to judiciously distribute data to \cc{storage blocks} to reduce the number of blocks to be visited, so as to improve the query efficiency.  
 
 Overall, our \sys has the following characteristics.
@@ -63,7 +63,7 @@ Overall, our \sys has the following characteristics.
 
 \noindent \underline{\textit{High processing efficiency.}} The  stream object in \sys provides efficient read/write APIs to support real-time stream processing. Also, our stream object also provides load-balanced stream storage, which can also help  improve the efficiency. In addition, we also  adopt the query computation pushdown to reduce the data transfer between the storage and query engine. Furthermore, the \brain optimizer can improve the query performance by optimizing the data layout. 
 
-\noindent \underline{\textit{High reliability.}} \sys is built on top of the Huawei OceanStor Pacific~\cite{}, which has built-in data reliability and security to provide full protection to the data.
+\noindent \underline{\textit{High reliability.}} \sys is built on top of the Huawei OceanStor Pacific~\cite{huawei}, which has built-in data reliability and security to provide full protection to the data.
 
 \noindent \underline{\textit{Low TCO.}} Overall, \sys can save the users' cost a lot leveraging  our novel designs as well as the ability of our Huawei OceanStor storage. The cost mostly includes the cost of  storage and computing servers. 
 On the one hand, we use erasure coding as the data redundancy strategy, which stores less copies of data than other systems like HDFS (improving the disk utilization rate from 33\% to 91\%), and we also use built-in tiering storage and  compression techniques to save the storage cost. Besides, we can just store one copy to serve both  stream and batch data processing, which  further saves the cost.

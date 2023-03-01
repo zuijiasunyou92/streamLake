@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{9}
+\begin{thebibliography}{13}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -100,6 +100,23 @@
 \newblock
 
 
+\bibitem[\protect\citeauthoryear{Aken, Pavlo, Gordon, and Zhang}{Aken
+  et~al\mbox{.}}{2017}]%
+        {ottertune}
+\bibfield{author}{\bibinfo{person}{Dana~Van Aken}, \bibinfo{person}{Andrew
+  Pavlo}, \bibinfo{person}{Geoffrey~J. Gordon}, {and} \bibinfo{person}{Bohan
+  Zhang}.} \bibinfo{year}{2017}\natexlab{}.
+\newblock \showarticletitle{Automatic Database Management System Tuning Through
+  Large-scale Machine Learning}. In \bibinfo{booktitle}{\emph{Proceedings of
+  the 2017 {ACM} International Conference on Management of Data, {SIGMOD}
+  Conference 2017, Chicago, IL, USA, May 14-19, 2017}}.
+  \bibinfo{publisher}{{ACM}}, \bibinfo{pages}{1009--1024}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1145/3035918.3064029}
+\showDOI{\tempurl}
+
+
 \bibitem[\protect\citeauthoryear{Armbrust, Das, Paranjpye, Xin, Zhu, Ghodsi,
   Yavuz, Murthy, Torres, Sun, Boncz, Mokhtar, Hovell, Ionescu, Luszczak,
   Switakowski, Ueshin, Li, Szafranski, Senster, and Zaharia}{Armbrust
@@ -124,6 +141,63 @@
 \newblock
 \urldef\tempurl%
 \url{https://doi.org/10.14778/3415478.3415560}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Hilprecht, Schmidt, Kulessa, Molina, Kersting,
+  and Binnig}{Hilprecht et~al\mbox{.}}{2020}]%
+        {deepdb}
+\bibfield{author}{\bibinfo{person}{Benjamin Hilprecht},
+  \bibinfo{person}{Andreas Schmidt}, \bibinfo{person}{Moritz Kulessa},
+  \bibinfo{person}{Alejandro Molina}, \bibinfo{person}{Kristian Kersting},
+  {and} \bibinfo{person}{Carsten Binnig}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{DeepDB: Learn from Data, not from Queries!}
+\newblock \bibinfo{journal}{\emph{VLDB}} \bibinfo{volume}{13},
+  \bibinfo{number}{7} (\bibinfo{year}{2020}), \bibinfo{pages}{992--1005}.
+\newblock
+\urldef\tempurl%
+\url{http://www.vldb.org/pvldb/vol13/p992-hilprecht.pdf}
+\showURL{%
+\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Yang, Liang, Kamsetty, Wu, Duan, Chen, Abbeel,
+  Hellerstein, Krishnan, and Stoica}{Yang et~al\mbox{.}}{2019}]%
+        {naru}
+\bibfield{author}{\bibinfo{person}{Zongheng Yang}, \bibinfo{person}{Eric
+  Liang}, \bibinfo{person}{Amog Kamsetty}, \bibinfo{person}{Chenggang Wu},
+  \bibinfo{person}{Yan Duan}, \bibinfo{person}{Peter Chen},
+  \bibinfo{person}{Pieter Abbeel}, \bibinfo{person}{Joseph~M. Hellerstein},
+  \bibinfo{person}{Sanjay Krishnan}, {and} \bibinfo{person}{Ion Stoica}.}
+  \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{Deep Unsupervised Cardinality Estimation}.
+\newblock \bibinfo{journal}{\emph{{VLDB}}} \bibinfo{volume}{13},
+  \bibinfo{number}{3} (\bibinfo{year}{2019}), \bibinfo{pages}{279--292}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.14778/3368289.3368294}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Zhang, Liu, Zhou, Li, Xiao, Cheng, Xing, Wang,
+  Cheng, Liu, Ran, and Li}{Zhang et~al\mbox{.}}{2019}]%
+        {cdbtune}
+\bibfield{author}{\bibinfo{person}{Ji Zhang}, \bibinfo{person}{Yu Liu},
+  \bibinfo{person}{Ke Zhou}, \bibinfo{person}{Guoliang Li},
+  \bibinfo{person}{Zhili Xiao}, \bibinfo{person}{Bin Cheng},
+  \bibinfo{person}{Jiashu Xing}, \bibinfo{person}{Yangtao Wang},
+  \bibinfo{person}{Tianheng Cheng}, \bibinfo{person}{Li Liu},
+  \bibinfo{person}{Minwei Ran}, {and} \bibinfo{person}{Zekang Li}.}
+  \bibinfo{year}{2019}\natexlab{}.
+\newblock \showarticletitle{An End-to-End Automatic Cloud Database Tuning
+  System Using Deep Reinforcement Learning}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the 2019 International Conference on
+  Management of Data, {SIGMOD} Conference 2019, Amsterdam, The Netherlands,
+  June 30 - July 5, 2019}}. \bibinfo{publisher}{{ACM}},
+  \bibinfo{pages}{415--432}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1145/3299869.3300085}
 \showDOI{\tempurl}
 
 
