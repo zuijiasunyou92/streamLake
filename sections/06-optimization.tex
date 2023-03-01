@@ -64,7 +64,7 @@ This process repeats until the model converges. For inference, as the streaming 
 %\cc{Also not clear!! We should introduce what is the problem and the optimization goal that fit the paradigm of RL. Then define the critical components of RL and illustrate that.} RL secondly finds a more sophisticated policy based on the states of the data lake environment. The optimization process involves considering a set of discrete compaction configurations within the action space. Since the state space is continuous, a function approximation method is preferred. The stability of the training process is critical due to the high degree of variability in query performance in a distributed environment, so proximal policy optimization (PPO) is applied.
 
 \begin{figure}[htbp]
-	\includegraphics[scale=0.35]{figures/rl}
+	\includegraphics[scale=0.33]{figures/rl}
 	\centering
 	\vspace{-1.5em}
 	\caption{Automatic Compaction using RL.}
@@ -84,7 +84,7 @@ This process repeats until the model converges. For inference, as the streaming 
 \subsection{Predicate-aware Partitioning}~\label{subsec:partition}
 
 
-With the data volume increasing, we  have to partition the data into different storage blocks such that the query efficiency can be much improved. In practice, users always select a single (or multiple) column as the partition key,  apply   a hash function to the values of the key, and then distribute the data to different blocks based on the partition values. This method is sub-optimal $w.r.t.$ the latency because it may lead to imbalanced data distribution. \brain  designs predicate-aware  method to partition the data in a fine-grained way such that given a query, the \cc{number of blocks or tuples?} to be assessed is minimized, and thus the efficiency is improved.
+With  data  increasing, we  have to partition the data into different storage blocks such that the query efficiency can be much improved. In practice, users always select a single (or multiple) column as the partition key,  apply   a hash function to the values of the key, and then distribute the data to different blocks based on the partition values. This method is sub-optimal $w.r.t.$ the latency because it may lead to imbalanced data distribution. \brain  designs predicate-aware  method to partition the data in a fine-grained way such that given a query, the \cc{number of blocks or tuples?} to be assessed is minimized, and thus the efficiency is improved.
 
 
 \begin{figure}[htbp]

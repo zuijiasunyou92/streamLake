@@ -5,10 +5,11 @@
 \subsection{Experimental Settings}
 
 
-\noindent \textbf{Our Experimental Scenario.} To showcase the effectiveness of the \sys framework, we employ a real-world use case simplified from the case in Section~\ref{sec:intro}.   A mobile financial application company collaborates with China Mobile to collect and analyze its app usage data. The company aims to understand its app usage patterns to prevent frauds and enhance its product experience. The mobile carrier provides this analytic service through an end-to-end big data processing pipeline. This pipeline includes several jobs such as data collection, normalization, labeling, and querying, as depicted in Figure~\ref{exp:fig:case}.
-We compare  \sys framework with their current solution to build a big data processing pipeline that can facilitate business analysis.
+\noindent \textbf{Our Experimental Scenario.} To showcase the effectiveness of the \sys framework, we employ a real-world use case simplified from the case in Section~\ref{sec:intro}.   A mobile financial  company collaborates with China Mobile to collect and analyze its app usage data. The company aims to understand its  usage patterns to prevent frauds and enhance its product experience. 
+China Mobile provides this analytic service through an end-to-end big data processing pipeline, which includes several jobs such as data collection, normalization, labeling, and querying, as depicted in Figure~\ref{exp:fig:case}.
+We compare  \sys framework with their current solution to build a  pipeline that can facilitate business analysis.
 
-\noindent \underline{\textit{(a) Collection:}}  The network carrier collects mobile app data packets in  data centers across the nation via deep packet inspection (DPI) and transfers them to a centralized storage pool.
+\noindent \underline{\textit{(a) Collection:}}  The network carrier collects mobile app data packets in  data centers and transfers them to a centralized storage pool.
 
 
  \begin{figure*}[htbp]
@@ -23,9 +24,9 @@ We compare  \sys framework with their current solution to build a big data proce
 
 \noindent \underline{\textit{(c) Labeling:}} Labels from knowledge bases are added, so as to classify the records and identify useful insights.
 
-\noindent \underline{\textit{(d) Query:}} After the normalization and labeling processes are completed, the  records are inserted into tables and are available for query engines. To perform analyses, the app company employs secure API calls to query the data. Figure~\ref{exp:fig:sql} illustrates an example SQL query that counts the daily active users (DAU) in different provinces. More complicated analysis, like hidden Markov and Gaussian Mixture Models, can also be applied to draw user profiles and identify abnormal activities.
+\noindent \underline{\textit{(d) Query:}} After the normalization and labeling  are completed,   records are inserted into tables and  available for query engines. To perform analyses, the app company employs secure API calls to query the data. Figure~\ref{exp:fig:sql} illustrates an example SQL query that counts the daily active users (DAU) in different provinces.% More complicated analysis, like hidden Markov and Gaussian Mixture Models, can also be applied to draw user profiles and identify abnormal activities.
 
-To support both full data and real time analyses, the network carrier builds two data flows in the pipeline. One flow processes full data in batch every two hours and the other processes stream messages constantly to deliver time-sensitive logs such as new logins, payments and password modifications. This ensures that the network carrier can effectively analyze both historical data and real-time events to make  accurate and timely decisions.
+To support both \cc{full} data and real-time analyses, the network carrier builds two data flows in the pipeline. One  processes full data in batch every two hours and the other processes stream messages constantly to deliver time-sensitive logs such as new logins, payments and password modifications. This ensures that the network carrier can effectively analyze both historical data and real-time events to make  accurate and timely decisions.
 
  \begin{figure}[htbp]
 	\includegraphics[scale=0.33]{figures/sql}
@@ -46,7 +47,7 @@ To support both full data and real time analyses, the network carrier builds two
  
   To be specific, the cluster consists of 3 nodes, each with 24  2.30 GHz cores and 256 GB RAM. The cluster is configured as a 3-node \sys when we measure it.  While running the open-source solution, it is configured to host a 3-node \hdfs storage and a 3-node \kafka cluster simultaneously. The number of input data packets varies: 10 million, 50 million, 100 million, 500 million, and 1 billion packets. Each packet has an average size of 1.2 KB, resulting in corresponding data volumes of 12 GB, 60 GB, 120 GB, 600 GB, and 1.2 TB, respectively.
 
-Overall, Figure~\ref{exp:fig:case} shows the data processing process.  \kafka and \hdfs serves as independent stream storage and batch storage respectively to pass data across collection, normalization, labeling and query jobs.
+Overall, Figure~\ref{exp:fig:case} shows the data processing process.  \kafka and \hdfs serve as independent stream storage and batch storage respectively to pass data across collection, normalization, labeling and query jobs.
  As a typical ETL practice, a new copy of all data is written to \hdfs and \kafka after each job. In case  failing accidentally, a job can read its input data to reproduce the results.
  
  
@@ -101,8 +102,8 @@ The message stream processing speed in \sys is competitive to \kafka. \sys and \
 
 \begin{figure*}
 	\centering
-	\includegraphics[width=\textwidth]{figures/streamengine}
-	\vspace{-2em}
+	\includegraphics[width=0.92\textwidth]{figures/streamengine}
+	\vspace{-1em}
 	\caption{Evaluation of Message Streaming.}
 	\label{fig:streamengine}
 	\vspace{-2em}

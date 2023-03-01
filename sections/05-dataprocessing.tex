@@ -45,7 +45,7 @@ Each stream is mapped to a unique stream object in the storage layer, which is a
 The task of message delivery is carried out by stream object clients, which monitor the stream objects. These clients unwrap messages from clients, encapsulate them in the stream object data format, and redirect them to the corresponding stream objects via RDMA. To guarantee message delivery, the clients actively monitor the health of the stream objects to which they are connected and regularly exchange critical service data with the dispatcher service. This synchronization process includes reporting the health of the stream object connections and refreshing the stream objects connected to by the client.
 
 
-\noindent\underline{\textit{Stream dispatcher.}} The stream dispatcher is responsible for managing the metadata and configurations of the messaging service, and directing external/internal requests to the appropriate resources for message  dispatch. The relationships among topics, streams, stream workers, and stream objects are stored as key-value pairs in a fault-tolerant key-value store within the stream dispatcher. When there is  a status change   (\eg a stream worker or topic is added or removed), the metadata  in the key-value store is updated immediately to refresh the topology tracking. This topology tracking aids the stream dispatcher in directing requests for message stream dispatch. When there is a producer or consumer connection request, the stream dispatcher will route the request to the appropriate stream worker based on the associated stream topic, establishing a direct message exchange channel between the producer, the stream worker, and the consumer.
+\noindent\underline{\textit{Stream dispatcher.}} The stream dispatcher is responsible for managing the metadata and configurations of the messaging service, and directing external/internal requests to the appropriate resources for message  dispatch. The relationships among topics, streams, stream workers, and stream objects are stored as key-value pairs in a fault-tolerant key-value store within the stream dispatcher. When there is  a status change   (\eg a stream worker or topic is added or removed), the metadata  in the key-value store is updated immediately to refresh the topology tracking, which aids the stream dispatcher in directing requests for message stream dispatch. When there is a producer or consumer connection request, the stream dispatcher will route the request to the appropriate stream worker based on the associated stream topic, establishing a direct message exchange channel between the producer, the stream worker, and the consumer.
 
 \begin{figure}[htbp]
 	\vspace{-1em}
@@ -79,7 +79,7 @@ $\bullet$~\textit{The \texttt{archive} configuration} automates the archiving of
 Overall, the \sys stream storage provides guaranteed delivery, efficient transfer, and high elasticity for enterprise use.
 
 \noindent\textbf{Delivery Guarantee:} Our system ensures consistent message delivery through several measures. (1) Data within a stream object is strictly ordered, ensuring that messages are consumed in the order in which they are received. (2) Message writing is idempotent, which means that for network failure, duplicate messages sent by the producer  can be identified.
- (3) Strong data consistency is achieved by eliminating unreliable components like file systems and page caches, and storing data in  stream objects that can tolerant node, network, and disk failures. (4) The system provides exactly-once semantics through the use of a transaction manager and the two-phase commit protocol. This tracks participant actions and ensures that all results in a transaction are visible or invisible at the same time.
+ (3) Strong data consistency is achieved by eliminating unreliable components like file systems and page caches, and storing data in  stream objects that can tolerant node, network, and disk failures. (4) The system provides exactly-once semantics through  a transaction manager and the two-phase commit protocol. This tracks participant actions and ensures that all results in a transaction are visible or invisible at the same time.
  
  %There are two typical scenarios. The first is that a producer writes a batch of messages to multiple streams. All messages are either successfully written or failed. The second scenario is that the application reads the message, processes the message, and writes the message to a new stream and the whole process are either successful or failed.
 
@@ -161,7 +161,7 @@ The main components of the serverless function engine are shown in Figure~\ref{f
 
 
 \begin{figure}[htbp]
-	\includegraphics[scale=0.35]{figures/serverless}
+	\includegraphics[scale=0.3]{figures/serverless}
 	\centering
 	\vspace{-1em}
 	\caption{Serverless Function Engine.}
@@ -171,8 +171,6 @@ The main components of the serverless function engine are shown in Figure~\ref{f
 
 To be specific, when a job request is received, the function dispatcher obtains the data location from the storage devices and selects the appropriate storage nodes based on data distribution and available resources. The worker manager is then requested to deploy worker instances to the selected node. The worker instances download the necessary functions from the repository and execute the jobs using data from the storage infrastructure. Upon completion, a callback message is sent to the caller to notify them of the results. To ensure service quality, elastic scaling policies are used to dynamically adjust the number of nodes based on workload. 
 For example, a \cc{load-balanced method} is used to balance scheduling among instances.
-
-
 To achieve maximum pushdown benefits, three categories of query operators are supported, 
 
 \begin{itemize}
