@@ -121,6 +121,7 @@ Warning--empty publisher in armbrust2015spark
 Warning--empty address in armbrust2015spark
 Warning--empty publisher in jindal2021microlearner
 Warning--empty address in jindal2021microlearner
+Warning--page numbers missing in both pages and numpages fields in dqn2
 Warning--empty publisher in pandit2015accelerating
 Warning--empty address in pandit2015accelerating
 Warning--empty address in e2e
@@ -128,45 +129,45 @@ Warning--empty address in skip
 Warning--empty address in qdtree
 Warning--empty address in rtos
 Warning--empty address in cdbtune
-You've used 29 entries,
+You've used 31 entries,
             5901 wiz_defined-function locations,
-            1632 strings with 22848 characters,
-and the built_in function-call counts, 34627 in all, are:
-= -- 3838
-> -- 1440
+            1650 strings with 23586 characters,
+and the built_in function-call counts, 38273 in all, are:
+= -- 4277
+> -- 1742
 < -- 0
-+ -- 509
-- -- 476
-* -- 2763
-:= -- 3347
-add.period$ -- 123
-call.type$ -- 29
-change.case$ -- 233
-chr.to.int$ -- 29
-cite$ -- 197
-duplicate$ -- 3042
-empty$ -- 2159
-format.name$ -- 540
-if$ -- 8192
++ -- 615
+- -- 580
+* -- 3145
+:= -- 3809
+add.period$ -- 133
+call.type$ -- 31
+change.case$ -- 267
+chr.to.int$ -- 31
+cite$ -- 200
+duplicate$ -- 3236
+empty$ -- 2299
+format.name$ -- 652
+if$ -- 9026
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 73
-newline$ -- 288
-num.names$ -- 130
-pop$ -- 1367
+missing$ -- 81
+newline$ -- 312
+num.names$ -- 146
+pop$ -- 1455
 preamble$ -- 1
-purify$ -- 494
+purify$ -- 546
 quote$ -- 0
-skip$ -- 1064
+skip$ -- 1122
 stack$ -- 0
-substring$ -- 2446
-swap$ -- 308
+substring$ -- 2617
+swap$ -- 326
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 772
-warning$ -- 116
-while$ -- 113
+type$ -- 804
+warning$ -- 117
+while$ -- 124
 width$ -- 0
-write$ -- 535
-(There were 117 warnings)
+write$ -- 576
+(There were 118 warnings)

@@ -48,12 +48,13 @@ The task of message delivery is carried out by stream object clients, which moni
 \noindent\underline{\textit{Stream dispatcher.}} The stream dispatcher is responsible for managing the metadata and configurations of the messaging service, and directing external/internal requests to the appropriate resources for message  dispatch. The relationships among topics, streams, stream workers, and stream objects are stored as key-value pairs in a fault-tolerant key-value store within the stream dispatcher. When there is  a status change   (\eg a stream worker or topic is added or removed), the metadata  in the key-value store is updated immediately to refresh the topology tracking. This topology tracking aids the stream dispatcher in directing requests for message stream dispatch. When there is a producer or consumer connection request, the stream dispatcher will route the request to the appropriate stream worker based on the associated stream topic, establishing a direct message exchange channel between the producer, the stream worker, and the consumer.
 
 \begin{figure}[htbp]
-	\includegraphics[scale=0.35]{figures/config}
+	\vspace{-1em}
+	\includegraphics[scale=0.33]{figures/config}
 	\centering
 	\vspace{-1em}
 	\caption{Stream Storage Configuration Example..}
 	\label{fig:config}
-	\vspace{-1em}
+	\vspace{-1.5em}
 \end{figure}
 
 

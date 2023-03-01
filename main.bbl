@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{29}
+\begin{thebibliography}{31}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -260,6 +260,49 @@
   International Conference on Data Engineering (ICDE)}}. IEEE,
   \bibinfo{pages}{2423--2434}.
 \newblock
+
+
+\bibitem[\protect\citeauthoryear{Mnih, Kavukcuoglu, Silver, Graves, Antonoglou,
+  Wierstra, and Riedmiller}{Mnih et~al\mbox{.}}{2013}]%
+        {dqn2}
+\bibfield{author}{\bibinfo{person}{Volodymyr Mnih}, \bibinfo{person}{Koray
+  Kavukcuoglu}, \bibinfo{person}{David Silver}, \bibinfo{person}{Alex Graves},
+  \bibinfo{person}{Ioannis Antonoglou}, \bibinfo{person}{Daan Wierstra}, {and}
+  \bibinfo{person}{Martin~A. Riedmiller}.} \bibinfo{year}{2013}\natexlab{}.
+\newblock \showarticletitle{Playing Atari with Deep Reinforcement Learning}.
+\newblock \bibinfo{journal}{\emph{CoRR}}  \bibinfo{volume}{abs/1312.5602}
+  (\bibinfo{year}{2013}).
+\newblock
+\showeprint[arXiv]{1312.5602}
+\urldef\tempurl%
+\url{http://arxiv.org/abs/1312.5602}
+\showURL{%
+\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Mnih, Kavukcuoglu, Silver, Rusu, Veness,
+  Bellemare, Graves, Riedmiller, Fidjeland, Ostrovski, Petersen, Beattie,
+  Sadik, Antonoglou, King, Kumaran, Wierstra, Legg, and Hassabis}{Mnih
+  et~al\mbox{.}}{2015}]%
+        {dqn}
+\bibfield{author}{\bibinfo{person}{Volodymyr Mnih}, \bibinfo{person}{Koray
+  Kavukcuoglu}, \bibinfo{person}{David Silver}, \bibinfo{person}{Andrei~A.
+  Rusu}, \bibinfo{person}{Joel Veness}, \bibinfo{person}{Marc~G. Bellemare},
+  \bibinfo{person}{Alex Graves}, \bibinfo{person}{Martin~A. Riedmiller},
+  \bibinfo{person}{Andreas Fidjeland}, \bibinfo{person}{Georg Ostrovski},
+  \bibinfo{person}{Stig Petersen}, \bibinfo{person}{Charles Beattie},
+  \bibinfo{person}{Amir Sadik}, \bibinfo{person}{Ioannis Antonoglou},
+  \bibinfo{person}{Helen King}, \bibinfo{person}{Dharshan Kumaran},
+  \bibinfo{person}{Daan Wierstra}, \bibinfo{person}{Shane Legg}, {and}
+  \bibinfo{person}{Demis Hassabis}.} \bibinfo{year}{2015}\natexlab{}.
+\newblock \showarticletitle{Human-level control through deep reinforcement
+  learning}.
+\newblock \bibinfo{journal}{\emph{Nat.}} \bibinfo{volume}{518},
+  \bibinfo{number}{7540} (\bibinfo{year}{2015}), \bibinfo{pages}{529--533}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1038/nature14236}
+\showDOI{\tempurl}
 
 
 \bibitem[\protect\citeauthoryear{Pandit, Kondo, Simmen, Norwood, and

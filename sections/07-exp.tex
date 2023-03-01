@@ -10,6 +10,15 @@ We compare  \sys framework with their current solution to build a big data proce
 
 \noindent \underline{\textit{(a) Collection:}}  The network carrier collects mobile app data packets in  data centers across the nation via deep packet inspection (DPI) and transfers them to a centralized storage pool.
 
+
+ \begin{figure*}[htbp]
+	\includegraphics[scale=0.95]{figures/case}
+	\centering
+	\vspace{-1em}
+	\caption{Data Analytic Pipelines for a  Real-world Use Case.}
+	\label{exp:fig:case}
+	\vspace{-1em}
+\end{figure*}
 \noindent \underline{\textit{(b) Normalization:}} At the  storage pool, the data packets are normalized as records in a unified schema. Data is validated to ensure accuracy and quality. Sensitive data is shielded to protect  privacy. 
 
 \noindent \underline{\textit{(c) Labeling:}} Labels from knowledge bases are added, so as to classify the records and identify useful insights.
@@ -19,11 +28,12 @@ We compare  \sys framework with their current solution to build a big data proce
 To support both full data and real time analyses, the network carrier builds two data flows in the pipeline. One flow processes full data in batch every two hours and the other processes stream messages constantly to deliver time-sensitive logs such as new logins, payments and password modifications. This ensures that the network carrier can effectively analyze both historical data and real-time events to make  accurate and timely decisions.
 
  \begin{figure}[htbp]
-	\includegraphics[scale=0.35]{figures/sql}
+	\includegraphics[scale=0.33]{figures/sql}
 	\centering
-	\vspace{-1em}
+	\vspace{-1.3em}
 	\caption{Query Example of Computing DAU.}
 	\label{exp:fig:sql}
+	\vspace{-2em}
 \end{figure}
 
 \noindent \textbf{Settings.} This use case is evaluated in a  cluster using different sizes of input data packets and the results are compared with open-source storage solution Hadoop Distributed File System (\hdfs)~\cite{hdfs} and \kafka~\cite{kafka}. The reason of why we choose the two storage systems is that in reality, China Mobile has been using them for many years, which have shown stable and good performance. Hence, it is  reasonable to directly compare with the systems that our customer (China Mobile) is using. Also, in practice, many of our customers also use HDFS and Kafka to cope with similar application scenarios.
@@ -40,18 +50,20 @@ Overall, Figure~\ref{exp:fig:case} shows the data processing process.  \kafka an
  As a typical ETL practice, a new copy of all data is written to \hdfs and \kafka after each job. In case  failing accidentally, a job can read its input data to reproduce the results.
  
  
- \begin{figure*}[htbp]
- 	\includegraphics[scale=1.05]{figures/case}
- 	\centering
- 	\vspace{-1em}
- 	\caption{Data Analytic Pipelines for a  Real-world Use Case.}
- 	\label{exp:fig:case}
- \end{figure*}
+
  
   In our solution, \sys serves as a unified stream and batch processing storage. 
   We replace \kafka and \hdfs with \sys, which handles the message streaming and data storage. 
   Only minimal changes are made to the compute engines, so the business logic remains unchanged. 
   As \sys supports time travel, only updated rows are written to the storage. When a job needs to re-run, it can use time travel to retrieve its input data.  During the query jobs, for example, the three filters in the \texttt{WHERE} clause and the \texttt{COUNT} aggregate in Figure~\ref{exp:fig:sql} are pushed down to compute in \sys, so as to  accelerate the query.
+
+
+
+
+
+
+
+
 
 
 \begin{table*}[ht]
@@ -69,15 +81,8 @@ Overall, Figure~\ref{exp:fig:case} shows the data processing process.  \kafka an
 		& Ratio (H/S)         & 0.82       & 1.19       & 1.32        & 1.55        & 1.53          \\ \hline
 	\end{tabular}
 	\caption{\sys v.s. \hdfs and \kafka.}\label{tab:case}
+	\vspace{-2.5em}
 \end{table*}
-
-
-
-
-
-
-
-
 
 
 \subsection{Overall Comparison}
@@ -97,8 +102,10 @@ The message stream processing speed in \sys is competitive to \kafka. \sys and \
 \begin{figure*}
 	\centering
 	\includegraphics[width=\textwidth]{figures/streamengine}
+	\vspace{-2em}
 	\caption{Evaluation of Message Streaming.}
 	\label{fig:streamengine}
+	\vspace{-2em}
 \end{figure*}
 
 
@@ -117,8 +124,6 @@ When it comes to the throughput (Figure~\ref{fig:streamengine}(a)), as the messa
 Finally, Figure~\ref{fig:streamengine}(d) compares the space consumption different storage strategies (\texttt{Replication} refers to  saving data in its original format using multiple copies, \texttt{EC} refers to using erasure code to store the data, \texttt{EC+Col-store} refers to first converting the data to columnar format and then applying erasure code). 
 The X-axis, $e.g.,$ \texttt{Fault Tolerance(FT)}=1 means that a storage cluster with the redundancy strategies can tolerant one node failure, and no data is lost.
 The  Y-axis means  the times of its original data size   using these redundancy strategies.
-
-
  Without scarifying the reliability, \sys provides the options (\texttt{EC} and \texttt{EC+Col-store}) to use erasure coding and column-store which can save three to five times of storage cost compared to \texttt{Replication}. 
 
 
@@ -128,9 +133,11 @@ The  Y-axis means  the times of its original data size   using these redundancy 
 
 \begin{figure*}
 	\centering
-	\includegraphics[width=\textwidth]{figures/LakeBrain}
+	\includegraphics[width=0.9\textwidth]{figures/LakeBrain}
+	\vspace{-1em}
 	\caption{\cc{LakeBrain Compaction and Partitioning Performance.}}
 	\label{fig:lakebrain}
+	\vspace{-1em}
 \end{figure*}
 
 
@@ -168,8 +175,10 @@ The results  in Figure~\ref{fig:lakebrain}(c,d) shows that the proposed method o
 \begin{figure}
 	\centering
 	\includegraphics[width=\columnwidth]{figures/Querytime}
+	\vspace{-2em}
 	\caption{Computation Pushdown Query Time.}
 	\label{fig:pushdown}
+	\vspace{-2.1em}
 \end{figure}
 
 

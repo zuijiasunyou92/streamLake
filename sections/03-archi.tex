@@ -15,7 +15,7 @@ In order to meet the demands of enterprise customers for next-generation big dat
 	\vspace{-2em}
 	\caption{China Mobile Use Case.}
 	\label{fig:mobile}
-	\vspace{-2em}
+	\vspace{-2.2em}
 \end{figure}
 
 \noindent \textbf{Store layer} is responsible for data persistence, which consists of SSD and HDD data storage pools, a high-speed data exchange and interworking bus as well as multiple types of storage semantic abstractions (including block, file, stream, table, etc.).
@@ -42,7 +42,15 @@ Particularly, to further enhance the capabilities of the layer, we have extended
 %To further enhance the capabilities of the Data Service Layer, we have extended it to include specialized services and optimizations for log message processing operations. These include the StreamLake services and LakeBrain optimization, which are elaborated in Sections 5 and 6 of our report.
 
 %To support near-data processing of the StreamLake services, we have introduced a new component called the Elastic Serverless Function Engine. Its design and functionality are discussed in detail in Section 5.3.
-
+ 
+\begin{figure}[!t]
+	\centering
+	\includegraphics[scale=0.35]{figures/archi}
+	\vspace{-1em}
+	\caption{\sys Storage Architecture.}
+	\label{fig:archi}
+	\vspace{-2em}
+\end{figure}
 
 \noindent \textbf{Data access layer} implements storage access protocols to handle user requests. It supports a block service via standard iSCSI access, NAS services via NFS and SMB protocols as well as an object service via S3 protocol, etc.
 The new StreamLake services utilize the OceanStor distributed Parallel Client (DPC) which is a universal protocol-agnostic client providing shorter but superfast IO path. 
@@ -50,15 +58,7 @@ The new StreamLake services utilize the OceanStor distributed Parallel Client (D
 The Access Layer also plays a crucial role in managing authentication and access control lists, which ensure that only valid user requests are translated into internal requests for further processing, so as to achieve  the security and integrity.
  
  
- 
- \begin{figure}[!t]
- 	\centering
- 	\includegraphics[scale=0.35]{figures/archi}
- 	\vspace{-1em}
- 	\caption{\sys Storage Architecture.}
- 	\label{fig:archi}
- 	\vspace{-2em}
- \end{figure}
+
  
  
  
