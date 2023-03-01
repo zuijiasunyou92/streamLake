@@ -53,7 +53,7 @@ To be specific, as shown in  Figure~\ref{fig:rl},
 
 \noindent \underline{\textit{Action}} denotes whether we conduct the compaction at each state, which is the output of the policy network. If we decide to compact, we will \cc{XXXX}.
 
-Overall, the training process is that given each state in the system, when acting the compaction or files are keeping ingested, the state will change and we can observe the reward provided by the environment. This repeats until the model converges. For inference, as the streaming data comes continuously, we can trigger the trained RL model every few moments to determine whether to  compact the files.
+Overall, the training process is that given each state in the system, when acting the compaction or files are keeping ingested, the state will change and we can observe the reward provided by the environment. \add{We will store these experiences and allow the agent to reuse them to train the policy network of the agent. } This process repeats until the model converges. For inference, as the streaming data comes continuously, we can trigger the trained RL model every few moments to determine whether to  compact the files.
 
 %As discussed above, file compaction aims to find the optimal strategy for compacting files that can improve query execution time or increased block utilization\footnote{not mentioned above} in storage. To achieve this goal, the optimization process employs two algorithms\footnote{two algorithms or steps?}: particle swarm optimization (PSO)\footnote{is there a citation? } and reinforcement learning (RL).
 
