@@ -1,5 +1,5 @@
-This is BibTeX, Version 0.99d (TeX Live 2020/W32TeX)
-Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+This is BibTeX, Version 0.99d (TeX Live 2017)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: main.aux
 The style file: ACM-Reference-Format.bst
 Reallocated singl_function (elt_size=4) to 100 items from 50.
@@ -32,11 +32,28 @@ Warning--to sort, need author or key in iceberg
 Warning--no key, author in hudi
 Warning--no author, editor, organization, or key in hudi
 Warning--to sort, need author or key in hudi
+Warning--no key, author in hive
+Warning--no author, editor, organization, or key in hive
+Warning--to sort, need author or key in hive
+Warning--no key, author in spark
+Warning--no author, editor, organization, or key in spark
+Warning--to sort, need author or key in spark
+Warning--no key, author in presto
+Warning--no author, editor, organization, or key in presto
+Warning--to sort, need author or key in presto
+Warning--no key, author in oracle
+Warning--no author, editor, organization, or key in oracle
+Warning--to sort, need author or key in oracle
+Warning--no key, author in tere
+Warning--no author, editor, organization, or key in tere
+Warning--to sort, need author or key in tere
 Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
-Reallocated global_strs (elt_size=200001) to 20 items from 10.
+Reallocated global_strs (elt_size=20001) to 20 items from 10.
 Reallocated glb_str_end (elt_size=4) to 20 items from 10.
 Warning--no key, author in hdfs
 Warning--no key, author in hdfs
+Warning--no key, author in hive
+Warning--no key, author in hive
 Warning--no key, author in huawei
 Warning--no key, author in huawei
 Warning--no key, author in hudi
@@ -45,12 +62,20 @@ Warning--no key, author in iceberg
 Warning--no key, author in iceberg
 Warning--no key, author in kafka
 Warning--no key, author in kafka
+Warning--no key, author in oracle
+Warning--no key, author in oracle
 Warning--no key, author in pravega
 Warning--no key, author in pravega
+Warning--no key, author in presto
+Warning--no key, author in presto
 Warning--no key, author in pulsa
 Warning--no key, author in pulsa
 Warning--no key, author in s3
 Warning--no key, author in s3
+Warning--no key, author in spark
+Warning--no key, author in spark
+Warning--no key, author in tere
+Warning--no key, author in tere
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Warning--no key, author in s3
 Warning--no author, editor, organization, or key in s3
@@ -67,59 +92,81 @@ Warning--empty author in kafka
 Warning--no key, author in hdfs
 Warning--no author, editor, organization, or key in hdfs
 Warning--empty author in hdfs
+Warning--no key, author in hive
+Warning--no author, editor, organization, or key in hive
+Warning--empty author in hive
 Warning--no key, author in huawei
 Warning--no author, editor, organization, or key in huawei
 Warning--empty author in huawei
+Warning--no key, author in oracle
+Warning--no author, editor, organization, or key in oracle
+Warning--empty author in oracle
 Warning--no key, author in pravega
 Warning--no author, editor, organization, or key in pravega
 Warning--empty author in pravega
+Warning--no key, author in presto
+Warning--no author, editor, organization, or key in presto
+Warning--empty author in presto
 Warning--no key, author in pulsa
 Warning--no author, editor, organization, or key in pulsa
 Warning--empty author in pulsa
+Warning--no key, author in spark
+Warning--no author, editor, organization, or key in spark
+Warning--empty author in spark
+Warning--no key, author in tere
+Warning--no author, editor, organization, or key in tere
+Warning--empty author in tere
 Warning--empty address in ottertune
+Warning--empty publisher in armbrust2015spark
+Warning--empty address in armbrust2015spark
+Warning--empty publisher in jindal2021microlearner
+Warning--empty address in jindal2021microlearner
+Warning--empty publisher in pandit2015accelerating
+Warning--empty address in pandit2015accelerating
 Warning--empty address in e2e
 Warning--empty address in skip
 Warning--empty address in qdtree
+Warning--empty address in rtos
 Warning--empty address in cdbtune
-You've used 19 entries,
+You've used 29 entries,
             5901 wiz_defined-function locations,
-            1585 strings with 20994 characters,
-and the built_in function-call counts, 23373 in all, are:
-= -- 2668
-> -- 1026
+            1632 strings with 22848 characters,
+and the built_in function-call counts, 34627 in all, are:
+= -- 3838
+> -- 1440
 < -- 0
-+ -- 363
-- -- 340
-* -- 1904
-:= -- 2301
-add.period$ -- 82
-call.type$ -- 19
-change.case$ -- 160
-chr.to.int$ -- 19
-cite$ -- 120
-duplicate$ -- 1975
-empty$ -- 1403
-format.name$ -- 384
-if$ -- 5528
++ -- 509
+- -- 476
+* -- 2763
+:= -- 3347
+add.period$ -- 123
+call.type$ -- 29
+change.case$ -- 233
+chr.to.int$ -- 29
+cite$ -- 197
+duplicate$ -- 3042
+empty$ -- 2159
+format.name$ -- 540
+if$ -- 8192
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 49
-newline$ -- 213
-num.names$ -- 90
-pop$ -- 865
+missing$ -- 73
+newline$ -- 288
+num.names$ -- 130
+pop$ -- 1367
 preamble$ -- 1
-purify$ -- 331
+purify$ -- 494
 quote$ -- 0
-skip$ -- 685
+skip$ -- 1064
 stack$ -- 0
-substring$ -- 1632
-swap$ -- 203
+substring$ -- 2446
+swap$ -- 308
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 486
-warning$ -- 69
-while$ -- 78
+type$ -- 772
+warning$ -- 116
+while$ -- 113
 width$ -- 0
-write$ -- 376
-(There were 70 warnings)
+write$ -- 535
+(There were 117 warnings)

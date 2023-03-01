@@ -46,8 +46,8 @@
 %% The abstract is a short summary of the work to be presented in the
 %% article.
 \begin{abstract}
-Huawei collaborates with some  Chinese large business companies to store and process \cc{exabytes} of nationwide operational data in data lake storage to provide business insights.  
- \cc{Specifically, our customers will ask to store over 10 petabytes of data, and process these log message stream and batch data with continuous updates.} Thus, we need compute and storage components in the analytic platform  to process and store massive data cost-efficiently. 
+Huawei collaborates with some  Chinese large business companies to store and process exabytes of nationwide operational data in data lake storage to provide business insights.  
+ Specifically, our customers will ask to store  and process massive  log message data to support their real-time and  decision making applications. Thus, we need compute and storage components in the analytic platform  to process and store massive data cost-efficiently. 
 
 
 %This process involves handling nation-scale streams and batch data processing with massive static server resources, which requires compute and storage components in the analytic platform  to process and store massive data cost-efficiently. 
@@ -58,7 +58,7 @@ Huawei collaborates with some  Chinese large business companies to store and pro
  
  
  To achieve these user requirements, we have designed a data lake storage system, \sys, which introduces a novel  design to serve log message streaming and batch data processing  in distributed storage, with high scalability, efficiency, reliability and low cost. 
- Specifically, we introduce the stream object as a storage abstraction for streaming data to achieve the storage-disaggregation architecture with high scalability and reliability. Moreover, we utilize the erasure coding and tiring storage to save the storage cost, and furthermore, the  stream object can be automatically converted to table object such that cost-effective stream and batch data processing can be achieved. For tabular data, we support the lakehouse functionality  to support ACID via the table object, with a global cache to improve the efficiency of data access between compute and storage engine.  Also, we design a \brain optimizer at the storage side to optimize the query performance and resource utilization under the storage-disaggregation architecture.
+ Specifically, we introduce the stream object as a storage abstraction for streaming data to achieve the storage-disaggregation architecture with high scalability and reliability. Moreover, we utilize the erasure coding and tiring storage to save the storage cost, and furthermore, the  stream object can be automatically converted to table object such that cost-effective stream and batch data processing can be achieved. For tabular data, we support the lakehouse functionality  to support ACID via the table object, with a metadata cache to improve the efficiency of data access between compute and storage engine.  Also, we design a \brain optimizer at the storage side to optimize the query performance and resource utilization under the storage-disaggregation architecture.
  %Data intensive operations such as message streaming, query operator pushdown, transaction and query time travel are managed inside the centralized disaggregated storage cluster to minimize data copies and shorten time windows in analytic pipelines.
  % Storage features such as multi-level caches and erasure coding along with algorithms like reinforcement learning and probabilistic network are also applied in \sys to further optimize query time and resource usage. 
   Finally, we have also deployed  \sys in China Mobile, the world's largest mobile network operator  to serve over 20\texttt{PB} production data, and the results demonstrate improvements of 30\% to $4\times$ in terms of query performance and over 37\% in terms of cost saving.
