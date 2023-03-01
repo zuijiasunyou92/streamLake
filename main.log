@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.9.30)  1 MAR 2023 12:33
+=======
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2021.2.15)  1 MAR 2023 12:04
+>>>>>>> 995967a98ca34880bd487f9fe0ea119a1f8e2f64
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2179,6 +2183,7 @@ Here is how much of TeX's memory you used:
  44581 multiletter control sequences out of 15000+600000
  184445 words of font info for 339 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
+<<<<<<< HEAD
  60i,12n,94p,10381b,13693s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/libertine/l
 btn_ki75ao.enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/newtx/libert
@@ -2206,6 +2211,34 @@ fonts/rtxr.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/newtx/txe
 xs.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/newtx/txsys.pfb><
 /usr/local/texlive/2017/texmf-dist/fonts/type1/public/newtx/zxlri.pfb>
 Output written on main.pdf (13 pages, 1420219 bytes).
+=======
+ 63i,12n,100p,3241b,578s stack positions out of 5000i,500n,10000p,200000b,80000s
+{d:/SystemProgram/texlive/2020/texmf-dist/fonts/enc/dvips/libertine/lbtn_ki75
+ao.enc}{d:/SystemProgram/texlive/2020/texmf-dist/fonts/enc/dvips/inconsolata/i4
+-t1-4.enc}{d:/SystemProgram/texlive/2020/texmf-dist/fonts/enc/dvips/libertine/l
+btn_25tcsq.enc}{d:/SystemProgram/texlive/2020/texmf-dist/fonts/enc/dvips/libert
+ine/lbtn_oexx6f.enc}{d:/SystemProgram/texlive/2020/texmf-dist/fonts/enc/dvips/l
+ibertine/lbtn_7grukw.enc}{d:/SystemProgram/texlive/2020/texmf-dist/fonts/enc/dv
+ips/libertine/lbtn_76gpa5.enc}{d:/SystemProgram/texlive/2020/texmf-dist/fonts/e
+nc/dvips/libertine/lbtn_nh77jq.enc}<d:/SystemProgram/texlive/2020/texmf-dist/fo
+nts/type1/public/inconsolata/Inconsolata-zi4b.pfb><d:/SystemProgram/texlive/202
+0/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb><d:/SystemProg
+ram/texlive/2020/texmf-dist/fonts/type1/public/newtx/LibertineMathMI.pfb><d:/Sy
+stemProgram/texlive/2020/texmf-dist/fonts/type1/public/newtx/LibertineMathMI5.p
+fb><d:/SystemProgram/texlive/2020/texmf-dist/fonts/type1/public/newtx/Libertine
+MathMI7.pfb><d:/SystemProgram/texlive/2020/texmf-dist/fonts/type1/public/libert
+ine/LinBiolinumT.pfb><d:/SystemProgram/texlive/2020/texmf-dist/fonts/type1/publ
+ic/libertine/LinBiolinumTB.pfb><d:/SystemProgram/texlive/2020/texmf-dist/fonts/
+type1/public/libertine/LinLibertineT.pfb><d:/SystemProgram/texlive/2020/texmf-d
+ist/fonts/type1/public/libertine/LinLibertineTB.pfb><d:/SystemProgram/texlive/2
+020/texmf-dist/fonts/type1/public/libertine/LinLibertineTBI.pfb><d:/SystemProgr
+am/texlive/2020/texmf-dist/fonts/type1/public/libertine/LinLibertineTI.pfb><d:/
+SystemProgram/texlive/2020/texmf-dist/fonts/type1/public/newtx/NewTXMI.pfb><d:/
+SystemProgram/texlive/2020/texmf-dist/fonts/type1/public/newtx/txexs.pfb><d:/Sy
+stemProgram/texlive/2020/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb><d:/Sys
+temProgram/texlive/2020/texmf-dist/fonts/type1/public/newtx/txsys.pfb>
+Output written on main.pdf (13 pages, 1251427 bytes).
+>>>>>>> 995967a98ca34880bd487f9fe0ea119a1f8e2f64
 PDF statistics:
  657 PDF objects out of 1000 (max. 8388607)
  466 compressed objects within 5 object streams
