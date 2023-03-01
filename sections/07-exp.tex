@@ -5,7 +5,7 @@
 \subsection{Experimental Settings}
 
 
-\noindent \textbf{Our Experimental Scenario.} \cc{We  use a real-world use case to demonstrate the performance of the \sys framework in detail.}    A mobile financial application company collaborates with a mobile carrier to collect and analyze its app usage data. The company aims to understand its app usage patterns to prevent frauds and enhance its product experience. The mobile carrier provides this analytic service through an end-to-end big data processing pipeline. This pipeline includes several jobs such as data collection, normalization, labeling, and querying, as depicted in Figure~\ref{exp:fig:case}.
+\noindent \textbf{Our Experimental Scenario.} \cc{We  use a  real-world use case to demonstrate the performance of the \sys framework in detail.}    A mobile financial application company collaborates with a mobile carrier to collect and analyze its app usage data. The company aims to understand its app usage patterns to prevent frauds and enhance its product experience. The mobile carrier provides this analytic service through an end-to-end big data processing pipeline. This pipeline includes several jobs such as data collection, normalization, labeling, and querying, as depicted in Figure~\ref{exp:fig:case}.
 We compare  \sys framework with their current solution to build a big data processing pipeline that can facilitate business analysis.
 
 \noindent \underline{\textit{(a) Collection:}}  The network carrier collects mobile app data packets in  data centers across the nation via deep packet inspection (DPI) and transfers them to a centralized storage pool.
@@ -26,7 +26,7 @@ To support both full data and real time analyses, the network carrier builds two
 	\label{exp:fig:sql}
 \end{figure}
 
-\noindent \textbf{Settings.} This use case is evaluated in a  cluster using different sizes of input data packets and the results are compared with open-source storage solution Hadoop Distributed File System (\hdfs)~\cite{} and \kafka~\cite{}. The reason of why we choose the two storage systems is that in reality, China Mobile has been using them for many years, which have shown stable and good performance. Hence, it is  reasonable to directly compare with the systems that our customer (China Mobile) is using. Also, in practice, many of our customers also use HDFS and Kafka to cope with similar application scenarios.
+\noindent \textbf{Settings.} This use case is evaluated in a  cluster using different sizes of input data packets and the results are compared with open-source storage solution Hadoop Distributed File System (\hdfs)~\cite{hdfs} and \kafka~\cite{kafka}. The reason of why we choose the two storage systems is that in reality, China Mobile has been using them for many years, which have shown stable and good performance. Hence, it is  reasonable to directly compare with the systems that our customer (China Mobile) is using. Also, in practice, many of our customers also use HDFS and Kafka to cope with similar application scenarios.
 
 
 %\cc{For above, do we need more justification? like why hdfs and kafka fit? or common sense?}
@@ -147,7 +147,7 @@ File ingestion speed is important because compaction commits will fail if there 
 
 
 
-\noindent \textbf{Predicate-Aware Partitioning:} We also test the partitioning method on \texttt{TPC-H}  with different scale factors. We train the probabilistic model with 3\% of the data randomly sampled from the \texttt{lineitem} table in a dataset generated with a scale factor of 2. After that, we obtain the optimized partitioning policy with the proposed method and evaluate our system on the full dataset with scale factors of 2, 5, 10 and 100. To evaluate the performance, we compare the resulting bytes skipped for \texttt{lineitem} table with (1) No partition (\texttt{full}). (2) Partition by the day of \texttt{l\_shipdate} (\texttt{day}).  (3) Our  method using sum-product networks~\cite{}  (\texttt{spn}) as the cardinality estimator.
+\noindent \textbf{Predicate-Aware Partitioning:} We also test the partitioning method on \texttt{TPC-H}  with different scale factors. We train the probabilistic model with 3\% of the data randomly sampled from the \texttt{lineitem} table in a dataset generated with a scale factor of 2. After that, we obtain the optimized partitioning policy with the proposed method and evaluate our system on the full dataset with scale factors of 2, 5, 10 and 100. To evaluate the performance, we compare the resulting bytes skipped for \texttt{lineitem} table with (1) No partition (\texttt{full}). (2) Partition by the day of \texttt{l\_shipdate} (\texttt{day}).  (3) Our  method using sum-product networks~\cite{deepdb}  (\texttt{spn}) as the cardinality estimator.
  We compare the results with partitioning by the day of \texttt{l\_shipdate} considering it appears frequently in the pushdown predicates. The workload includes \texttt{TPC-H} query 6, 12 and 19 which involve \texttt{lineitem} table and include predicates other than \texttt{l\_shipdate}. We skip other \texttt{TPC-H} queries because their performance is  mainly dominated by the joins of multiple tables, which is beyond our purpose.
  
  \cc{Below is not clear enough!}

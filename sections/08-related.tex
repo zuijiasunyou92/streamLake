@@ -10,13 +10,15 @@ In this section, we will discuss relevant open-source projects and systems relat
 
 %\noindent\textbf{Query computation pushdown.} NetApp~\cite{} supports Hadoop to use its storage devices through NFS-based connector docking, through S3A docking to its object storage, and through SAS/iSCSI/FC building native \hdfs on its block/lun devices. AWS EMRFS~\cite{} is an enhancement introduced to address the inconsistency of object storage in metadata operations, with official information showing that it has made computation pushdown related optimizations for the engine. Alibaba EMR is based on object storage, and the JindoFS~\cite{} solves the performance problem of object storage by introducing local data caching. These solutions improve data access to the persistent storage in computation pushdown while StreamLake offers built-in computation pushdown operations directly. 
 
-\noindent\textbf{Streaming platforms.} Kafka, Pulsar and Pravega~\cite{} are widely-used open-source streaming platforms in industry. Unlike \sys, which builds its messaging service on top of the stream object and PLogs, and integrates its stream storage with a lakehouse framework, these solutions are file-based and require manual connections to compute engines and external storage, such as \hdfs~\cite{} or \texttt{S3}~\cite{}, for downstream processing or cost-friendly archiving. This increases both the complexity and cost of data pipeline management.
+\noindent\textbf{Streaming platforms.} Kafka, Pulsar and Pravega~\cite{pulsa,pravega} are widely-used open-source streaming platforms in industry. Unlike \sys, which builds its messaging service on top of the stream object and PLogs, and integrates its stream storage with a lakehouse framework, these solutions are file-based and require manual connections to compute engines and external storage, such as \hdfs~\cite{hdfs} or \texttt{S3}~\cite{s3}, for downstream processing or cost-friendly archiving. This increases both the complexity and cost of data pipeline management.
 
 
 
-\noindent\textbf{Lakehouse.} Iceberg, Hudi and Delta Lake~\cite{} are popular  lakehouse data management framework, which rely on statistic file or object storage. 
+\noindent\textbf{Lakehouse.} Iceberg, Hudi and Delta Lake~\cite{iceberg,hudi,delta} are popular  lakehouse data management framework, which rely on statistic file or object storage. 
 Massive data transmission between the storage and the compute engines are inevitable in many scenarios. \cc{Not coherent!!!}
  \sys builds the lakehouse framework on top of the table object and PLogs, leveraging the enterprise-level data redundancy, high performance cache and query computation pushdown to provide reliable and high speed concurrent lakehouse reads/writes. 
+ 
+ %In addition, inspired by  methods proposed by~\cite{xiangyou, napa}, query operator pushdown can be used together with materialized views as cache to further optimize query performance.  This feature is on the roadmap to add to  \sys. 
 
 
 
@@ -37,7 +39,7 @@ Massive data transmission between the storage and the compute engines are inevit
 %Overall, these solutions provide various ways to improve data access to persistent storage in computation pushdown scenarios, whether through native building of HDFS on block/LUN devices, improved metadata operations, or data caching.
 
 \noindent\textbf{Automatic database tuning .} 
-Recently, AI is widely-used inside the database system to improve the performance~\cite{}. For instances, OtterTune~\cite{ottertune} is a classic ML-based framework, recommending knob configuration using Gaussian process. Moreover, RL has been adopted in CDBTune~\cite{cdbtune} to iteratively explore the optimal configuration.
+Recently, AI is widely-used inside the database system to improve the performance~\cite{survey,face, e2e, ottertune, ottertune2, cdbtune, qdtree, naru, deepdb}. For instances, OtterTune~\cite{ottertune} is a classic ML-based framework, recommending knob configuration using Gaussian process. Moreover, RL has been adopted in CDBTune~\cite{cdbtune} to iteratively explore the optimal configuration.
 % Investigated in [41] shows the impact of the performance variation in production environments, indicating that GP tends to converge faster but is frequently trapped in local optima, whereas RL or deep learning (DL) generally needs a longer training process and achieves better performance.
-   Sun et.al~\cite{} is the first approach that tries to maximize data skipping for a partitioning using pushdown predicates with a bottom-up approach. QD-tree~\cite{} proposed a greedy algorithm and a reinforcement learning based algorithm to further optimize the partitioning strategy.
+   Sun et.al~\cite{skip} is the first approach that tries to maximize data skipping for a partitioning using pushdown predicates with a bottom-up approach. QD-tree~\cite{qdtree} proposed a greedy algorithm and a reinforcement learning based algorithm to further optimize the partitioning strategy.
     \cc{However, these algorithms need to quantify the performance of each candidate partitioning.} %In addition, the partitioning layout is sub-optimal when new data comes, as it is optimized based on existing data.

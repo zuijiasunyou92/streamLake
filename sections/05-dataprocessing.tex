@@ -169,7 +169,7 @@ The main components of the serverless function engine are shown in Figure~\ref{f
 \end{figure}
 
 To be specific, when a job request is received, the function dispatcher obtains the data location from the storage devices and selects the appropriate storage nodes based on data distribution and available resources. The worker manager is then requested to deploy worker instances to the selected node. The worker instances download the necessary functions from the repository and execute the jobs using data from the storage infrastructure. Upon completion, a callback message is sent to the caller to notify them of the results. To ensure service quality, elastic scaling policies are used to dynamically adjust the number of nodes based on workload. 
-For example, a load-balanced method\footnote{not specific} is used to balance scheduling among instances.
+For example, a \cc{load-balanced method} is used to balance scheduling among instances.
 
 
 To achieve maximum pushdown benefits, three categories of query operators are supported, 
@@ -194,7 +194,7 @@ To facilitate the pushdown of query operators from the compute layer to the stor
  During query planning, the optimizer of  query  identifies operators that can be pushed down and sends the information to the NDP Proxy.  Then the NDP Proxy inserts these requests into a queue for traffic control and then sends them to the serverless engine for execution as shown in Figure~\ref{fig:serverless}.
 As soon as the query results are ready, the NDP Proxy transfers them back to the compute engine using the high-speed data exchange bus of \sys, so as to ensure efficient data transfer.
 Overall,  this process leverages the flexibility and elasticity of serverless computing, which allows for efficient use and release of server resources as required, resulting in better overall performance and resource utilization. 
-In addition, inspired by  methods proposed by~\cite{xiangyou, napa}, query operator pushdown can be used together with materialized views as cache to further optimize query performance.  This feature is on the roadmap to add to  \sys. 
+%In addition, inspired by  methods proposed by~\cite{xiangyou, napa}, query operator pushdown can be used together with materialized views as cache to further optimize query performance.  This feature is on the roadmap to add to  \sys. 
 
 
 

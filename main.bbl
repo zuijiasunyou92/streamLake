@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{13}
+\begin{thebibliography}{19}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -117,6 +117,23 @@
 \showDOI{\tempurl}
 
 
+\bibitem[\protect\citeauthoryear{Aken, Yang, Brillard, Fiorino, Zhang, Billian,
+  and Pavlo}{Aken et~al\mbox{.}}{2021}]%
+        {ottertune2}
+\bibfield{author}{\bibinfo{person}{Dana~Van Aken}, \bibinfo{person}{Dongsheng
+  Yang}, \bibinfo{person}{Sebastien Brillard}, \bibinfo{person}{Ari Fiorino},
+  \bibinfo{person}{Bohan Zhang}, \bibinfo{person}{Christian Billian}, {and}
+  \bibinfo{person}{Andrew Pavlo}.} \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{An Inquiry into Machine Learning-based Automatic
+  Configuration Tuning Services on Real-World Database Management Systems}.
+\newblock \bibinfo{journal}{\emph{Proc. {VLDB} Endow.}} \bibinfo{volume}{14},
+  \bibinfo{number}{7} (\bibinfo{year}{2021}), \bibinfo{pages}{1241--1253}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.14778/3450980.3450992}
+\showDOI{\tempurl}
+
+
 \bibitem[\protect\citeauthoryear{Armbrust, Das, Paranjpye, Xin, Zhu, Ghodsi,
   Yavuz, Murthy, Torres, Sun, Boncz, Mokhtar, Hovell, Ionescu, Luszczak,
   Switakowski, Ueshin, Li, Szafranski, Senster, and Zaharia}{Armbrust
@@ -161,6 +178,73 @@
 \tempurl}
 
 
+\bibitem[\protect\citeauthoryear{Sun, Li, and Tang}{Sun et~al\mbox{.}}{2021}]%
+        {e2e}
+\bibfield{author}{\bibinfo{person}{Ji Sun}, \bibinfo{person}{Guoliang Li},
+  {and} \bibinfo{person}{Nan Tang}.} \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{Learned Cardinality Estimation for Similarity
+  Queries}. In \bibinfo{booktitle}{\emph{{SIGMOD} '21: International Conference
+  on Management of Data, Virtual Event, China, June 20-25, 2021}},
+  \bibfield{editor}{\bibinfo{person}{Guoliang Li}, \bibinfo{person}{Zhanhuai
+  Li}, \bibinfo{person}{Stratos Idreos}, {and} \bibinfo{person}{Divesh
+  Srivastava}} (Eds.). \bibinfo{publisher}{{ACM}}, \bibinfo{pages}{1745--1757}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1145/3448016.3452790}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Sun, Franklin, Krishnan, and Xin}{Sun
+  et~al\mbox{.}}{2014}]%
+        {skip}
+\bibfield{author}{\bibinfo{person}{Liwen Sun}, \bibinfo{person}{Michael~J.
+  Franklin}, \bibinfo{person}{Sanjay Krishnan}, {and}
+  \bibinfo{person}{Reynold~S. Xin}.} \bibinfo{year}{2014}\natexlab{}.
+\newblock \showarticletitle{Fine-grained partitioning for aggressive data
+  skipping}. In \bibinfo{booktitle}{\emph{International Conference on
+  Management of Data, {SIGMOD} 2014, Snowbird, UT, USA, June 22-27, 2014}}.
+  \bibinfo{publisher}{{ACM}}, \bibinfo{pages}{1115--1126}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1145/2588555.2610515}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Wang, Chai, Liu, and Li}{Wang
+  et~al\mbox{.}}{2021}]%
+        {face}
+\bibfield{author}{\bibinfo{person}{Jiayi Wang}, \bibinfo{person}{Chengliang
+  Chai}, \bibinfo{person}{Jiabin Liu}, {and} \bibinfo{person}{Guoliang Li}.}
+  \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{{FACE:} {A} Normalizing Flow based Cardinality
+  Estimator}.
+\newblock \bibinfo{journal}{\emph{Proc. {VLDB} Endow.}} \bibinfo{volume}{15},
+  \bibinfo{number}{1} (\bibinfo{year}{2021}), \bibinfo{pages}{72--84}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.14778/3485450.3485458}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Yang, Chandramouli, Wang, Gehrke, Li, Minhas,
+  Larson, Kossmann, and Acharya}{Yang et~al\mbox{.}}{2020}]%
+        {qdtree}
+\bibfield{author}{\bibinfo{person}{Zongheng Yang}, \bibinfo{person}{Badrish
+  Chandramouli}, \bibinfo{person}{Chi Wang}, \bibinfo{person}{Johannes Gehrke},
+  \bibinfo{person}{Yinan Li}, \bibinfo{person}{Umar~Farooq Minhas},
+  \bibinfo{person}{Per{-}{\AA}ke Larson}, \bibinfo{person}{Donald Kossmann},
+  {and} \bibinfo{person}{Rajeev Acharya}.} \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Qd-tree: Learning Data Layouts for Big Data
+  Analytics}. In \bibinfo{booktitle}{\emph{Proceedings of the 2020
+  International Conference on Management of Data, {SIGMOD} Conference 2020,
+  online conference [Portland, OR, USA], June 14-19, 2020}}.
+  \bibinfo{publisher}{{ACM}}, \bibinfo{pages}{193--208}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1145/3318464.3389770}
+\showDOI{\tempurl}
+
+
 \bibitem[\protect\citeauthoryear{Yang, Liang, Kamsetty, Wu, Duan, Chen, Abbeel,
   Hellerstein, Krishnan, and Stoica}{Yang et~al\mbox{.}}{2019}]%
         {naru}
@@ -198,6 +282,23 @@
 \newblock
 \urldef\tempurl%
 \url{https://doi.org/10.1145/3299869.3300085}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Zhou, Chai, Li, and Sun}{Zhou
+  et~al\mbox{.}}{2022}]%
+        {survey}
+\bibfield{author}{\bibinfo{person}{Xuanhe Zhou}, \bibinfo{person}{Chengliang
+  Chai}, \bibinfo{person}{Guoliang Li}, {and} \bibinfo{person}{Ji Sun}.}
+  \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{Database Meets Artificial Intelligence: {A}
+  Survey}.
+\newblock \bibinfo{journal}{\emph{{IEEE} Trans. Knowl. Data Eng.}}
+  \bibinfo{volume}{34}, \bibinfo{number}{3} (\bibinfo{year}{2022}),
+  \bibinfo{pages}{1096--1116}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.1109/TKDE.2020.2994641}
 \showDOI{\tempurl}
 
 
