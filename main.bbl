@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{0}
+\begin{thebibliography}{9}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -36,5 +36,95 @@
 \providecommand\bibinfo[2]{#2}
 \providecommand\natexlab[1]{#1}
 \providecommand\showeprint[2][]{arXiv:#2}
+
+\bibitem[\protect\citeauthoryear{??}{s3}{2022}]%
+        {s3}
+ \bibinfo{year}{Amazon S3. 2022}\natexlab{}.
+\newblock \bibinfo{title}{Cloud Object Storage - Amazon S3 - Amazon Web
+  Services.}
+\newblock \bibinfo{howpublished}{\url{https://aws.amazon.com/s3}}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{??}{hud}{2022}]%
+        {hudi}
+ \bibinfo{year}{Apache Hudi. 2022}\natexlab{}.
+\newblock \bibinfo{howpublished}{\url{ https://hudi.apache.org}}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{??}{ice}{2022}]%
+        {iceberg}
+ \bibinfo{year}{Apache Iceberg. 2022}\natexlab{}.
+\newblock \bibinfo{howpublished}{\url{https: //iceberg.apache.org}}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{??}{kaf}{2022}]%
+        {kafka}
+ \bibinfo{year}{Apache Kafka. 2022}\natexlab{}.
+\newblock \bibinfo{howpublished}{\url{https://kafka. apache.org}}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{??}{hdf}{2019}]%
+        {hdfs}
+ \bibinfo{year}{ASF Infrabot. 2019}\natexlab{}.
+\newblock \bibinfo{title}{Filesystem Compatibility with Apache Hadoop. Apache
+  Software Foundation}.
+\newblock
+  \bibinfo{howpublished}{\url{https://cwiki.apache.org/confluence/display/HADOOP2/HCFS}}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{??}{hua}{2022}]%
+        {huawei}
+ \bibinfo{year}{Huawei Data Storage Systems. 2022}\natexlab{}.
+\newblock
+  \bibinfo{howpublished}{\url{https://e.huawei.com/en/products/storage}}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{??}{pra}{2022}]%
+        {pravega}
+ \bibinfo{year}{Pravega 2022}\natexlab{}.
+\newblock \bibinfo{title}{Pravega - A Reliable Stream Storage System.}
+\newblock \bibinfo{howpublished}{\url{https://cncf.pravega.io/}}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{??}{pul}{2022}]%
+        {pulsa}
+ \bibinfo{year}{Pulsa 2022}\natexlab{}.
+\newblock \bibinfo{howpublished}{\url{ https://pulsar.apache.org/}}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Armbrust, Das, Paranjpye, Xin, Zhu, Ghodsi,
+  Yavuz, Murthy, Torres, Sun, Boncz, Mokhtar, Hovell, Ionescu, Luszczak,
+  Switakowski, Ueshin, Li, Szafranski, Senster, and Zaharia}{Armbrust
+  et~al\mbox{.}}{2020}]%
+        {delta}
+\bibfield{author}{\bibinfo{person}{Michael Armbrust},
+  \bibinfo{person}{Tathagata Das}, \bibinfo{person}{Sameer Paranjpye},
+  \bibinfo{person}{Reynold Xin}, \bibinfo{person}{Shixiong Zhu},
+  \bibinfo{person}{Ali Ghodsi}, \bibinfo{person}{Burak Yavuz},
+  \bibinfo{person}{Mukul Murthy}, \bibinfo{person}{Joseph Torres},
+  \bibinfo{person}{Liwen Sun}, \bibinfo{person}{Peter~A. Boncz},
+  \bibinfo{person}{Mostafa Mokhtar}, \bibinfo{person}{Herman~Van Hovell},
+  \bibinfo{person}{Adrian Ionescu}, \bibinfo{person}{Alicja Luszczak},
+  \bibinfo{person}{Michal Switakowski}, \bibinfo{person}{Takuya Ueshin},
+  \bibinfo{person}{Xiao Li}, \bibinfo{person}{Michal Szafranski},
+  \bibinfo{person}{Pieter Senster}, {and} \bibinfo{person}{Matei Zaharia}.}
+  \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Delta Lake: High-Performance {ACID} Table Storage
+  over Cloud Object Stores}.
+\newblock \bibinfo{journal}{\emph{Proc. {VLDB} Endow.}} \bibinfo{volume}{13},
+  \bibinfo{number}{12} (\bibinfo{year}{2020}), \bibinfo{pages}{3411--3424}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.14778/3415478.3415560}
+\showDOI{\tempurl}
+
 
 \end{thebibliography}

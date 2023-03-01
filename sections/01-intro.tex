@@ -6,7 +6,7 @@
 
 As the Internet of Things (IoT) and 5G communication technologies become increasingly prevalent, massive amounts of data are being collected, stored, and analyzed.
  The traditional architecture of data infrastructure  has been challenged by cloud-native designs, where compute and storage resources are pooled to serve massive structured and unstructured data in an elastic and cost-efficient manner.
-  Analytical systems such as data warehouses and big data platforms have also evolved from siloed constructions to disaggregated storage and compute architectures. For example, data lake storage ($e.g.,$ AWS S3~\cite{}, Huawei OceanStor Pacific~\cite{}), with its 10$\times$ better price, availability, and persistence compared to traditional storage formats, has been very popular for storing massive various data, so as to support large-scale data analysis.
+  Analytical systems such as data warehouses and big data platforms have also evolved from siloed constructions to disaggregated storage and compute architectures. For example, data lake storage ($e.g.,$ AWS S3~\cite{s3}, Huawei OceanStor Pacific~\cite{huawei}), with its 10$\times$ better price, availability, and persistence compared to traditional storage formats, has been very popular for storing massive various data, so as to support large-scale data analysis.
 
 
 However, as large enterprises further digitalize their business, the data to be stored and analyzed explode. Over the past several years, we have collaborated closely with over 200 enterprise customers from 16 different industries to better understand their big data processing requirements. Our analysis of key statistics has revealed the following insights:
@@ -44,13 +44,13 @@ First, in terms of the streaming storage, we implement the compute-and-storage d
  we introduce the \textit{stream object}  to read/write the streaming messages, based on which our streaming service becomes elastic, $i.e.,$ the number of instances for processing the messages can be efficiently adjusted without data migration. The object has buffers to support real-time stream processing, and load-balanced storage and redundant persistence are also achieved. 
 Besides, to better reduce the storage cost,  \sys is built on the tiering storage Huawei OceanStor, which can automatically migrate data between SSD and HDD.
 To better achieve cost-effective stream and batch processing, the \textit{stream object}  can be automatically converted  to  \textit{table object}, and vice versa. In this way, data can be maintained for just one copy rather than storing for two copies separately, and thus the storage cost is reduced. 
-Existing systems like the widely-used Kafka~\cite{} uses the local file system to persist data, which is less elastic than the disaggregated storage.  Pravega~\cite{} and Pulsar~\cite{} adopt the disaggregated architecture, but unlike we can automatically mange cold data based on our built-in tiering storage (or conduct table-stream conversion to save the cost), they have to migrate the data to other cost-friendly storage systems like  HDFS~\cite{} or S3~\cite{}.
+Existing systems like the widely-used Kafka~\cite{kafka} uses the local file system to persist data, which is less elastic than the disaggregated storage.  Pravega~\cite{pravega} and Pulsar~\cite{pulsa} adopt the disaggregated architecture, but unlike we can automatically mange cold data based on our built-in tiering storage (or conduct table-stream conversion to save the cost), they have to migrate the data to other cost-friendly storage systems like  HDFS~\cite{hdfs} or S3~\cite{s3}.
 %自动分级 自动分成冷存储，转成表格式
 
 
 
 
-Second, in terms of supporting updates, Lakehouse system~\cite{} can eliminate multiple copies by achieving concurrent read and write in an ACID manner over one copy. We also implement the lakehouse functionality in \sys to support ACID via the table object.
+Second, in terms of supporting updates, Lakehouse system~\cite{iceberg,hudi,delta} can eliminate multiple copies by achieving concurrent read and write in an ACID manner over one copy. We also implement the lakehouse functionality in \sys to support ACID via the table object.
 Particularly, we design a global Non-Volatile Memory (NVM) cache that combines small I/O accesses $w.r.t.$ the metadata, so as to improve the efficiency of  compute engines visiting data in the remote disaggregated storage.
 %元数据是大量小文件读写 
 
