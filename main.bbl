@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{31}
+\begin{thebibliography}{39}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -37,32 +37,41 @@
 \providecommand\natexlab[1]{#1}
 \providecommand\showeprint[2][]{arXiv:#2}
 
-\bibitem[\protect\citeauthoryear{??}{s3}{2022}]%
+\bibitem[\protect\citeauthoryear{??}{ali}{loud}]%
+        {ali}
+ \bibinfo{year}{Ali Cloud}\natexlab{}.
+\newblock
+  \bibinfo{howpublished}{\url{https://www.alibabacloud.com/zh/product/data-lake-analytics
+  }}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{??}{s3}{n S3}]%
         {s3}
- \bibinfo{year}{Amazon S3. 2022}\natexlab{}.
+ \bibinfo{year}{Amazon S3}\natexlab{}.
 \newblock \bibinfo{title}{Cloud Object Storage - Amazon S3 - Amazon Web
   Services.}
 \newblock \bibinfo{howpublished}{\url{https://aws.amazon.com/s3}}.
 \newblock
 
 
-\bibitem[\protect\citeauthoryear{??}{hud}{2022}]%
+\bibitem[\protect\citeauthoryear{??}{hud}{Hudi}]%
         {hudi}
- \bibinfo{year}{Apache Hudi. 2022}\natexlab{}.
+ \bibinfo{year}{Apache Hudi}\natexlab{}.
 \newblock \bibinfo{howpublished}{\url{ https://hudi.apache.org}}.
 \newblock
 
 
-\bibitem[\protect\citeauthoryear{??}{ice}{2022}]%
+\bibitem[\protect\citeauthoryear{??}{ice}{berg}]%
         {iceberg}
- \bibinfo{year}{Apache Iceberg. 2022}\natexlab{}.
+ \bibinfo{year}{Apache Iceberg}\natexlab{}.
 \newblock \bibinfo{howpublished}{\url{https: //iceberg.apache.org}}.
 \newblock
 
 
-\bibitem[\protect\citeauthoryear{??}{kaf}{2022}]%
+\bibitem[\protect\citeauthoryear{??}{kaf}{afka}]%
         {kafka}
- \bibinfo{year}{Apache Kafka. 2022}\natexlab{}.
+ \bibinfo{year}{Apache Kafka}\natexlab{}.
 \newblock \bibinfo{howpublished}{\url{https://kafka. apache.org}}.
 \newblock
 
@@ -77,64 +86,143 @@
 \newblock
 
 
-\bibitem[\protect\citeauthoryear{??}{hiv}{2022}]%
+\bibitem[\protect\citeauthoryear{??}{aws}{AWS}]%
+        {aws}
+ \bibinfo{year}{AWS}\natexlab{}.
+\newblock
+  \bibinfo{howpublished}{\url{https://aws.amazon.com/big-data/datalakes-and-analytics/datalakes}}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{??}{azu}{zure}]%
+        {azure}
+ \bibinfo{year}{Azure}\natexlab{}.
+\newblock
+  \bibinfo{howpublished}{\url{https://azure.microsoft.com/en-us/solutions/data-lake}}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{??}{goo}{loud}]%
+        {google}
+ \bibinfo{year}{Google Cloud}\natexlab{}.
+\newblock
+  \bibinfo{howpublished}{\url{https://cloud.google.com/solutions/data-lake }}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{??}{hiv}{Hive}]%
         {hive}
- \bibinfo{year}{Hive 2022}\natexlab{}.
+ \bibinfo{year}{Hive}\natexlab{}.
 \newblock \bibinfo{howpublished}{\url{ https://hive.apache.org/}}.
 \newblock
 
 
-\bibitem[\protect\citeauthoryear{??}{hua}{2022}]%
+\bibitem[\protect\citeauthoryear{??}{hua}{tems}]%
         {huawei}
- \bibinfo{year}{Huawei Data Storage Systems. 2022}\natexlab{}.
+ \bibinfo{year}{Huawei Data Storage Systems}\natexlab{}.
 \newblock
   \bibinfo{howpublished}{\url{https://e.huawei.com/en/products/storage}}.
 \newblock
 
 
-\bibitem[\protect\citeauthoryear{??}{ora}{2022}]%
+\bibitem[\protect\citeauthoryear{??}{net}{rage}]%
+        {netapp}
+ \bibinfo{year}{NetApp Data Storage}\natexlab{}.
+\newblock \bibinfo{title}{Data Management Solutions for the Cloud | NetApp}.
+\newblock \bibinfo{howpublished}{\url{https://www.netapp.com/data-storage}}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{??}{ope}{ging}]%
+        {openmessaging}
+ \bibinfo{year}{Openmessaging}\natexlab{}.
+\newblock
+  \bibinfo{howpublished}{\url{https://github.com/openmessaging/benchmark}}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{??}{ora}{tion}]%
         {oracle}
- \bibinfo{year}{Oracle Documentation. 2022}\natexlab{}.
+ \bibinfo{year}{Oracle Documentation}\natexlab{}.
 \newblock \bibinfo{howpublished}{\url{ https://docs.oracle.com}}.
 \newblock
 
 
-\bibitem[\protect\citeauthoryear{??}{pra}{2022}]%
+\bibitem[\protect\citeauthoryear{??}{pra}{vega}]%
         {pravega}
- \bibinfo{year}{Pravega 2022}\natexlab{}.
+ \bibinfo{year}{Pravega}\natexlab{}.
 \newblock \bibinfo{title}{Pravega - A Reliable Stream Storage System.}
 \newblock \bibinfo{howpublished}{\url{https://cncf.pravega.io/}}.
 \newblock
 
 
-\bibitem[\protect\citeauthoryear{??}{pre}{2022}]%
+\bibitem[\protect\citeauthoryear{??}{pre}{esto}]%
         {presto}
- \bibinfo{year}{Presto 2022}\natexlab{}.
+ \bibinfo{year}{Presto}\natexlab{}.
 \newblock \bibinfo{howpublished}{\url{ https://presto.apache.org/}}.
 \newblock
 
 
-\bibitem[\protect\citeauthoryear{??}{pul}{2022}]%
+\bibitem[\protect\citeauthoryear{??}{pul}{ulsa}]%
         {pulsa}
- \bibinfo{year}{Pulsa 2022}\natexlab{}.
+ \bibinfo{year}{Pulsa}\natexlab{}.
 \newblock \bibinfo{howpublished}{\url{ https://pulsar.apache.org/}}.
 \newblock
 
 
-\bibitem[\protect\citeauthoryear{??}{spa}{2022}]%
+\bibitem[\protect\citeauthoryear{??}{spa}{park}]%
         {spark}
- \bibinfo{year}{Spark 2022}\natexlab{}.
+ \bibinfo{year}{Spark}\natexlab{}.
 \newblock \bibinfo{title}{Apache Spark™ - Unified Engine for large-scale data
   analytics}.
 \newblock \bibinfo{howpublished}{\url{ https://spark.apache.org/}}.
 \newblock
 
 
-\bibitem[\protect\citeauthoryear{??}{ter}{2022}]%
+\bibitem[\protect\citeauthoryear{??}{ter}{tion}]%
         {tere}
- \bibinfo{year}{Teradata Documentation. 2022}\natexlab{}.
+ \bibinfo{year}{Teradata Documentation}\natexlab{}.
 \newblock \bibinfo{howpublished}{\url{ https://docs.teradata.com/}}.
 \newblock
+
+
+\bibitem[\protect\citeauthoryear{Agiwal, Lai, Manoharan, Roy, Sankaranarayanan,
+  Zhang, Zou, Chen, Chen, Dai, Do, Gao, Geng, Grover, Huang, Huang, Li, Liang,
+  Lin, Liu, Liu, Mao, Meng, Mishra, Patel, Sr, Raman, Roy, Shishodia, Sun,
+  Tang, Tatemura, Trehan, Vadali, Venkatasubramanian, Zhang, Zhang, Zhang,
+  Zhuang, Graefe, Agrawal, Naughton, Kosalge, and Hacig{\"{u}}m{\"{u}}s}{Agiwal
+  et~al\mbox{.}}{2021}]%
+        {napa}
+\bibfield{author}{\bibinfo{person}{Ankur Agiwal}, \bibinfo{person}{Kevin Lai},
+  \bibinfo{person}{Gokul Nath~Babu Manoharan}, \bibinfo{person}{Indrajit Roy},
+  \bibinfo{person}{Jagan Sankaranarayanan}, \bibinfo{person}{Hao Zhang},
+  \bibinfo{person}{Tao Zou}, \bibinfo{person}{Jim Chen}, \bibinfo{person}{Min
+  Chen}, \bibinfo{person}{Ming Dai}, \bibinfo{person}{Thanh Do},
+  \bibinfo{person}{Haoyu Gao}, \bibinfo{person}{Haoyan Geng},
+  \bibinfo{person}{Raman Grover}, \bibinfo{person}{Bo Huang},
+  \bibinfo{person}{Yanlai Huang}, \bibinfo{person}{Adam Li},
+  \bibinfo{person}{Jianyi Liang}, \bibinfo{person}{Tao Lin},
+  \bibinfo{person}{Li Liu}, \bibinfo{person}{Yao Liu}, \bibinfo{person}{Xi
+  Mao}, \bibinfo{person}{Maya Meng}, \bibinfo{person}{Prashant Mishra},
+  \bibinfo{person}{Jay Patel}, \bibinfo{person}{Rajesh Sr},
+  \bibinfo{person}{Vijayshankar Raman}, \bibinfo{person}{Sourashis Roy},
+  \bibinfo{person}{Mayank~Singh Shishodia}, \bibinfo{person}{Tianhang Sun},
+  \bibinfo{person}{Justin Tang}, \bibinfo{person}{Jun Tatemura},
+  \bibinfo{person}{Sagar Trehan}, \bibinfo{person}{Ramkumar Vadali},
+  \bibinfo{person}{Prasanna Venkatasubramanian}, \bibinfo{person}{Joey Zhang},
+  \bibinfo{person}{Kefei Zhang}, \bibinfo{person}{Yupu Zhang},
+  \bibinfo{person}{Zeleng Zhuang}, \bibinfo{person}{Goetz Graefe},
+  \bibinfo{person}{Divy Agrawal}, \bibinfo{person}{Jeffrey~F. Naughton},
+  \bibinfo{person}{Sujata Kosalge}, {and} \bibinfo{person}{Hakan
+  Hacig{\"{u}}m{\"{u}}s}.} \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{Napa: Powering Scalable Data Warehousing with
+  Robust Query Performance at Google}.
+\newblock \bibinfo{journal}{\emph{Proc. {VLDB} Endow.}} \bibinfo{volume}{14},
+  \bibinfo{number}{12} (\bibinfo{year}{2021}), \bibinfo{pages}{2986--2998}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.14778/3476311.3476377}
+\showDOI{\tempurl}
 
 
 \bibitem[\protect\citeauthoryear{Aken, Pavlo, Gordon, and Zhang}{Aken
@@ -363,6 +451,24 @@
 \newblock
 \urldef\tempurl%
 \url{https://doi.org/10.14778/3485450.3485458}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Yang, Youill, Woicik, Liu, Yu, Serafini,
+  Aboulnaga, and Stonebraker}{Yang et~al\mbox{.}}{2021}]%
+        {yuxiangyao}
+\bibfield{author}{\bibinfo{person}{Yifei Yang}, \bibinfo{person}{Matt Youill},
+  \bibinfo{person}{Matthew~E. Woicik}, \bibinfo{person}{Yizhou Liu},
+  \bibinfo{person}{Xiangyao Yu}, \bibinfo{person}{Marco Serafini},
+  \bibinfo{person}{Ashraf Aboulnaga}, {and} \bibinfo{person}{Michael
+  Stonebraker}.} \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{FlexPushdownDB: Hybrid Pushdown and Caching in a
+  Cloud {DBMS}}.
+\newblock \bibinfo{journal}{\emph{Proc. {VLDB} Endow.}} \bibinfo{volume}{14},
+  \bibinfo{number}{11} (\bibinfo{year}{2021}), \bibinfo{pages}{2101--2113}.
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.14778/3476249.3476265}
 \showDOI{\tempurl}
 
 

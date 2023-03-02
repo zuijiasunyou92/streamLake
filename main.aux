@@ -66,7 +66,7 @@
 \newlabel{subsec:lakehouse}{{4.2}{6}{Lakehouse Read and Write}{subsection.4.2}{}}
 \citation{s3}
 \citation{hive,spark,presto}
-\citation{xiangyou,napa}
+\citation{yuxiangyao,napa}
 \@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Metadata Acceleration in Lakehouse Read/Write.\relax }}{7}{figure.caption.11}}
 \newlabel{fig:cache}{{9}{7}{Metadata Acceleration in Lakehouse Read/Write.\relax }{figure.caption.11}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Query Operator Computation Push Down}{7}{subsection.4.3}}
@@ -97,7 +97,7 @@
 \newlabel{sec:exp}{{6}{9}{Experiment}{section.6}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Experimental Settings}{9}{subsection.6.1}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Overall Comparison}{9}{subsection.6.2}}
-\citation{}
+\citation{openmessaging}
 \@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Data Analytic Pipelines for a Real-world Use Case.\relax }}{10}{figure.caption.15}}
 \newlabel{exp:fig:case}{{13}{10}{Data Analytic Pipelines for a Real-world Use Case.\relax }{figure.caption.15}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces \texttt  {StreamLake}\xspace  v.s. \texttt  {HDFS}\xspace  and \texttt  {Kafka}\xspace  .\relax }}{10}{table.caption.17}}
@@ -112,9 +112,12 @@
 \newlabel{fig:streamengine}{{15}{11}{Evaluation of Message Streaming.\relax }{figure.caption.18}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.4}Evaluation of \texttt  {LakeBrain}\xspace  }{11}{subsection.6.4}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.5}Evaluation of Query Pushdown}{11}{subsection.6.5}}
-\citation{}
-\citation{}
-\citation{}
+\citation{netapp}
+\citation{hdfs}
+\citation{aws}
+\citation{azure}
+\citation{google}
+\citation{ali}
 \citation{kafka,pulsa,pravega}
 \citation{hdfs}
 \citation{s3}
@@ -124,21 +127,6 @@
 \citation{cdbtune}
 \citation{skip}
 \citation{qdtree}
-\bibstyle{ACM-Reference-Format}
-\bibdata{bib/ref}
-\bibcite{s3}{{1}{2022}{{s3}}{{??}}}
-\bibcite{hudi}{{2}{2022}{{hud}}{{??}}}
-\bibcite{iceberg}{{3}{2022}{{ice}}{{??}}}
-\bibcite{kafka}{{4}{2022}{{kaf}}{{??}}}
-\bibcite{hdfs}{{5}{2019}{{hdf}}{{??}}}
-\bibcite{hive}{{6}{2022}{{hiv}}{{??}}}
-\bibcite{huawei}{{7}{2022}{{hua}}{{??}}}
-\bibcite{oracle}{{8}{2022}{{ora}}{{??}}}
-\bibcite{pravega}{{9}{2022}{{pra}}{{??}}}
-\bibcite{presto}{{10}{2022}{{pre}}{{??}}}
-\bibcite{pulsa}{{11}{2022}{{pul}}{{??}}}
-\bibcite{spark}{{12}{2022}{{spa}}{{??}}}
-\bibcite{tere}{{13}{2022}{{ter}}{{??}}}
 \@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces \cc {LakeBrain Compaction and Partitioning Performance.}\relax }}{12}{figure.caption.19}}
 \newlabel{fig:lakebrain}{{16}{12}{\cc {LakeBrain Compaction and Partitioning Performance.}\relax }{figure.caption.19}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces Computation Pushdown Query Time.\relax }}{12}{figure.caption.20}}
@@ -147,28 +135,51 @@
 \newlabel{sec:related}{{7}{12}{Related Work}{section.7}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {8}Conclusion}{12}{section.8}}
 \newlabel{sec:con}{{8}{12}{Conclusion}{section.8}{}}
-\@writefile{toc}{\contentsline {section}{References}{12}{section*.22}}
-\bibcite{ottertune}{{14}{2017}{{Aken et~al\unhbox \voidb@x \hbox {.}}}{{Aken, Pavlo, Gordon, and Zhang}}}
-\bibcite{ottertune2}{{15}{2021}{{Aken et~al\unhbox \voidb@x \hbox {.}}}{{Aken, Yang, Brillard, Fiorino, Zhang, Billian, and Pavlo}}}
-\bibcite{delta}{{16}{2020}{{Armbrust et~al\unhbox \voidb@x \hbox {.}}}{{Armbrust, Das, Paranjpye, Xin, Zhu, Ghodsi, Yavuz, Murthy, Torres, Sun, Boncz, Mokhtar, Hovell, Ionescu, Luszczak, Switakowski, Ueshin, Li, Szafranski, Senster, and Zaharia}}}
-\bibcite{armbrust2015spark}{{17}{2015}{{Armbrust et~al\unhbox \voidb@x \hbox {.}}}{{Armbrust, Xin, Lian, Huai, Liu, Bradley, Meng, Kaftan, Franklin, Ghodsi, et~al\unhbox \voidb@x \hbox {.}}}}
-\bibcite{eltabakh2021not}{{18}{2021}{{Eltabakh et~al\unhbox \voidb@x \hbox {.}}}{{Eltabakh, Subramanian, Al-Omari, Al-Kateb, Nair, Hasan, Cabrera, Zhang, Kishore, and Prasad}}}
-\bibcite{deepdb}{{19}{2020}{{Hilprecht et~al\unhbox \voidb@x \hbox {.}}}{{Hilprecht, Schmidt, Kulessa, Molina, Kersting, and Binnig}}}
-\bibcite{jindal2021microlearner}{{20}{2021}{{Jindal et~al\unhbox \voidb@x \hbox {.}}}{{Jindal, Qiao, Sen, and Patel}}}
-\bibcite{dqn2}{{21}{2013}{{Mnih et~al\unhbox \voidb@x \hbox {.}}}{{Mnih, Kavukcuoglu, Silver, Graves, Antonoglou, Wierstra, and Riedmiller}}}
-\bibcite{dqn}{{22}{2015}{{Mnih et~al\unhbox \voidb@x \hbox {.}}}{{Mnih, Kavukcuoglu, Silver, Rusu, Veness, Bellemare, Graves, Riedmiller, Fidjeland, Ostrovski, Petersen, Beattie, Sadik, Antonoglou, King, Kumaran, Wierstra, Legg, and Hassabis}}}
-\bibcite{pandit2015accelerating}{{23}{2015}{{Pandit et~al\unhbox \voidb@x \hbox {.}}}{{Pandit, Kondo, Simmen, Norwood, and Bai}}}
-\bibcite{e2e}{{24}{2021}{{Sun et~al\unhbox \voidb@x \hbox {.}}}{{Sun, Li, and Tang}}}
-\bibcite{skip}{{25}{2014}{{Sun et~al\unhbox \voidb@x \hbox {.}}}{{Sun, Franklin, Krishnan, and Xin}}}
-\bibcite{face}{{26}{2021}{{Wang et~al\unhbox \voidb@x \hbox {.}}}{{Wang, Chai, Liu, and Li}}}
-\bibcite{qdtree}{{27}{2020}{{Yang et~al\unhbox \voidb@x \hbox {.}}}{{Yang, Chandramouli, Wang, Gehrke, Li, Minhas, Larson, Kossmann, and Acharya}}}
-\bibcite{naru}{{28}{2019}{{Yang et~al\unhbox \voidb@x \hbox {.}}}{{Yang, Liang, Kamsetty, Wu, Duan, Chen, Abbeel, Hellerstein, Krishnan, and Stoica}}}
-\bibcite{rtos}{{29}{2020}{{Yu et~al\unhbox \voidb@x \hbox {.}}}{{Yu, Li, Chai, and Tang}}}
-\bibcite{cdbtune}{{30}{2019}{{Zhang et~al\unhbox \voidb@x \hbox {.}}}{{Zhang, Liu, Zhou, Li, Xiao, Cheng, Xing, Wang, Cheng, Liu, Ran, and Li}}}
-\bibcite{survey}{{31}{2022}{{Zhou et~al\unhbox \voidb@x \hbox {.}}}{{Zhou, Chai, Li, and Sun}}}
+\bibstyle{ACM-Reference-Format}
+\bibdata{bib/ref}
+\bibcite{ali}{{1}{loud}{{ali}}{{??}}}
+\bibcite{s3}{{2}{n S3}{{s3}}{{??}}}
+\bibcite{hudi}{{3}{Hudi}{{hud}}{{??}}}
+\bibcite{iceberg}{{4}{berg}{{ice}}{{??}}}
+\bibcite{kafka}{{5}{afka}{{kaf}}{{??}}}
+\bibcite{hdfs}{{6}{2019}{{hdf}}{{??}}}
+\bibcite{aws}{{7}{AWS}{{aws}}{{??}}}
+\bibcite{azure}{{8}{zure}{{azu}}{{??}}}
+\bibcite{google}{{9}{loud}{{goo}}{{??}}}
+\bibcite{hive}{{10}{Hive}{{hiv}}{{??}}}
+\bibcite{huawei}{{11}{tems}{{hua}}{{??}}}
+\bibcite{netapp}{{12}{rage}{{net}}{{??}}}
+\bibcite{openmessaging}{{13}{ging}{{ope}}{{??}}}
+\bibcite{oracle}{{14}{tion}{{ora}}{{??}}}
+\bibcite{pravega}{{15}{vega}{{pra}}{{??}}}
+\bibcite{presto}{{16}{esto}{{pre}}{{??}}}
+\bibcite{pulsa}{{17}{ulsa}{{pul}}{{??}}}
+\bibcite{spark}{{18}{park}{{spa}}{{??}}}
+\bibcite{tere}{{19}{tion}{{ter}}{{??}}}
+\bibcite{napa}{{20}{2021}{{Agiwal et~al\unhbox \voidb@x \hbox {.}}}{{Agiwal, Lai, Manoharan, Roy, Sankaranarayanan, Zhang, Zou, Chen, Chen, Dai, Do, Gao, Geng, Grover, Huang, Huang, Li, Liang, Lin, Liu, Liu, Mao, Meng, Mishra, Patel, Sr, Raman, Roy, Shishodia, Sun, Tang, Tatemura, Trehan, Vadali, Venkatasubramanian, Zhang, Zhang, Zhang, Zhuang, Graefe, Agrawal, Naughton, Kosalge, and Hacig{\"{u}}m{\"{u}}s}}}
+\bibcite{ottertune}{{21}{2017}{{Aken et~al\unhbox \voidb@x \hbox {.}}}{{Aken, Pavlo, Gordon, and Zhang}}}
+\bibcite{ottertune2}{{22}{2021}{{Aken et~al\unhbox \voidb@x \hbox {.}}}{{Aken, Yang, Brillard, Fiorino, Zhang, Billian, and Pavlo}}}
+\bibcite{delta}{{23}{2020}{{Armbrust et~al\unhbox \voidb@x \hbox {.}}}{{Armbrust, Das, Paranjpye, Xin, Zhu, Ghodsi, Yavuz, Murthy, Torres, Sun, Boncz, Mokhtar, Hovell, Ionescu, Luszczak, Switakowski, Ueshin, Li, Szafranski, Senster, and Zaharia}}}
+\bibcite{armbrust2015spark}{{24}{2015}{{Armbrust et~al\unhbox \voidb@x \hbox {.}}}{{Armbrust, Xin, Lian, Huai, Liu, Bradley, Meng, Kaftan, Franklin, Ghodsi, et~al\unhbox \voidb@x \hbox {.}}}}
+\bibcite{eltabakh2021not}{{25}{2021}{{Eltabakh et~al\unhbox \voidb@x \hbox {.}}}{{Eltabakh, Subramanian, Al-Omari, Al-Kateb, Nair, Hasan, Cabrera, Zhang, Kishore, and Prasad}}}
+\bibcite{deepdb}{{26}{2020}{{Hilprecht et~al\unhbox \voidb@x \hbox {.}}}{{Hilprecht, Schmidt, Kulessa, Molina, Kersting, and Binnig}}}
+\bibcite{jindal2021microlearner}{{27}{2021}{{Jindal et~al\unhbox \voidb@x \hbox {.}}}{{Jindal, Qiao, Sen, and Patel}}}
+\bibcite{dqn2}{{28}{2013}{{Mnih et~al\unhbox \voidb@x \hbox {.}}}{{Mnih, Kavukcuoglu, Silver, Graves, Antonoglou, Wierstra, and Riedmiller}}}
+\bibcite{dqn}{{29}{2015}{{Mnih et~al\unhbox \voidb@x \hbox {.}}}{{Mnih, Kavukcuoglu, Silver, Rusu, Veness, Bellemare, Graves, Riedmiller, Fidjeland, Ostrovski, Petersen, Beattie, Sadik, Antonoglou, King, Kumaran, Wierstra, Legg, and Hassabis}}}
+\bibcite{pandit2015accelerating}{{30}{2015}{{Pandit et~al\unhbox \voidb@x \hbox {.}}}{{Pandit, Kondo, Simmen, Norwood, and Bai}}}
+\bibcite{e2e}{{31}{2021}{{Sun et~al\unhbox \voidb@x \hbox {.}}}{{Sun, Li, and Tang}}}
+\bibcite{skip}{{32}{2014}{{Sun et~al\unhbox \voidb@x \hbox {.}}}{{Sun, Franklin, Krishnan, and Xin}}}
+\bibcite{face}{{33}{2021}{{Wang et~al\unhbox \voidb@x \hbox {.}}}{{Wang, Chai, Liu, and Li}}}
+\bibcite{yuxiangyao}{{34}{2021}{{Yang et~al\unhbox \voidb@x \hbox {.}}}{{Yang, Youill, Woicik, Liu, Yu, Serafini, Aboulnaga, and Stonebraker}}}
+\bibcite{qdtree}{{35}{2020}{{Yang et~al\unhbox \voidb@x \hbox {.}}}{{Yang, Chandramouli, Wang, Gehrke, Li, Minhas, Larson, Kossmann, and Acharya}}}
+\bibcite{naru}{{36}{2019}{{Yang et~al\unhbox \voidb@x \hbox {.}}}{{Yang, Liang, Kamsetty, Wu, Duan, Chen, Abbeel, Hellerstein, Krishnan, and Stoica}}}
+\bibcite{rtos}{{37}{2020}{{Yu et~al\unhbox \voidb@x \hbox {.}}}{{Yu, Li, Chai, and Tang}}}
+\bibcite{cdbtune}{{38}{2019}{{Zhang et~al\unhbox \voidb@x \hbox {.}}}{{Zhang, Liu, Zhou, Li, Xiao, Cheng, Xing, Wang, Cheng, Liu, Ran, and Li}}}
+\bibcite{survey}{{39}{2022}{{Zhou et~al\unhbox \voidb@x \hbox {.}}}{{Zhou, Chai, Li, and Sun}}}
 \newlabel{tocindent-1}{0pt}
 \newlabel{tocindent0}{0pt}
 \newlabel{tocindent1}{4.185pt}
 \newlabel{tocindent2}{10.34999pt}
 \newlabel{tocindent3}{0pt}
+\@writefile{toc}{\contentsline {section}{References}{13}{section*.22}}
 \newlabel{TotPages}{{13}{13}{}{page.13}{}}

@@ -113,7 +113,7 @@ The message stream processing speed in \sys is competitive to \kafka. \sys and \
 
 \subsection{Evaluation of Message Streaming}
 
-To quantitively measure the message streaming service as an independent stream storage, we conduct an experiment to evaluate its throughput, latency, elasticity and volume. We select \texttt{OpenMessaging}~\cite{} as our benchmark  because it is widely used to compare messaging platforms. A cluster with three nodes is used in this experiment for  ease of reproduction.
+To quantitively measure the message streaming service as an independent stream storage, we conduct an experiment to evaluate its throughput, latency, elasticity and volume. We select \texttt{OpenMessaging}~\cite{openmessaging} as our benchmark  because it is widely used to compare messaging platforms. A cluster with three nodes is used in this experiment for  ease of reproduction.
  To help better understand the impact of tiering storage, two sets of hardware configurations are tested. In the first set of hardware (\texttt{Set-1}), each node has 10 CPU cores, 128 GB RAM and 800 GB NVMe SSD, 3 PB SAS HDD and all the nodes are connected with 10 Gb ethernet. In the second set of hardware (\texttt{Set-2}), all the configurations are the same except that each node has additional 16 GB persistent memory to serve as an extra cache. Messages are sent from producers to consumers in a fixed size of 1 KB. The data volumes we process are 100 TB, 500 TB and 1 PB respectively. 
 
 

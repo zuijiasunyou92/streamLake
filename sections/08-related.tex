@@ -8,7 +8,9 @@ In this section, we will discuss relevant open-source projects and systems relat
 
 
 
-\cc{\noindent\textbf{Data lake storage system.}} NetApp~\cite{} supports Hadoop to use its storage devices through NFS-based connector docking, through S3A docking to its object storage, and through SAS/iSCSI/FC building native \hdfs on its block/lun devices. AWS EMRFS~\cite{} is an enhancement introduced to address the inconsistency of object storage in metadata operations, with official information showing that it has made computation pushdown related optimizations for the engine. Alibaba EMR is based on object storage, and the JindoFS~\cite{} solves the performance problem of object storage by introducing local data caching. These solutions improve data access to the persistent storage in computation pushdown while StreamLake offers built-in computation pushdown operations directly. 
+\noindent\textbf{Data lake storage system.}  NetApp~\cite{netapp} supports Hadoop to use its storage devices through NFS-based connector docking, 
+S3A docking to its object storage, and SAS/SCSI/FC building native HDFS~\cite{hdfs} on its block/lun devices. AWS~\cite{aws}, Azure~\cite{azure}, Google Cloud~\cite{google} and Ali Cloud~\cite{ali} provide a rich portfolio of storage services  to build data lake in the cloud. These cloud storage services are loosely connected to support messaging and batch processing while \sys tightly integrates message streaming, lakehouse and persistent storage in a single system which is more efficient and cost effective.
+
 
 \noindent\textbf{Streaming platforms.} Kafka, Pulsar and Pravega~\cite{kafka, pulsa, pravega} are widely-used open-source streaming platforms in industry.  Unlike \sys, which builds its messaging service on top of the stream object and PLogs, and integrates its stream storage with a lakehouse framework, these solutions are file-based and require manual connections to compute engines and external storage, such as \hdfs~\cite{hdfs} or \texttt{S3}~\cite{s3} for downstream processing or cost-friendly archiving. This increases both the complexity and cost of data pipeline management.
 

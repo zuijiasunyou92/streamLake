@@ -47,9 +47,35 @@ Warning--to sort, need author or key in oracle
 Warning--no key, author in tere
 Warning--no author, editor, organization, or key in tere
 Warning--to sort, need author or key in tere
+Warning--no key, author in openmessaging
+Warning--no author, editor, organization, or key in openmessaging
+Warning--to sort, need author or key in openmessaging
+Warning--no key, author in netapp
+Warning--no author, editor, organization, or key in netapp
+Warning--to sort, need author or key in netapp
+Warning--no key, author in aws
+Warning--no author, editor, organization, or key in aws
+Warning--to sort, need author or key in aws
+Warning--no key, author in azure
+Warning--no author, editor, organization, or key in azure
+Warning--to sort, need author or key in azure
+Warning--no key, author in google
+Warning--no author, editor, organization, or key in google
+Warning--to sort, need author or key in google
+Warning--no key, author in ali
+Warning--no author, editor, organization, or key in ali
+Warning--to sort, need author or key in ali
 Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
 Reallocated global_strs (elt_size=20001) to 20 items from 10.
 Reallocated glb_str_end (elt_size=4) to 20 items from 10.
+Warning--no key, author in ali
+Warning--no key, author in ali
+Warning--no key, author in aws
+Warning--no key, author in aws
+Warning--no key, author in azure
+Warning--no key, author in azure
+Warning--no key, author in google
+Warning--no key, author in google
 Warning--no key, author in hdfs
 Warning--no key, author in hdfs
 Warning--no key, author in hive
@@ -62,6 +88,10 @@ Warning--no key, author in iceberg
 Warning--no key, author in iceberg
 Warning--no key, author in kafka
 Warning--no key, author in kafka
+Warning--no key, author in netapp
+Warning--no key, author in netapp
+Warning--no key, author in openmessaging
+Warning--no key, author in openmessaging
 Warning--no key, author in oracle
 Warning--no key, author in oracle
 Warning--no key, author in pravega
@@ -77,6 +107,9 @@ Warning--no key, author in spark
 Warning--no key, author in tere
 Warning--no key, author in tere
 Reallocated singl_function (elt_size=4) to 100 items from 50.
+Warning--no key, author in ali
+Warning--no author, editor, organization, or key in ali
+Warning--empty author in ali
 Warning--no key, author in s3
 Warning--no author, editor, organization, or key in s3
 Warning--empty author in s3
@@ -92,12 +125,27 @@ Warning--empty author in kafka
 Warning--no key, author in hdfs
 Warning--no author, editor, organization, or key in hdfs
 Warning--empty author in hdfs
+Warning--no key, author in aws
+Warning--no author, editor, organization, or key in aws
+Warning--empty author in aws
+Warning--no key, author in azure
+Warning--no author, editor, organization, or key in azure
+Warning--empty author in azure
+Warning--no key, author in google
+Warning--no author, editor, organization, or key in google
+Warning--empty author in google
 Warning--no key, author in hive
 Warning--no author, editor, organization, or key in hive
 Warning--empty author in hive
 Warning--no key, author in huawei
 Warning--no author, editor, organization, or key in huawei
 Warning--empty author in huawei
+Warning--no key, author in netapp
+Warning--no author, editor, organization, or key in netapp
+Warning--empty author in netapp
+Warning--no key, author in openmessaging
+Warning--no author, editor, organization, or key in openmessaging
+Warning--empty author in openmessaging
 Warning--no key, author in oracle
 Warning--no author, editor, organization, or key in oracle
 Warning--empty author in oracle
@@ -129,45 +177,45 @@ Warning--empty address in skip
 Warning--empty address in qdtree
 Warning--empty address in rtos
 Warning--empty address in cdbtune
-You've used 31 entries,
+You've used 39 entries,
             5901 wiz_defined-function locations,
-            1650 strings with 23586 characters,
-and the built_in function-call counts, 38273 in all, are:
-= -- 4277
-> -- 1742
+            1682 strings with 25224 characters,
+and the built_in function-call counts, 47929 in all, are:
+= -- 5234
+> -- 2330
 < -- 0
-+ -- 615
-- -- 580
-* -- 3145
-:= -- 3809
-add.period$ -- 133
-call.type$ -- 31
-change.case$ -- 267
-chr.to.int$ -- 31
-cite$ -- 200
-duplicate$ -- 3236
-empty$ -- 2299
-format.name$ -- 652
-if$ -- 9026
++ -- 831
+- -- 788
+* -- 4055
+:= -- 4841
+add.period$ -- 162
+call.type$ -- 39
+change.case$ -- 351
+chr.to.int$ -- 39
+cite$ -- 280
+duplicate$ -- 3966
+empty$ -- 2831
+format.name$ -- 868
+if$ -- 11218
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 81
-newline$ -- 312
-num.names$ -- 146
-pop$ -- 1455
+missing$ -- 89
+newline$ -- 377
+num.names$ -- 162
+pop$ -- 1856
 preamble$ -- 1
-purify$ -- 546
+purify$ -- 702
 quote$ -- 0
-skip$ -- 1122
+skip$ -- 1361
 stack$ -- 0
-substring$ -- 2617
-swap$ -- 326
+substring$ -- 3138
+swap$ -- 386
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 804
-warning$ -- 117
-while$ -- 124
+type$ -- 1016
+warning$ -- 165
+while$ -- 138
 width$ -- 0
-write$ -- 576
-(There were 118 warnings)
+write$ -- 702
+(There were 166 warnings)
